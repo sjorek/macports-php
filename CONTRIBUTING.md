@@ -10,8 +10,8 @@ But don't forget to try it at https://github.com/macports/ first!
 
 ## composer
 
-Check if the provided composer version differs from the released version by
-issuing a livecheck.
+Check if the provided `composer` version differs from the released version by
+issuing a `livecheck`.
 
 Either it says …
 
