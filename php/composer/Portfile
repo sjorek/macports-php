@@ -1,0 +1,183 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem              1.0
+
+name                    composer
+version                 1.5.2
+revision                0
+categories              php www net devel
+platforms               darwin freebsd openbsd
+maintainers             gmail.com:stephan.jorek openmaintainer
+license                 MIT
+homepage                http://getcomposer.org
+master_sites            ${homepage}
+distname                installer
+extract.suffix
+checksums               rmd160  da67082b8e9e0261abc7bc79e8218447009cdfe3 \
+                        sha256  c6d3f7f9e650e6eb5bba8a4f2a569b23c5b5fe10ec75fbc79c5cec21064c7e4f \
+                        sha384  544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061
+
+description             A dependency manager for PHP applications
+long_description        Composer is a tool for dependency management in PHP. \
+                        It allows you to declare the dependent libraries your \
+                        project needs and it will install them in your project \
+                        for you.
+
+build.args              --no-ansi
+destroot.args           ${build.args} --quiet
+
+# composer.create_subports: creates subports for each composer instance
+
+proc composer.create_subports {} {
+
+    global filespath name prefix worksrcpath
+
+    foreach php {php php53 php54 php55 php56 php70 php71 php72} {
+
+        set libpath                             "/lib/${php}"
+
+        if {"${php}" eq "php"} {
+            set php_bin                         "${php}"
+        } else {
+            set php_bin                         "${prefix}/bin/${php}"
+        }
+
+        eval [subst {
+
+            subport composer-${php} {
+
+                PortGroup                       select 1.0
+
+                select.group                    composer
+
+                if {"${php}" eq "php"} {
+                    select.file                 "${filespath}/apple-${php}"
+
+                    depends_build               "bin:${php}:php"
+                    depends_run                 "bin:${php}:php" port:composer_select
+
+                } else {
+                    select.file                 "${filespath}/macports-${php}"
+
+                    depends_build               "port:${php}"
+                    depends_run                 "port:${php}" port:composer_select
+
+                    build.args-append           --disable-tls
+                    destroot.args-append        --disable-tls
+                }
+
+                composer.add_port_code "${php}" "${libpath}" "${php_bin}"
+
+                if {"${php}" eq "php"} {
+
+                    default_variants            +bash_completion
+
+                } else {
+
+                    variant iconv description {Utilize iconv extension} {
+                        depends_build-append    "port:${php}-iconv"
+                        depends_run-append      "port:${php}-iconv"
+                    }
+
+                    variant mbstring description {Utilize mbstring extension} {
+                        depends_build-append    "port:${php}-mbstring"
+                        depends_run-append      "port:${php}-mbstring"
+                    }
+
+                    variant openssl description {Utilize openssl extension} {
+                        depends_build-append    "port:${php}-openssl"
+                        depends_run-append      "port:${php}-openssl"
+                        build.args-delete       "--disable-tls"
+                        destroot.args-delete    "--disable-tls"
+                    }
+
+                    default_variants            +iconv +mbstring +openssl +bash_completion
+
+                    if {![variant_isset iconv] && ![variant_isset mbstring]} {
+                        variant_set             iconv
+                    }
+                }
+            }
+
+        }]
+    }
+}
+
+# composer.add_port_code: adds the code to the port or subport to do the actual
+# building.
+
+proc composer.add_port_code {php libpath php_bin} {
+
+    ui_debug "${php} ${libpath} ${php_bin}"
+
+    global build.args destroot destroot.args distpath distname filespath
+    global name prefix version
+    global worksrcdir worksrcpath
+
+    worksrcdir                      ${name}-${php}-${version}
+
+    extract.mkdir                   yes
+    extract {
+        xinstall -m 0644 ${distpath}/${distname} ${worksrcpath}/composer-setup.php
+    }
+
+    use_configure                   no
+
+    options build.php_bin
+    build.php_bin                   ${php_bin}
+    build {
+        set setup_check [exec ${build.php_bin}  ${worksrcpath}/composer-setup.php --check ${build.args}]
+
+        if {"${setup_check}" eq "All settings correct for using Composer"} {
+            ui_info "${setup_check}"
+        } else {
+            ui_error "${setup_check}"
+            return -code error "composer setup-check failed"
+        }
+    }
+
+    options destroot.php destroot.php_bin destroot.libpath
+    destroot.php                    ${php}
+    destroot.php_bin                ${php_bin}
+    destroot.libpath                ${libpath}
+    destroot {
+        xinstall -d -m 0755 ${destroot}${prefix}${destroot.libpath}
+
+        set setup_check [exec ${destroot.php_bin} ${worksrcpath}/composer-setup.php --install-dir=${destroot}${prefix}${destroot.libpath} --version=${version} ${destroot.args}]
+        system "chmod 0644 ${destroot}${prefix}${destroot.libpath}/composer.phar"
+
+        xinstall -m 0644 ${distpath}/${distname} ${destroot}${prefix}${destroot.libpath}/composer-setup.php
+
+        xinstall -m 0755 ${filespath}/${name}.sh ${destroot}${prefix}${destroot.libpath}
+        ln -s ${prefix}${destroot.libpath}/${name}.sh ${destroot}${prefix}/bin/${name}-${destroot.php}
+        reinplace "s,@PHP@,${destroot.php_bin},g" ${destroot}${prefix}${destroot.libpath}/${name}.sh
+        reinplace "s,@LIBPATH@,${prefix}${destroot.libpath},g" ${destroot}${prefix}${destroot.libpath}/${name}.sh
+    }
+
+    variant bash_completion description {Enable bash autocompletion} {
+        depends_run-append          port:bash-completion
+        post-destroot {
+            xinstall -d -m 0755 ${destroot}${prefix}/etc/bash_completion.d
+            xinstall -m 0644 ${filespath}/${name}.completion ${destroot}${prefix}/etc/bash_completion.d/composer-${destroot.php}
+            reinplace "s,@PHP@,${destroot.php},g" ${destroot}${prefix}/etc/bash_completion.d/composer-${destroot.php}
+        }
+    }
+}
+
+composer.create_subports
+
+if {${name} eq ${subport}} {
+    # Set up the stub port.
+    supported_archs     noarch
+    distfiles
+    use_configure       no
+    build {}
+    destroot {
+        xinstall -d -m 755 ${destroot}${prefix}/share/doc/${name}
+        system "echo \"${name} is a stub port\" > ${destroot}${prefix}/share/doc/${name}/README"
+    }
+}
+
+default livecheck.type  {regex}
+livecheck.url           https://getcomposer.org/versions
+livecheck.regex         {\"stable\"[^\]]*\"version\": \"(\d+(\.\d+)*)\"}
