@@ -24,8 +24,7 @@ _composer_@PHP@()
 	fi
 
 	case "${prev}" in
-	composer)
-	composer-@PHP@)
+	composer|composer-@PHP@)
 		commands="${base_commands}"
 		;;
 
