@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer
 version                 1.5.2
-revision                1
+revision                2
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -17,11 +17,9 @@ checksums               rmd160  da67082b8e9e0261abc7bc79e8218447009cdfe3 \
                         sha256  c6d3f7f9e650e6eb5bba8a4f2a569b23c5b5fe10ec75fbc79c5cec21064c7e4f \
                         sha384  544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061
 
-description             A dependency manager for PHP applications
-long_description        Composer is a tool for dependency management in PHP. \
-                        It allows you to declare the dependent libraries your \
-                        project needs and it will install them in your project \
-                        for you.
+description             Package Management for PHP
+long_description        Composer is a dependency manager tracking local \
+                        dependencies of your projects and libraries.
 
 build.args              --no-ansi
 destroot.args           ${build.args} --quiet
@@ -146,7 +144,7 @@ proc composer.add_port_code {php libpath php_bin} {
         set setup_check [exec ${destroot.php_bin} ${worksrcpath}/composer-setup.php --install-dir=${destroot}${prefix}${destroot.libpath} --version=${version} ${destroot.args}]
         system "chmod 0644 ${destroot}${prefix}${destroot.libpath}/composer.phar"
 
-        xinstall -m 0644 ${distpath}/${distname} ${destroot}${prefix}${destroot.libpath}/composer-setup.php
+        xinstall -m 0644 ${worksrcpath}/composer-setup.php ${destroot}${prefix}${destroot.libpath}/composer-setup.php
 
         xinstall -m 0755 ${filespath}/${name}.sh ${destroot}${prefix}${destroot.libpath}
         ln -s ${prefix}${destroot.libpath}/${name}.sh ${destroot}${prefix}/bin/${name}-${destroot.php}

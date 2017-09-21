@@ -1,1 +1,2 @@
 bin/composer-php56
+etc/bash_completion.d/composer-php56

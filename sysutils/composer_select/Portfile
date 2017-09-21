@@ -5,6 +5,7 @@ PortGroup           select 1.0
 
 name                composer_select
 version             1.0
+revision            1
 categories          sysutils lang
 platforms           darwin
 maintainers         gmail.com:stephan.jorek openmaintainer

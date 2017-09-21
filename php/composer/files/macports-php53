@@ -1,1 +1,2 @@
 bin/composer-php53
+etc/bash_completion.d/composer-php53
