@@ -1,4 +1,4 @@
-# Copy to /etc/bash_completion.d/composer-@PHP@ and restart your bash
+# Copy to @PREFIX@/etc/bash_completion.d/composer-@PHP@ and restart your bash
 
 _composer_@PHP@_search()
 {
