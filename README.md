@@ -1,5 +1,6 @@
 # MacPorts-PHP
-The repository is for missing PHP-related MacPorts, like “composer”.
+The repository is for missing PHP-related MacPorts, like `composer` and
+provides bash-completion for the latter.
 
 ## Usage
 
