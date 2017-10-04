@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer
 version                 1.5.2
-revision                4
+revision                6
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -159,6 +159,15 @@ proc composer.add_port_code {php libpath php_bin} {
             xinstall -m 0644 ${filespath}/${name}.completion ${destroot}${prefix}/etc/bash_completion.d/composer-${destroot.php}
             reinplace "s,@PREFIX@,${prefix},g" ${destroot}${prefix}/etc/bash_completion.d/composer-${destroot.php}
             reinplace "s,@PHP@,${destroot.php},g" ${destroot}${prefix}/etc/bash_completion.d/composer-${destroot.php}
+            notes "
+-------------
+If you want to get bash completion support for 'port select composer' or custom
+composer downloads, install the 'composer' port with 'bash_completion' variant.
+
+Example: sudo port install composer +bash_completion
+-------------
+
+"
         }
     }
 }
@@ -166,15 +175,53 @@ proc composer.add_port_code {php libpath php_bin} {
 composer.create_subports
 
 if {${name} eq ${subport}} {
-    # Set up the stub port.
-    supported_archs     noarch
+    supported_archs                 noarch
     distfiles
-    use_configure       no
+    use_configure                   no
     build {}
     destroot {
         xinstall -d -m 755 ${destroot}${prefix}/share/doc/${name}
         system "echo \"${name} is a stub port\" > ${destroot}${prefix}/share/doc/${name}/README"
     }
+
+    default_variants                +bash_completion
+
+    variant bash_completion description {Enable bash autocompletion for 'port select composer' or custom composer downloads} {
+        depends_run-append          port:bash-completion
+        post-destroot {
+            xinstall -d -m 0755 ${destroot}${prefix}/etc/bash_completion.d
+            xinstall -m 0644 ${filespath}/${name}.completion ${destroot}${prefix}/etc/bash_completion.d/composer
+            reinplace "s,@PREFIX@,${prefix},g" ${destroot}${prefix}/etc/bash_completion.d/composer
+            reinplace "s,_@PHP@,,g" ${destroot}${prefix}/etc/bash_completion.d/composer
+            reinplace "s,-@PHP@,,g" ${destroot}${prefix}/etc/bash_completion.d/composer
+
+            xinstall -m 0644 ${filespath}/${name}.completion ${destroot}${prefix}/etc/bash_completion.d/composer.phar
+            reinplace "s,@PREFIX@,${prefix},g" ${destroot}${prefix}/etc/bash_completion.d/composer.phar
+            reinplace "s,_@PHP@,_phar,g" ${destroot}${prefix}/etc/bash_completion.d/composer.phar
+            reinplace "s,-@PHP@,.phar,g" ${destroot}${prefix}/etc/bash_completion.d/composer.phar
+
+            notes "
+-------------
+If you want to get bash completion support for 'composer-php*'
+ports, install the port with 'bash_completion' variant.
+
+Example: sudo port install composer-php +bash_completion
+-------------
+"
+        }
+    }
+
+    if {![variant_isset bash_completion]} {
+        post-destroot {
+            notes "
+-------------
+Without variant 'bash_completion' this is just a stub port providing nothing.
+Install one of the subports 'composer-php*' or add 'bash_completion' variant.
+-------------
+"
+        }
+    }
+
 }
 
 default livecheck.type  {regex}
