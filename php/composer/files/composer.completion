@@ -40,7 +40,7 @@ _composer_@PHP@_settings()
 
 _composer_@PHP@_scripts()
 {
-	( composer-php72 run-script -l | \
+	( composer-@PHP@ run-script -l | \
 		tr "\\n" " " | \
 		tr -s " ") 2>/dev/null
 }
