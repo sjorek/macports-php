@@ -4,7 +4,9 @@ provides bash-completion for the latter.
 
 ## Usage
 
-1. Install MacPorts from https://www.macports.org.
+1. Install [MacPorts](https://www.macports.org) - obviously this works
+   for Mac or Darwin only - maybe also on some other BSD - would be nice
+   to get some feedback?!
 2. Clone this repository to your desired location and add it to macports'
    `sources.conf`.
 
