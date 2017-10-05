@@ -38,4 +38,12 @@ EOF"
 
 ## What if composer has been updated and this repository does not reflect this?
 
-Look at [the contribution guidelines.](CONTRIBUTING.md)
+Look at [the contribution guidelines.](https://github.com/sjorek/MacPorts-PHP/blob/master/CONTRIBUTING.md)
+
+## Want more?
+
+There is a [composer-plugin](https://sjorek.github.io/composer-virtual-environment-plugin/)
+complementing these composer ports.
+
+Cheers!
+
