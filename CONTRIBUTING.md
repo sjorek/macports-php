@@ -1,6 +1,3 @@
----
----
-
 # Contributing
 
 For my convenience it would be really nice when you issue a pull request
