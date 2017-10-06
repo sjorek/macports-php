@@ -5,7 +5,7 @@ to this repository. Do so by forking this repository, fixing the issue and
 requesting a pull, for example via …
 
 ```console
-git request-pull master https://github.com/YOU/MacPorts-PHP
+$ git request-pull master https://github.com/YOU/MacPorts-PHP
 ```
 
 But don't forget to try it at https://github.com/macports/ first!
