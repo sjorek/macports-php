@@ -39,7 +39,7 @@ EOF"
 
 ## What if composer has been updated and this repository does not reflect this?
 
-Look at [the contribution guidelines.](CONTRIBUTING.md)
+Look at [the contribution guidelines.](.github/CONTRIBUTING.md)
 
 ## Want more?
 
