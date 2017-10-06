@@ -39,7 +39,7 @@ Replace the outdated version with the new version, then save, close and commit
 the file. Now you can upgrade the port, for example …
  
 ```console
-    $ sudo port upgrade composer-php
+$ sudo port upgrade composer-php
 ```
 
 
