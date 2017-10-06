@@ -13,10 +13,10 @@ provides bash-completion for the latter.
 
 ## Example - install it in your user's home-directory under Documents:
 
-```bash
-cd ${HOME}/Documents
-git clone https://github.com/sjorek/MacPorts-PHP
-sudo bash -c "cat <<EOF >>/opt/local/etc/macports/sources.conf
+```console
+$ cd ${HOME}/Documents
+$ git clone https://github.com/sjorek/MacPorts-PHP
+$ sudo bash -c "cat <<EOF >>/opt/local/etc/macports/sources.conf
 
 file:///Users/${USER}/Documents/MacPorts-PHP [nosync]
 
