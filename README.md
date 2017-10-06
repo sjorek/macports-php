@@ -38,7 +38,7 @@ EOF"
 
 ## What if composer has been updated and this repository does not reflect this?
 
-Look at [the contribution guidelines.](https://github.com/sjorek/MacPorts-PHP/blob/master/CONTRIBUTING.md)
+Look at [the contribution guidelines.](CONTRIBUTING.md)
 
 ## Want more?
 
