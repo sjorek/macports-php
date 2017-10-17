@@ -1,33 +1,33 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
-PortSystem              1.0
-PortGroup               github 1.0
+PortSystem          1.0
+PortGroup           github 1.0
 
-github.setup            sjorek composer-bash-completion 0.0.8 v
+github.setup        sjorek composer-bash-completion 0.0.9 v
 
-name                    composer-bash-completion
-categories              sysutils lang php
-platforms               darwin freebsd openbsd
-maintainers             gmail.com:stephan.jorek openmaintainer
-license                 BSD
+name                composer-bash-completion
+categories          sysutils lang php
+platforms           darwin freebsd openbsd
+maintainers         gmail.com:stephan.jorek openmaintainer
+license             BSD
 
-homepage                https://sjorek.github.io/composer-bash-completion/
+homepage            https://sjorek.github.io/composer-bash-completion/
 
-description             Bash completion support for composer.
+description         Bash completion support for composer.
 
-long_description        The completion routines support completing all \
-                        composer commands and options, even if provided \
-                        by plugins.
+long_description    The completion routines support completing all \
+                    composer commands and options, even if provided \
+                    by plugins.
 
-supported_archs         noarch
+supported_archs     noarch
 
-checksums               rmd160  e2e1e5914bbe5fd4b9577152459314d5d1a470a9 \
-                        sha256  8599351300a014878319279092c06475a9d63b7cfa81ecc32affab8240f8451e
+checksums           rmd160  189f29b26c33fae25320f2afc1f4706c42b187b3 \
+                    sha256  56af503e2e66e4cf05a05f19b03f030461312a943e298e57e047f3f55b2692ec
 
-depends_run-append      bin:composer:composer \
-                        port:bash-completion
+depends_run-append  bin:composer:composer \
+                    port:bash-completion
 
-use_configure           no
+use_configure       no
 
 build {}
 
