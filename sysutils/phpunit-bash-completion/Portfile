@@ -1,0 +1,36 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+
+github.setup        sjorek phpunit-bash-completion 0.0.1 v
+
+name                phpunit-bash-completion
+categories          sysutils lang php
+platforms           darwin freebsd openbsd
+maintainers         gmail.com:stephan.jorek openmaintainer
+license             BSD
+
+homepage            https://sjorek.github.io/phpunit-bash-completion/
+
+description         Bash completion support for PHPUnit.
+
+long_description    The completion routines support completing all \
+                    options and arguments provided by PHPUnit.
+
+supported_archs     noarch
+
+checksums           rmd160  f4b1223e8abc265313f57be7c7c3ed8721c2bd8f \
+                    sha256  9ffac3fb630381f8f15b7f1e232fed26ba44f689d335c1ba1d912f723bb889d5
+
+#depends_run-append  bin:phpunit:phpunit
+depends_run-append  port:bash-completion
+
+use_configure       no
+
+build {}
+
+destroot {
+    xinstall -d -m 0755 ${destroot}${prefix}/etc/bash_completion.d
+    copy ${worksrcpath}/phpunit-completion.bash ${destroot}${prefix}/etc/bash_completion.d/phpunit
+}
