@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        sjorek phpunit-bash-completion 0.0.2 v
+github.setup        sjorek phpunit-bash-completion 0.0.3 v
 
 name                phpunit-bash-completion
 categories          sysutils lang php
@@ -20,8 +20,8 @@ long_description    The completion routines support completing all \
 
 supported_archs     noarch
 
-checksums           rmd160  2c70f2dd4faf4b225c4efb1afaa870479599e7d1 \
-                    sha256  4fb686f7059f4e065883d3a8e4dfb12b37cd16355524853d9f336750a1b63ca8
+checksums           rmd160  6b4e5f74c5efc1742116e6882bf7d0f4c4ac5f8d \
+                    sha256  ee4f5947b65e7668ca595da86aa75745c64563a42b4111c738c46fecefd8c03a
 
 #depends_run-append  bin:phpunit:phpunit
 depends_run-append  port:bash-completion
