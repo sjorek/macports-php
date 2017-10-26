@@ -35,7 +35,7 @@ EOF"
     composer-php71                 @1.5.2          php/composer
     composer-php72                 @1.5.2          php/composer
     composer_select                @1.0            sysutils/composer_select
-    composer-bash-completion       @0.0.14         sysutils/composer-bash-completion
+    composer-bash-completion       @0.0.15         sysutils/composer-bash-completion
     phpunit-bash-completion        @0.0.3          sysutils/phpunit-bash-completion
 
 ## What if composer has been updated and this repository does not reflect this?
