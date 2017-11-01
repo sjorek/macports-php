@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        sjorek composer-bash-completion 0.0.16 v
+github.setup        sjorek composer-bash-completion 0.1.0 v
 
 name                composer-bash-completion
 categories          sysutils lang php
@@ -21,8 +21,8 @@ long_description    The completion routines support completing all \
 
 supported_archs     noarch
 
-checksums           rmd160  886568b797c26ea47bd05920b22a71859cf7ad67 \
-                    sha256  364d7d89ee30275a0faa71f94afd4f0059de920e402bf530bdd483e405e06ecb
+checksums           rmd160  a067680bb170de128464d8df633e20a518cc219f \
+                    sha256  ff44469a778274b318576c525a9c77a75924dbb528d562d200374693bda8319b
 
 depends_run-append  bin:composer:composer \
                     port:bash-completion
@@ -33,5 +33,9 @@ build {}
 
 destroot {
     xinstall -d -m 0755 ${destroot}${prefix}/etc/bash_completion.d
+    xinstall -d -m 0755 ${destroot}${prefix}/share/${name}
+
     copy ${worksrcpath}/composer-completion.bash ${destroot}${prefix}/etc/bash_completion.d/composer
+    copy ${worksrcpath}/composer-completion.php ${destroot}${prefix}/share/${name}/composer-completion.php
+    reinplace "s|#COMPOSER_COMPLETION_GENERATOR=|COMPOSER_COMPLETION_GENERATOR=\${COMPOSER_COMPLETION_GENERATOR:-${prefix}/share/${name}/composer-completion.php}|g" ${destroot}${prefix}/etc/bash_completion.d/composer
 }
