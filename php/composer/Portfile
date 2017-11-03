@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer
 version                 1.5.2
-revision                8
+revision                9
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -150,6 +150,11 @@ proc composer.add_port_code {php libpath php_bin} {
         ln -s ${prefix}${destroot.libpath}/${name}.sh ${destroot}${prefix}/bin/${name}-${destroot.php}
         reinplace "s,@PHP@,${destroot.php_bin},g" ${destroot}${prefix}${destroot.libpath}/${name}.sh
         reinplace "s,@LIBPATH@,${prefix}${destroot.libpath},g" ${destroot}${prefix}${destroot.libpath}/${name}.sh
+        if {"${destroot.php}" eq "php"} {
+            reinplace "s,@VARIANT@,,g" ${destroot}${prefix}${destroot.libpath}/${name}.sh
+        } else {
+            reinplace "s,@VARIANT@,/${destroot.php},g" ${destroot}${prefix}${destroot.libpath}/${name}.sh
+        }
     }
 
     variant bash_completion description {Enable bash autocompletion} {
