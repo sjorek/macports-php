@@ -25,15 +25,15 @@ EOF"
 
 ## List of (currently) provided MacPorts
 
-    composer                       @1.5.2          php/composer
-    composer-php                   @1.5.2          php/composer
-    composer-php53                 @1.5.2          php/composer
-    composer-php54                 @1.5.2          php/composer
-    composer-php55                 @1.5.2          php/composer
-    composer-php56                 @1.5.2          php/composer
-    composer-php70                 @1.5.2          php/composer
-    composer-php71                 @1.5.2          php/composer
-    composer-php72                 @1.5.2          php/composer
+    composer                       @1.6.3          php/composer
+    composer-php                   @1.6.3          php/composer
+    composer-php53                 @1.6.3          php/composer
+    composer-php54                 @1.6.3          php/composer
+    composer-php55                 @1.6.3          php/composer
+    composer-php56                 @1.6.3          php/composer
+    composer-php70                 @1.6.3          php/composer
+    composer-php71                 @1.6.3          php/composer
+    composer-php72                 @1.6.3          php/composer
     composer_select                @1.0            sysutils/composer_select
     composer-bash-completion       @0.1.3          sysutils/composer-bash-completion
     phpunit-bash-completion        @0.0.6          sysutils/phpunit-bash-completion
@@ -48,4 +48,3 @@ There is a [composer-plugin](https://sjorek.github.io/composer-virtual-environme
 complementing these composer ports.
 
 Cheers!
-
