@@ -4,6 +4,7 @@ PortSystem          1.0
 PortGroup           github 1.0
 
 github.setup        sjorek phpunit-bash-completion 0.0.6 v
+revision            1
 
 name                phpunit-bash-completion
 categories          sysutils lang php
@@ -31,6 +32,8 @@ use_configure       no
 build {}
 
 destroot {
-    xinstall -d -m 0755 ${destroot}${prefix}/etc/bash_completion.d
-    copy ${worksrcpath}/phpunit-completion.bash ${destroot}${prefix}/etc/bash_completion.d/phpunit
+    set completions_path ${prefix}/share/bash-completion/completions
+
+    xinstall -m 0755 -d ${destroot}${completions_path}
+    xinstall -m 0644 -c ${worksrcpath}/phpunit-completion.bash ${destroot}${completions_path}/phpunit
 }
