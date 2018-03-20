@@ -25,6 +25,7 @@ EOF"
 
 ## List of (currently) provided MacPorts
 
+    ddev                           @0.15.1         devel/ddev
     composer                       @1.6.3          php/composer
     composer-php                   @1.6.3          php/composer
     composer-php53                 @1.6.3          php/composer
@@ -35,8 +36,8 @@ EOF"
     composer-php71                 @1.6.3          php/composer
     composer-php72                 @1.6.3          php/composer
     composer_select                @1.0            sysutils/composer_select
-    composer-bash-completion       @0.1.3          sysutils/composer-bash-completion
-    phpunit-bash-completion        @0.0.6          sysutils/phpunit-bash-completion
+    composer-bash-completion       @0.1.3_1        sysutils/composer-bash-completion
+    phpunit-bash-completion        @0.0.6_1        sysutils/phpunit-bash-completion
 
 ## What if composer has been updated and this repository does not reflect this?
 
