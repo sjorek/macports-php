@@ -130,7 +130,7 @@ script:
     $PORT livecheck $PORT_NAME;
   fi;
 - if [ -n "$TEST_SCRIPT" ]; then
-    echo "test: $TEST_SCRIPT";
+    echo "$TEST_SCRIPT";
     $TEST_SCRIPT;
   fi
 # - if [[ $DEBUG = true ]]; then
