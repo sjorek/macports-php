@@ -1,1 +1,2 @@
 bin/composer
+share/bash-completion/completions/composer
