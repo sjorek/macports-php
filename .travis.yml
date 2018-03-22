@@ -28,26 +28,26 @@ env:
     PORT_NAME="composer-php"
     PORT_VARIANTS="+bash_completion"
     TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
-  - >
-    PORT_NAME="composer-php53"
-    PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
-    TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
+  # - >
+  #   PORT_NAME="composer-php53"
+  #   PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
   # - >
   #   PORT_NAME="composer-php53"
   #   PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
   #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
-  - >
-    PORT_NAME="composer-php54"
-    PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
-    TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
+  # - >
+  #   PORT_NAME="composer-php54"
+  #   PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
   # - >
   #   PORT_NAME="composer-php54"
   #   PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
   #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
-  - >
-    PORT_NAME="composer-php55"
-    PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
-    TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
+  # - >
+  #   PORT_NAME="composer-php55"
+  #   PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
   # - >
   #   PORT_NAME="composer-php55"
   #   PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
@@ -125,7 +125,7 @@ install:
 before_script:
 - $PORT version
 - echo "installing $PORT_NAME $PORT_VARIANTS …"
-- travis_wait 30 sudo $PORT install $PORT_NAME $PORT_VARIANTS
+- travis_retry travis_wait 30 sudo $PORT install $PORT_NAME $PORT_VARIANTS
 
 script:
 - if [[ $PORT_LIVECHECK = true ]] && [[ 0 = $(( $TRAVIS_BUILD_NUMBER % $PORT_LIVECHECK_INTERVAL )) ]]; then
