@@ -13,7 +13,7 @@ env:
   - PORT_NAME=""
   - PORT_VARIANTS=""
   - PORT_LIVECHECK=false
-  - PORT_LIVECHECK_INTERVAL=1
+  - PORT_LIVECHECK_INTERVAL=10
   - TEST_SCRIPT=""
   - TEST_COMPLETION=""
   - BREW_TAP=""
@@ -23,7 +23,6 @@ env:
   matrix:
   - >
     PORT_NAME="composer"
-    PORT_LIVECHECK=true
   - >
     PORT_NAME="composer-php"
     PORT_VARIANTS="+bash_completion"
@@ -86,10 +85,8 @@ env:
     TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
   - >
     PORT_NAME="composer-bash-completion"
-    PORT_LIVECHECK=true
   - >
     PORT_NAME="phpunit-bash-completion"
-    PORT_LIVECHECK=true
   - >
     PORT_NAME="ddev"
     PORT_VARIANTS="-docker_for_mac +bash_completion"
@@ -97,7 +94,6 @@ env:
   - >
     PORT_NAME="ddev"
     PORT_VARIANTS="+docker_for_mac +bash_completion"
-    PORT_LIVECHECK=true
     TEST_SCRIPT="${PORT_NAME} version"
     BREW_TAP="caskroom/cask"
     BREW_CASK="docker"
@@ -128,7 +124,7 @@ before_script:
 - travis_wait 30 sudo $PORT install $PORT_NAME $PORT_VARIANTS
 
 script:
-- if [[ $PORT_LIVECHECK = true ]] && [[ 0 = $(( $TRAVIS_BUILD_NUMBER % $PORT_LIVECHECK_INTERVAL )) ]]; then
+- if [[ $PORT_LIVECHECK = true ]] || [[ 0 = $(( $TRAVIS_BUILD_NUMBER % $PORT_LIVECHECK_INTERVAL )) ]]; then
     $PORT livecheck $PORT_NAME;
   fi;
 - if [ -n "$TEST_SCRIPT" ]; then
