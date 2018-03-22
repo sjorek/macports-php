@@ -24,7 +24,7 @@ file://${PWD} [nosync]
 EOF"
 ```
 
-## List of (currently) provided MacPorts
+## List of (currently) provided macports
 
     ddev                           @0.15.1         devel/ddev
     composer                       @1.6.3          php/composer
