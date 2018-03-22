@@ -1,4 +1,5 @@
 #!/bin/sh
+# @NAME@                                                    -*- shell-script -*-
 
 # we use an individual home-dir, but a common cache-dir
 COMPOSER_HOME=${COMPOSER_HOME:-${HOME}/.composer@VARIANT@} \

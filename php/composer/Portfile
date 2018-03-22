@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer
 version                 1.6.3
-revision                0
+revision                6
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -46,19 +46,20 @@ proc composer.create_subports {} {
 
                 PortGroup                       select 1.0
 
+                depends_run                     port:composer_select
                 select.group                    composer
 
                 if {"${php}" eq "php"} {
                     select.file                 "${filespath}/apple-${php}"
 
                     depends_build               "bin:${php}:php"
-                    depends_run                 "bin:${php}:php" port:composer_select
+                    depends_run-append          "bin:${php}:php"
 
                 } else {
                     select.file                 "${filespath}/macports-${php}"
 
                     depends_build               "port:${php}"
-                    depends_run                 "port:${php}" port:composer_select
+                    depends_run-append          "port:${php}"
 
                     build.args-append           --disable-tls
                     destroot.args-append        --disable-tls
@@ -123,14 +124,16 @@ proc composer.add_port_code {php libpath php_bin} {
 
     options build.php_bin
     build.php_bin                   ${php_bin}
+
     build {
+        ui_info "Composer setup check: ${build.php_bin} ${worksrcpath}/composer-setup.php --check ${build.args}"
         set setup_check [exec ${build.php_bin}  ${worksrcpath}/composer-setup.php --check ${build.args}]
 
         if {"${setup_check}" eq "All settings correct for using Composer"} {
-            ui_info "${setup_check}"
+            ui_info "${setup_check}."
         } else {
-            ui_error "${setup_check}"
-            return -code error "composer setup-check failed"
+            ui_info "${setup_check}"
+            return -code error "Composer setup check failed."
         }
     }
 
@@ -138,27 +141,44 @@ proc composer.add_port_code {php libpath php_bin} {
     destroot.php                    ${php}
     destroot.php_bin                ${php_bin}
     destroot.libpath                ${libpath}
+
     destroot {
-        xinstall -d -m 0755 ${destroot}${prefix}${destroot.libpath}
+        set destroot_binpath        ${destroot}${prefix}/bin
+        set destroot_libpath        ${destroot}${prefix}${destroot.libpath}
+        set destroot_wrapper        ${destroot_binpath}/${name}-${destroot.php}
+        set composer_install        "${destroot.php_bin} ${worksrcpath}/composer-setup.php --install-dir=${worksrcpath} --version=${version} ${destroot.args}"
 
-        set setup_check [exec ${destroot.php_bin} ${worksrcpath}/composer-setup.php --install-dir=${destroot}${prefix}${destroot.libpath} --version=${version} ${destroot.args}]
-        system "chmod 0755 ${destroot}${prefix}${destroot.libpath}/composer.phar"
+        ui_info "Downloading composer: ${composer_install}"
+        system "${composer_install}"
 
-        xinstall -m 0644 ${worksrcpath}/composer-setup.php ${destroot}${prefix}${destroot.libpath}/composer-setup.php
-
-        xinstall -m 0755 ${filespath}/${name}.sh ${destroot}${prefix}${destroot.libpath}
-        ln -s ${prefix}${destroot.libpath}/${name}.sh ${destroot}${prefix}/bin/${name}-${destroot.php}
-        reinplace "s,@PHP@,${destroot.php_bin},g" ${destroot}${prefix}${destroot.libpath}/${name}.sh
-        reinplace "s,@LIBPATH@,${prefix}${destroot.libpath},g" ${destroot}${prefix}${destroot.libpath}/${name}.sh
+        xinstall -d -m 0755 ${destroot_binpath}
+        xinstall -d -m 0755 ${destroot_libpath}
+        xinstall -m 0644 ${worksrcpath}/composer-setup.php ${destroot_libpath}/composer-setup.php
+        xinstall -m 0644 ${worksrcpath}/composer.phar ${destroot_libpath}/composer.phar
+        xinstall -m 0755 ${filespath}/${name}.sh ${destroot_wrapper}
+        reinplace "s,@PHP@,${destroot.php_bin},g" ${destroot_wrapper}
+        reinplace "s,@LIBPATH@,${prefix}${destroot.libpath},g" ${destroot_wrapper}
         if {"${destroot.php}" eq "php"} {
-            reinplace "s,@VARIANT@,,g" ${destroot}${prefix}${destroot.libpath}/${name}.sh
+            reinplace "s,@VARIANT@,,g" ${destroot_wrapper}
         } else {
-            reinplace "s,@VARIANT@,/${destroot.php},g" ${destroot}${prefix}${destroot.libpath}/${name}.sh
+            reinplace "s,@VARIANT@,/${destroot.php},g" ${destroot_wrapper}
         }
     }
 
     variant bash_completion description {Enable bash autocompletion} {
         depends_run-append          port:composer-bash-completion
+
+        post-destroot {
+            set completion_destroot     ${destroot}${prefix}/share/bash-completion/completions
+            set completion_scriptname   ${name}-${destroot.php}
+            set completion_libpath      ${prefix}/lib/composer-bash-completion
+
+            xinstall -d -m 0755 ${completion_destroot}
+            xinstall -m 0644 ${filespath}/completion.sh ${completion_destroot}/${completion_scriptname}
+            reinplace "s,@PHP@,${destroot.php_bin},g" ${completion_destroot}/${completion_scriptname}
+            reinplace "s,@NAME@,${completion_scriptname},g" ${completion_destroot}/${completion_scriptname}
+            reinplace "s,@LIBPATH@,${completion_libpath},g" ${completion_destroot}/${completion_scriptname}
+        }
     }
 }
 

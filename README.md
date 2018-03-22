@@ -26,19 +26,19 @@ EOF"
 
 ## List of (currently) provided macports
 
-    ddev                           @0.15.1         devel/ddev
-    composer                       @1.6.3          php/composer
-    composer-php                   @1.6.3          php/composer
-    composer-php53                 @1.6.3          php/composer
-    composer-php54                 @1.6.3          php/composer
-    composer-php55                 @1.6.3          php/composer
-    composer-php56                 @1.6.3          php/composer
-    composer-php70                 @1.6.3          php/composer
-    composer-php71                 @1.6.3          php/composer
-    composer-php72                 @1.6.3          php/composer
-    composer_select                @1.0            sysutils/composer_select
-    composer-bash-completion       @0.1.3_1        sysutils/composer-bash-completion
-    phpunit-bash-completion        @0.0.6_1        sysutils/phpunit-bash-completion
+    ddev                           @0.15.1_2       devel/ddev
+    composer                       @1.6.3_6        php/composer
+    composer-php                   @1.6.3_6        php/composer
+    composer-php53                 @1.6.3_6        php/composer
+    composer-php54                 @1.6.3_6        php/composer
+    composer-php55                 @1.6.3_6        php/composer
+    composer-php56                 @1.6.3_6        php/composer
+    composer-php70                 @1.6.3_6        php/composer
+    composer-php71                 @1.6.3_6        php/composer
+    composer-php72                 @1.6.3_6        php/composer
+    composer_select                @1.0_6          sysutils/composer_select
+    composer-bash-completion       @0.1.9_9        sysutils/composer-bash-completion
+    phpunit-bash-completion        @0.0.12_7       sysutils/phpunit-bash-completion
 
 ## What if composer has been updated and this repository does not reflect this?
 
