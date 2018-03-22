@@ -1,6 +1,6 @@
 # [macports-php](https://sjorek.github.io/macports-php/)
 
-The repository is for missing PHP-related MacPorts, like `composer` and
+The repository is for missing PHP-related macports, like `composer` and
 provides bash-completion for the latter.
 
 ## Usage
