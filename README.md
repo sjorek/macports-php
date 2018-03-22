@@ -11,14 +11,15 @@ provides bash-completion for the latter.
 2. Clone this repository to your desired location and add it to macports'
    `sources.conf`.
 
-## Example - install it in your user's home-directory under Documents:
+## Example - install it in your user's home-directory under Public:
 
 ```console
-$ cd ${HOME}/Documents
-$ git clone https://github.com/sjorek/MacPorts-PHP
+$ git clone https://github.com/sjorek/MacPorts-PHP ${HOME}/Public/MacPorts-PHP
+$ cd ${HOME}/Public/MacPorts-PHP
+$ portindex
 $ sudo bash -c "cat <<EOF >>/opt/local/etc/macports/sources.conf
 
-file:///Users/${USER}/Documents/MacPorts-PHP [nosync]
+file://${PWD} [nosync]
 
 EOF"
 ```
