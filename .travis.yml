@@ -57,7 +57,6 @@ env:
     PORT_NAME="composer-php72"
     PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
     TEST_SCRIPT="${PORT_NAME} --version"
-    DEBUG=true
   - >
     PORT_NAME="composer-bash-completion"
     PORT_LIVECHECK=true
@@ -103,7 +102,11 @@ script:
     $PORT -v livecheck $PORT_NAME;
   fi;
 # travis wait is needed since building could require time
-- travis_wait 30 sudo $PORT install $PORT_NAME $PORT_VARIANTS;
+- travis_wait 30 sudo $PORT install $PORT_NAME $PORT_VARIANTS
+- if [[ $DEBUG = true ]]; then
+    sudo $PORT uninstall $PORT_NAME;
+    travis_wait 30 sudo $PORT -d install $PORT_NAME $PORT_VARIANTS;
+  fi
 - if [ -n "$TEST_SCRIPT" ]; then
     $(echo "$TEST_SCRIPT");
   fi
