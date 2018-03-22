@@ -9,7 +9,7 @@ cache:
 
 env:
   global:
-  - PORT="port -N -v"
+  - PORT="port -N"
   - PORT_NAME=""
   - PORT_VARIANTS=""
   - PORT_LIVECHECK=false
@@ -32,58 +32,58 @@ env:
     PORT_NAME="composer-php53"
     PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
     TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
-  - >
-    PORT_NAME="composer-php53"
-    PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
-    TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
+  # - >
+  #   PORT_NAME="composer-php53"
+  #   PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
   - >
     PORT_NAME="composer-php54"
     PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
     TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
-  - >
-    PORT_NAME="composer-php54"
-    PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
-    TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
+  # - >
+  #   PORT_NAME="composer-php54"
+  #   PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
   - >
     PORT_NAME="composer-php55"
     PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
     TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
-  - >
-    PORT_NAME="composer-php55"
-    PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
-    TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
+  # - >
+  #   PORT_NAME="composer-php55"
+  #   PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
   - >
     PORT_NAME="composer-php56"
     PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
     TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
-  - >
-    PORT_NAME="composer-php56"
-    PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
-    TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
+  # - >
+  #   PORT_NAME="composer-php56"
+  #   PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
   - >
     PORT_NAME="composer-php70"
     PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
     TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
-  - >
-    PORT_NAME="composer-php70"
-    PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
-    TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
+  # - >
+  #   PORT_NAME="composer-php70"
+  #   PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
   - >
     PORT_NAME="composer-php71"
     PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
     TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
-  - >
-    PORT_NAME="composer-php71"
-    PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
-    TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
+  # - >
+  #   PORT_NAME="composer-php71"
+  #   PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
   - >
     PORT_NAME="composer-php72"
     PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
     TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
-  - >
-    PORT_NAME="composer-php72"
-    PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
-    TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
+  # - >
+  #   PORT_NAME="composer-php72"
+  #   PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
   - >
     PORT_NAME="composer-bash-completion"
     PORT_LIVECHECK=true
@@ -129,7 +129,7 @@ before_script:
 
 script:
 - if [[ $PORT_LIVECHECK = true ]] && [[ 0 = $(( $TRAVIS_BUILD_NUMBER % $PORT_LIVECHECK_INTERVAL )) ]]; then
-    $PORT livecheck $PORT_NAME;
+    $PORT -v livecheck $PORT_NAME;
   fi;
 - if [ -n "$TEST_SCRIPT" ]; then
     echo "$TEST_SCRIPT";
