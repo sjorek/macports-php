@@ -29,51 +29,51 @@ env:
     PORT_VARIANTS="+bash_completion"
     TEST_SCRIPT="${PORT_NAME} --version"
     DEBUG=true
-  - >
-    PORT_NAME="composer-php53"
-    PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
-    TEST_SCRIPT="${PORT_NAME} --version"
-  - >
-    PORT_NAME="composer-php54"
-    PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
-    TEST_SCRIPT="${PORT_NAME} --version"
-  - >
-    PORT_NAME="composer-php55"
-    PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
-    TEST_SCRIPT="${PORT_NAME} --version"
-  - >
-    PORT_NAME="composer-php56"
-    PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
-    TEST_SCRIPT="${PORT_NAME} --version"
-  - >
-    PORT_NAME="composer-php70"
-    PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
-    TEST_SCRIPT="${PORT_NAME} --version"
-  - >
-    PORT_NAME="composer-php71"
-    PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
-    TEST_SCRIPT="${PORT_NAME} --version"
-  - >
-    PORT_NAME="composer-php72"
-    PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
-    TEST_SCRIPT="${PORT_NAME} --version"
-  - >
-    PORT_NAME="composer-bash-completion"
-    PORT_LIVECHECK=true
-    NO_TEST_SCRIPT="[ -r /opt/local/etc/profile.d/bash_completion.sh ] && source /opt/local/etc/profile.d/bash_completion.sh"
-  - >
-    PORT_NAME="phpunit-bash-completion"
-    PORT_LIVECHECK=true
-    NO_TEST_SCRIPT="[ -r /opt/local/etc/profile.d/bash_completion.sh ] && source /opt/local/etc/profile.d/bash_completion.sh"
-  - >
-    PORT_NAME="ddev"
-    PORT_VARIANTS="+bash_completion"
-  - >
-    PORT_NAME="ddev"
-    PORT_VARIANTS="+docker_for_mac +bash_completion"
-    PORT_LIVECHECK=true
-    BREW_TAP="caskroom/cask"
-    BREW_CASK="docker"
+  # - >
+  #   PORT_NAME="composer-php53"
+  #   PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version"
+  # - >
+  #   PORT_NAME="composer-php54"
+  #   PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version"
+  # - >
+  #   PORT_NAME="composer-php55"
+  #   PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version"
+  # - >
+  #   PORT_NAME="composer-php56"
+  #   PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version"
+  # - >
+  #   PORT_NAME="composer-php70"
+  #   PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version"
+  # - >
+  #   PORT_NAME="composer-php71"
+  #   PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version"
+  # - >
+  #   PORT_NAME="composer-php72"
+  #   PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version"
+  # - >
+  #   PORT_NAME="composer-bash-completion"
+  #   PORT_LIVECHECK=true
+  #   NO_TEST_SCRIPT="[ -r /opt/local/etc/profile.d/bash_completion.sh ] && source /opt/local/etc/profile.d/bash_completion.sh"
+  # - >
+  #   PORT_NAME="phpunit-bash-completion"
+  #   PORT_LIVECHECK=true
+  #   NO_TEST_SCRIPT="[ -r /opt/local/etc/profile.d/bash_completion.sh ] && source /opt/local/etc/profile.d/bash_completion.sh"
+  # - >
+  #   PORT_NAME="ddev"
+  #   PORT_VARIANTS="+bash_completion"
+  # - >
+  #   PORT_NAME="ddev"
+  #   PORT_VARIANTS="+docker_for_mac +bash_completion"
+  #   PORT_LIVECHECK=true
+  #   BREW_TAP="caskroom/cask"
+  #   BREW_CASK="docker"
 
 install:
 - if [ -n "$BREW_TAP" ]; then
