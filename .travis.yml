@@ -88,7 +88,7 @@ install:
 - chmod +x ./macports-ci
 - ./macports-ci install
 - export PATH=/opt/local/bin:$PATH
-- sudo port upgrade outdated
+- sudo port upgrade outdated || true
 - ./macports-ci ccache;
 - ./macports-ci localports "$TRAVIS_BUILD_DIR"
 
