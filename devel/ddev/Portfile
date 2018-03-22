@@ -7,7 +7,7 @@ PortSystem          1.0
 
 name                ddev
 version             0.15.1
-revision            0
+revision            2
 categories          devel lang php
 platforms           darwin freebsd openbsd
 maintainers         gmail.com:stephan.jorek openmaintainer
@@ -31,9 +31,6 @@ distname            ${name}_macos.v${version}
 checksums           rmd160  3b8526a0895bed0d4c6f3f93371bac804e514ec8 \
                     sha256  755b394bcdb27f10c3b85bf00c6955cd3ea363b2b96c7c778a3a0a2c2e0ab7ad
 
-depends_run-append  bin:docker:docker \
-                    bin:docker-compose:docker-compose
-
 extract.mkdir       yes
 use_configure       no
 
@@ -44,21 +41,26 @@ destroot {
     xinstall -m 0755 -c ${worksrcpath}/${name} ${destroot}${prefix}/bin/${name}
 }
 
-default_variants    +bash_completion +custom_docker
+default_variants    +bash_completion
 
-variant custom_docker description {Use custom docker and docker-compose installation in /usr/local/bin} {
-    depends_run-delete bin:docker:docker
-    depends_run-delete bin:docker-compose:docker-compose
+variant docker_for_mac description {Use docker-for-mac installation in /usr/local/bin} {
+    depends_run-delete      bin:docker:docker
+    depends_run-delete      bin:docker-compose:docker-compose
+    depends_build-append    path:/usr/local/bin/docker:docker \
+                            path:/usr/local/bin/docker-compose:docker-compose
+    depends_run-append      path:/usr/local/bin/docker:docker \
+                            path:/usr/local/bin/docker-compose:docker-compose
+
     build {
         set docker_check [exec /usr/local/bin/docker --version]
         ui_info "${docker_check}"
-        if {![regexp {^Docker version (17\.0[5-9]|(1[8-9]|[2-9][0-9])\.[0-9][0-9])} ${docker_check}]} {
+        if {![regexp {^Docker version (17\.(0[5-9]|[1-9][0-9])|(1[8-9]|[2-9][0-9])\.[0-9][0-9])} ${docker_check}]} {
             return -code error "ddev setup-check failed due to docker binary version being lower than 17.05"
         }
 
         set compose_check [exec /usr/local/bin/docker-compose --version]
         ui_info "${compose_check}"
-        if {![regexp {^docker-compose version (1\.[1-9][0-9]|([2-9]|[1-9][0-9])\.[0-9][0-9])\.[0-9]} ${compose_check}]} {
+        if {![regexp {^docker-compose version (1\.[1-9][0-9]|([2-9]|[1-9][0-9]+)\.[0-9]+)\.[0-9]} ${compose_check}]} {
             return -code error "ddev setup-check failed due to docker-compose version being lower than 1.10.0"
         }
     }
@@ -68,9 +70,9 @@ variant bash_completion description {Enable bash autocompletion} {
     depends_run-append path:etc/bash_completion:bash-completion
 
     post-destroot {
-        set completions_path ${prefix}/share/bash-completion/completions
-        xinstall -m 0755 -d ${destroot}${completions_path}
-        xinstall -m 0644 -c ${worksrcpath}/${name}_bash_completion.sh ${destroot}${completions_path}/${name}
+        set completions_path ${destroot}${prefix}/share/bash-completion/completions
+        xinstall -m 0755 -d ${completions_path}
+        xinstall -m 0644 -c ${worksrcpath}/${name}_bash_completion.sh ${completions_path}/${name}
     }
 }
 
