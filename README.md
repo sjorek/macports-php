@@ -1,4 +1,4 @@
-# [MacPorts-PHP](https://sjorek.github.io/MacPorts-PHP/)
+# [macports-php](https://sjorek.github.io/macports-php/)
 
 The repository is for missing PHP-related MacPorts, like `composer` and
 provides bash-completion for the latter.
@@ -14,8 +14,8 @@ provides bash-completion for the latter.
 ## Example - install it in your user's home-directory under Public:
 
 ```console
-$ git clone https://github.com/sjorek/MacPorts-PHP ${HOME}/Public/MacPorts-PHP
-$ cd ${HOME}/Public/MacPorts-PHP
+$ git clone https://github.com/sjorek/macports-php ${HOME}/Public/macports-php
+$ cd ${HOME}/Public/macports-php
 $ portindex
 $ sudo bash -c "cat <<EOF >>/opt/local/etc/macports/sources.conf
 
