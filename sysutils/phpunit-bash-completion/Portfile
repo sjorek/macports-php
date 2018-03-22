@@ -3,8 +3,8 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        sjorek phpunit-bash-completion 0.0.7 v
-revision            0
+github.setup        sjorek phpunit-bash-completion 0.0.12 v
+revision            4
 
 name                phpunit-bash-completion
 categories          sysutils lang php
@@ -21,8 +21,8 @@ long_description    The completion routines support completing all \
 
 supported_archs     noarch
 
-checksums           rmd160  b469b2a88dafc4db88e13a5e1afd059ce68fa47b \
-                    sha256  734a225f6899af64825dbdf54129475fba64cd2de03f62f517e261cddcb242a9
+checksums           rmd160  cc3fcbe795cf159aad29813b0bc6b25b40a3c825 \
+                    sha256  76985e8e823c07616bff2939a3881ade49923b8a3d029bb9fad0070e98483013
 
 #depends_run-append  bin:phpunit:phpunit
 depends_run-append  port:bash-completion
@@ -32,8 +32,16 @@ use_configure       no
 build {}
 
 destroot {
-    set completions_path ${prefix}/etc/bash_completion.d
+    set libpath                 ${prefix}/lib/${name}
+    set destroot_lib            ${destroot}${libpath}
+    set destroot_completions    ${destroot}${prefix}/share/bash-completion/completions
 
-    xinstall -m 0755 -d ${destroot}${completions_path}
-    xinstall -m 0644 -c ${worksrcpath}/phpunit-completion.bash ${destroot}${completions_path}/phpunit
+    reinplace "s|#PHPUNIT_COMPLETION_PHP=|PHPUNIT_COMPLETION_PHP=\${PHPUNIT_COMPLETION_PHP:-php}|g" ${worksrcpath}/phpunit-completion.bash
+
+    xinstall -m 0755 -d ${destroot_completions}
+    xinstall -m 0755 -d ${destroot_lib}
+    xinstall -m 0644 -c ${worksrcpath}/phpunit-completion.bash ${destroot_lib}/phpunit-completion.bash
+    xinstall -m 0644 -c ${filespath}/completion.sh ${destroot_completions}/phpunit
+    reinplace "s,@LIBPATH@,${libpath},g" ${destroot_completions}/phpunit
+    ln -s phpunit ${destroot_completions}/phpunit.phar
 }

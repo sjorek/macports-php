@@ -3,8 +3,8 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        sjorek composer-bash-completion 0.1.5 v
-revision            0
+github.setup        sjorek composer-bash-completion 0.1.9 v
+revision            5
 
 name                composer-bash-completion
 categories          sysutils lang php
@@ -16,14 +16,13 @@ homepage            https://sjorek.github.io/composer-bash-completion/
 
 description         Bash completion support for composer.
 
-long_description    The completion routines support completing all \
-                    composer commands and options, even if provided \
-                    by plugins.
+long_description    The completion routines support completing all composer \
+                    commands and options, even if provided by plugins.
 
 supported_archs     noarch
 
-checksums           rmd160  17e30d0e6d17d43123e7dc324068e20203d587b2 \
-                    sha256  2062f7c16ac85845e9c7a36851cc1be1597352ca1d0e4f13382f6d94215df78a
+checksums           rmd160  27d5748c3bedb39fc73618a0cd40d6f65faa9f9a \
+                    sha256  14f2c6fa6cbf9f9b81c50184102b6cca4e90c2918eefc72ff9b22c5ad772b587
 
 depends_run-append  bin:composer:composer \
                     port:bash-completion
@@ -33,13 +32,18 @@ use_configure       no
 build {}
 
 destroot {
-    set completions_path ${prefix}/etc/bash_completion.d
-    set shared_path ${prefix}/share/${name}
+    set libpath                 ${prefix}/lib/${name}
+    set destroot_lib            ${destroot}${libpath}
+    set destroot_completions    ${destroot}${prefix}/share/bash-completion/completions
 
-    reinplace "s|#COMPOSER_COMPLETION_PHP_SCRIPT=|COMPOSER_COMPLETION_PHP_SCRIPT=\${COMPOSER_COMPLETION_PHP_SCRIPT:-${shared_path}/composer-completion.php}|g" ${worksrcpath}/composer-completion.bash
+    reinplace "s|#COMPOSER_COMPLETION_PHP=|COMPOSER_COMPLETION_PHP=\${COMPOSER_COMPLETION_PHP:-php}|g" ${worksrcpath}/composer-completion.bash
+    reinplace "s|#COMPOSER_COMPLETION_PHP_SCRIPT=|COMPOSER_COMPLETION_PHP_SCRIPT=\${COMPOSER_COMPLETION_PHP_SCRIPT:-${libpath}/composer-completion.php}|g" ${worksrcpath}/composer-completion.bash
 
-    xinstall -m 0755 -d ${destroot}${completions_path}
-    xinstall -m 0755 -d ${destroot}${shared_path}
-    xinstall -m 0644 -c ${worksrcpath}/composer-completion.bash ${destroot}${completions_path}/composer
-    xinstall -m 0644 -c ${worksrcpath}/composer-completion.php ${destroot}${shared_path}/composer-completion.php
+    xinstall -m 0755 -d ${destroot_completions}
+    xinstall -m 0755 -d ${destroot_lib}
+    xinstall -m 0644 -c ${worksrcpath}/composer-completion.bash ${destroot_lib}/composer-completion.bash
+    xinstall -m 0644 -c ${worksrcpath}/composer-completion.php ${destroot_lib}/composer-completion.php
+    xinstall -m 0644 -c ${filespath}/completion.sh ${destroot_completions}/composer
+    reinplace "s,@LIBPATH@,${libpath},g" ${destroot_completions}/composer
+    ln -s composer ${destroot_completions}/composer.phar
 }
