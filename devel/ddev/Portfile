@@ -7,7 +7,7 @@ PortSystem          1.0
 
 name                ddev
 version             0.15.1
-revision            2
+revision            3
 categories          devel lang php
 platforms           darwin freebsd openbsd
 maintainers         gmail.com:stephan.jorek openmaintainer
@@ -30,6 +30,9 @@ master_sites        https://github.com/drud/ddev/releases/download/v${version}/
 distname            ${name}_macos.v${version}
 checksums           rmd160  3b8526a0895bed0d4c6f3f93371bac804e514ec8 \
                     sha256  755b394bcdb27f10c3b85bf00c6955cd3ea363b2b96c7c778a3a0a2c2e0ab7ad
+
+depends_run         bin:docker:docker \
+                    bin:docker-compose:docker-compose
 
 extract.mkdir       yes
 use_configure       no
