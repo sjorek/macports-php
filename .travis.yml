@@ -74,13 +74,13 @@ env:
     BREW_CASK="docker"
 
 install:
-- if [ -n "$BREW_TAP" ];
+- if [ -n "$BREW_TAP" ]; then
     brew tap $BREW_TAP;
   fi
-- if [ -n "$BREW_INSTALL" ];
+- if [ -n "$BREW_INSTALL" ]; then
     brew install $BREW_INSTALL;
   fi
-- if [ -n "${BREW_CASK}" ];
+- if [ -n "${BREW_CASK}" ]; then
     brew cask install ${BREW_CASK};
   fi
 # set columns in terminal, required for curl to work correctly:
@@ -96,7 +96,7 @@ before_script:
 - $PORT version
 
 script:
-- if [[ $PORT_LIVECHECK = true ]] && [[ 0 = $(( $TRAVIS_BUILD_NUMBER % $PORT_LIVECHECK_INTERVAL )) ]] );
+- if [[ $PORT_LIVECHECK = true ]] && [[ 0 = $(( $TRAVIS_BUILD_NUMBER % $PORT_LIVECHECK_INTERVAL )) ]]; then
     $PORT livecheck $PORT_NAME;
   fi;
 # travis wait is needed since building could require time
