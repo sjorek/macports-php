@@ -1,0 +1,118 @@
+os: osx
+
+language: generic
+#language: shell
+
+cache:
+  directories:
+  - $HOME/.macports-ci-ccache
+
+env:
+  global:
+  - PORT="port -Nv"
+  - PORT_NAME=""
+  - PORT_VARIANTS=""
+  - PORT_LIVECHECK=false
+  - PORT_LIVECHECK_INTERVAL=10
+  - TEST_SCRIPT=""
+  - TEST_COMPLETION=""
+  - BREW_TAP=""
+  - BREW_INSTALL=""
+  - BREW_CASK=""
+  matrix:
+  - >
+    PORT_NAME="composer"
+    PORT_LIVECHECK=true
+  - >
+    PORT_NAME="composer-php"
+    PORT_VARIANTS="+bash_completion"
+    TEST_SCRIPT="${PORT_NAME} --version"
+  - >
+    PORT_NAME="composer-php53"
+    PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
+    TEST_SCRIPT="${PORT_NAME} --version"
+  - >
+    PORT_NAME="composer-php54"
+    PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
+    TEST_SCRIPT="${PORT_NAME} --version"
+  - >
+    PORT_NAME="composer-php55"
+    PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
+    TEST_SCRIPT="${PORT_NAME} --version"
+  - >
+    PORT_NAME="composer-php56"
+    PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
+    TEST_SCRIPT="${PORT_NAME} --version"
+  - >
+    PORT_NAME="composer-php70"
+    PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
+    TEST_SCRIPT="${PORT_NAME} --version"
+  - >
+    PORT_NAME="composer-php71"
+    PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
+    TEST_SCRIPT="${PORT_NAME} --version"
+  - >
+    PORT_NAME="composer-php72"
+    PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
+    TEST_SCRIPT="${PORT_NAME} --version"
+  - >
+    PORT_NAME="composer-bash-completion"
+    PORT_LIVECHECK=true
+    TEST_SCRIPT="[ -r /opt/local/etc/profile.d/bash_completion.sh ] && source /opt/local/etc/profile.d/bash_completion.sh"
+  - >
+    PORT_NAME="phpunit-bash-completion"
+    PORT_LIVECHECK=true
+    TEST_SCRIPT="[ -r /opt/local/etc/profile.d/bash_completion.sh ] && source /opt/local/etc/profile.d/bash_completion.sh"
+  - >
+    PORT_NAME="ddev"
+    PORT_VARIANTS="+bash_completion"
+  - >
+    PORT_NAME="ddev"
+    PORT_VARIANTS="+docker_for_mac +bash_completion"
+    PORT_LIVECHECK=true
+    BREW_TAP="caskroom/cask"
+    BREW_CASK="docker"
+
+install:
+- if [ -n "$BREW_TAP" ];
+    brew tap $BREW_TAP;
+  fi
+- if [ -n "$BREW_INSTALL" ];
+    brew install $BREW_INSTALL;
+  fi
+- if [ -n "${BREW_CASK}" ];
+    brew cask install ${BREW_CASK};
+  fi
+# set columns in terminal, required for curl to work correctly:
+- export COLUMNS=80
+- travis_retry wget https://raw.githubusercontent.com/GiovanniBussi/macports-ci/master/macports-ci
+- chmod +x ./macports-ci
+- ./macports-ci install
+- export PATH=/opt/local/bin:$PATH
+- ./macports-ci ccache;
+- ./macports-ci localports "$TRAVIS_BUILD_DIR"
+
+before_script:
+- $PORT version
+
+script:
+- if [[ $PORT_LIVECHECK = true ]] && [[ 0 = $(( $TRAVIS_BUILD_NUMBER % $PORT_LIVECHECK_INTERVAL )) ]] );
+    $PORT livecheck $PORT_NAME;
+  fi;
+# travis wait is needed since building could require time
+- travis_wait 30 sudo $PORT install $PORT_NAME $PORT_VARIANTS;
+- if [ -n "$TEST_SCRIPT" ]; then
+    $(echo "$TEST_SCRIPT");
+  fi
+
+after_script:
+- ./macports-ci ccache --save
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+  slack:
+    on_success: always
+    on_failure: always
+    secure: OuR57aoy/9mYKAq0lT7aTYWlVBRXoULiptUrzs7vBaUuoIxLz90UOiCAQSA6KetUttCmqTOQJT+YQ4b1hTopQgRyIFrKMF6/6CgYxyGxfNZzTzjZqOs7LGWvZ6U58XGW02wRlFCflVook8uhDo2iF43d68Eky/RdGEwitv7rLBTVGyLRaZ+pXK8MHUR4zcnAT/krchW3pLD3vnn261AnBIIqod3cnhlNQKXkLday25W+z3/0jUuGAyQCDTumfzApAHN0VoDamcni+1fmiSpp/9Ql5NvTbC2DI5znVelsDnQB5Jk7qn31APbhQ+NUdHmJ37QqRhyPUHRnKggtoq2NEsi+reTu5E4UgdScYlZW6MVfLztpAyR35L5Knn6tP9asnkvzR/M/4TlOqpt8+Cga4i5/djcAKgs78xxK7NBIOx3es4ACOidZDJZ0Ym8+loK2KiXiYSUB+IvuD8dKgNicITmtLcBn2J2h1oTVWSG118rj1HPQHZ6r9B5ZGH+EMsCIrWi6EnbD40lXEUYM3TjrQfjvpQ1nXbnMGphRZd6Z6quAtlU6u8UWHCwYGD+5HpO4RT+63ihnYydGsnXkKRJRwQ6B4eRnTy5Xao6+5jKfreiseGvTDwfGgYY9QhKkCCM/Q/JjRTDwCDQ+XDEKocPEeNH/a3K4LC7FnyQruVGctCY=
