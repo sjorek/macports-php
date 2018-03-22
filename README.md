@@ -44,9 +44,30 @@ EOF"
 
 Look at [the contribution guidelines.](CONTRIBUTING.md)
 
+## Links
+
+### Status
+
+[![Build Status](https://img.shields.io/travis/sjorek/macports-php.svg)](https://travis-ci.org/sjorek/macports-php)
+
+
+### GitHub
+
+[![GitHub Issues](https://img.shields.io/github/issues/sjorek/macports-php.svg)](https://github.com/sjorek/macports-php/issues)
+[![GitHub Latest Tag](https://img.shields.io/github/tag/sjorek/macports-php.svg)](https://github.com/sjorek/macports-php/tags)
+[![GitHub Total Downloads](https://img.shields.io/github/downloads/sjorek/macports-php/total.svg)](https://github.com/sjorek/macports-php/releases)
+
+
+### Social
+
+[![GitHub Forks](https://img.shields.io/github/forks/sjorek/macports-php.svg?style=social)](https://github.com/sjorek/macports-php/network)
+[![GitHub Stars](https://img.shields.io/github/stars/sjorek/macports-php.svg?style=social)](https://github.com/sjorek/macports-php/stargazers)
+[![GitHub Watchers](https://img.shields.io/github/watchers/sjorek/macports-php.svg?style=social)](https://github.com/sjorek/macports-php/watchers)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/sjorek/macports-php.svg?style=social)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fsjorek.github.io%2Fmacports-php%2F)
+
 ## Want more?
 
-There is a [composer-plugin](https://sjorek.github.io/composer-virtual-environment-plugin/)
+There is a [virtual-environment composer-plugin](https://sjorek.github.io/composer-virtual-environment-plugin/)
 complementing these composer ports.
 
 Cheers!
