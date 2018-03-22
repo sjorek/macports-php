@@ -12,7 +12,7 @@ env:
   - PORT="port -N -v"
   - PORT_NAME=""
   - PORT_VARIANTS=""
-  - PORT_LIVECHECK=false
+  # - PORT_LIVECHECK=false
   - PORT_LIVECHECK_INTERVAL=10
   - TEST_SCRIPT=""
   - TEST_COMPLETION=""
@@ -124,7 +124,7 @@ before_script:
 - travis_wait 30 sudo $PORT install $PORT_NAME $PORT_VARIANTS
 
 script:
-- if [[ $PORT_LIVECHECK = true ]] || [[ 0 = $(( $TRAVIS_BUILD_NUMBER % $PORT_LIVECHECK_INTERVAL )) ]]; then
+- if [[ ${PORT_LIVECHECK:-false} = true ]] || [[ 0 = $(( $TRAVIS_BUILD_NUMBER % $PORT_LIVECHECK_INTERVAL )) ]]; then
     $PORT livecheck $PORT_NAME;
   fi;
 - if [ -n "$TEST_SCRIPT" ]; then
