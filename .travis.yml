@@ -9,7 +9,7 @@ cache:
 
 env:
   global:
-  - PORT="port -Nv"
+  - PORT="port -N"
   - PORT_NAME=""
   - PORT_VARIANTS=""
   - PORT_LIVECHECK=false
@@ -19,6 +19,7 @@ env:
   - BREW_TAP=""
   - BREW_INSTALL=""
   - BREW_CASK=""
+  - DEBUG=false
   matrix:
   - >
     PORT_NAME="composer"
@@ -27,6 +28,7 @@ env:
     PORT_NAME="composer-php"
     PORT_VARIANTS="+bash_completion"
     TEST_SCRIPT="${PORT_NAME} --version"
+    DEBUG=true
   - >
     PORT_NAME="composer-php53"
     PORT_VARIANTS="+bash_completion +iconv mbstring openssl"
@@ -55,14 +57,15 @@ env:
     PORT_NAME="composer-php72"
     PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
     TEST_SCRIPT="${PORT_NAME} --version"
+    DEBUG=true
   - >
     PORT_NAME="composer-bash-completion"
     PORT_LIVECHECK=true
-    TEST_SCRIPT="[ -r /opt/local/etc/profile.d/bash_completion.sh ] && source /opt/local/etc/profile.d/bash_completion.sh"
+    NO_TEST_SCRIPT="[ -r /opt/local/etc/profile.d/bash_completion.sh ] && source /opt/local/etc/profile.d/bash_completion.sh"
   - >
     PORT_NAME="phpunit-bash-completion"
     PORT_LIVECHECK=true
-    TEST_SCRIPT="[ -r /opt/local/etc/profile.d/bash_completion.sh ] && source /opt/local/etc/profile.d/bash_completion.sh"
+    NO_TEST_SCRIPT="[ -r /opt/local/etc/profile.d/bash_completion.sh ] && source /opt/local/etc/profile.d/bash_completion.sh"
   - >
     PORT_NAME="ddev"
     PORT_VARIANTS="+bash_completion"
@@ -97,7 +100,7 @@ before_script:
 
 script:
 - if [[ $PORT_LIVECHECK = true ]] && [[ 0 = $(( $TRAVIS_BUILD_NUMBER % $PORT_LIVECHECK_INTERVAL )) ]]; then
-    $PORT livecheck $PORT_NAME;
+    $PORT -v livecheck $PORT_NAME;
   fi;
 # travis wait is needed since building could require time
 - travis_wait 30 sudo $PORT install $PORT_NAME $PORT_VARIANTS;
