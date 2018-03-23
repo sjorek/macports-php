@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    deployer
 version                 6.1.0
-revision                0
+revision                1
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -37,7 +37,11 @@ proc deployer.create_subports {} {
 
                 PortGroup                       select 1.0
 
-                depends_run                     port:deployer_select
+                depends_run                     port:deployer_select \
+                                                bin:curl:curl \
+                                                bin:rsync:rsync \
+                                                bin:ssh:openssh
+
                 select.group                    deployer
 
                 select.file                     "${filespath}/macports-${php}"
