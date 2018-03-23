@@ -94,13 +94,13 @@ env:
     PORT_NAME="ddev"
     PORT_VARIANTS="-docker_for_mac +bash_completion"
     TEST_SCRIPT="${PORT_NAME} version"
-  - >
-    PORT_NAME="ddev"
-    PORT_VARIANTS="+docker_for_mac +bash_completion"
-    PORT_LIVECHECK=true
-    TEST_SCRIPT="${PORT_NAME} version"
-    BREW_TAP="caskroom/cask"
-    BREW_CASK="docker"
+  # - >
+  #   PORT_NAME="ddev"
+  #   PORT_VARIANTS="+docker_for_mac +bash_completion"
+  #   PORT_LIVECHECK=true
+  #   TEST_SCRIPT="${PORT_NAME} version"
+  #   BREW_TAP="caskroom/cask"
+  #   BREW_CASK="docker"
 
 install:
 - if [ -n "$BREW_TAP" ]; then
