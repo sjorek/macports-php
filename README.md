@@ -36,7 +36,12 @@ EOF"
     composer-php70                 @1.6.3_6        php/composer
     composer-php71                 @1.6.3_6        php/composer
     composer-php72                 @1.6.3_6        php/composer
+    deployer                       @6.1.0          php/deployer
+    deployer-php70                 @6.1.0          php/deployer
+    deployer-php71                 @6.1.0          php/deployer
+    deployer-php72                 @6.1.0          php/deployer
     composer_select                @1.0_6          sysutils/composer_select
+    deployer_select                @1.0            sysutils/deployer_select
     composer-bash-completion       @0.1.9_9        sysutils/composer-bash-completion
     phpunit-bash-completion        @0.0.12_7       sysutils/phpunit-bash-completion
 
