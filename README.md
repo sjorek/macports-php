@@ -27,15 +27,15 @@ EOF"
 ## List of (currently) provided macports
 
     ddev                           @0.15.1_2       devel/ddev
-    composer                       @1.6.3_6        php/composer
-    composer-php                   @1.6.3_6        php/composer
-    composer-php53                 @1.6.3_6        php/composer
-    composer-php54                 @1.6.3_6        php/composer
-    composer-php55                 @1.6.3_6        php/composer
-    composer-php56                 @1.6.3_6        php/composer
-    composer-php70                 @1.6.3_6        php/composer
-    composer-php71                 @1.6.3_6        php/composer
-    composer-php72                 @1.6.3_6        php/composer
+    composer                       @1.6.4_0        php/composer
+    composer-php                   @1.6.4_0        php/composer
+    composer-php53                 @1.6.4_0        php/composer
+    composer-php54                 @1.6.4_0        php/composer
+    composer-php55                 @1.6.4_0        php/composer
+    composer-php56                 @1.6.4_0        php/composer
+    composer-php70                 @1.6.4_0        php/composer
+    composer-php71                 @1.6.4_0        php/composer
+    composer-php72                 @1.6.4_0        php/composer
     deployer                       @6.1.0_1        php/deployer
     deployer-php70                 @6.1.0_1        php/deployer
     deployer-php71                 @6.1.0_1        php/deployer
