@@ -3,7 +3,7 @@
 PortSystem              1.0
 
 name                    composer
-version                 1.6.4
+version                 1.7.2
 revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd
@@ -30,7 +30,7 @@ proc composer.create_subports {} {
 
     global filespath name prefix worksrcpath
 
-    foreach php {php php53 php54 php55 php56 php70 php71 php72} {
+    foreach php {php php53 php54 php55 php56 php70 php71 php72 php73} {
 
         set libpath                             "/lib/${php}"
 

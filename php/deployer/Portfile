@@ -3,7 +3,7 @@
 PortSystem              1.0
 
 name                    deployer
-version                 6.1.0
+version                 6.3.0
 revision                1
 categories              php www net devel
 platforms               darwin freebsd openbsd
@@ -26,7 +26,7 @@ proc deployer.create_subports {} {
 
     global filespath name prefix worksrcpath
 
-    foreach php {php70 php71 php72} {
+    foreach php {php70 php71 php72 php73} {
 
         set libpath                             "/lib/${php}"
         set php_bin                             "${prefix}/bin/${php}"
