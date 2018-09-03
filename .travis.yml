@@ -85,6 +85,14 @@ env:
   #   PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
   #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
   - >
+    PORT_NAME="composer-php73"
+    PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
+    TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
+  # - >
+  #   PORT_NAME="composer-php73"
+  #   PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
+  #   TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
+  - >
     PORT_NAME="composer-bash-completion"
     PORT_LIVECHECK=true
   - >
@@ -104,6 +112,10 @@ env:
     TEST_SCRIPT="${PORT_NAME} --version"
   - >
     PORT_NAME="deployer-php72"
+    PORT_VARIANTS="+bash_completion"
+    TEST_SCRIPT="${PORT_NAME} --version"
+  - >
+    PORT_NAME="deployer-php73"
     PORT_VARIANTS="+bash_completion"
     TEST_SCRIPT="${PORT_NAME} --version"
   - >
