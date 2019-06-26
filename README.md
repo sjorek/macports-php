@@ -37,11 +37,11 @@ EOF"
     composer-php71                 @1.8.6_2        php/composer
     composer-php72                 @1.8.6_2        php/composer
     composer-php73                 @1.8.6_2        php/composer
-    deployer                       @6.4.3_0        php/deployer
-    deployer-php70                 @6.4.3_0        php/deployer
-    deployer-php71                 @6.4.3_0        php/deployer
-    deployer-php72                 @6.4.3_0        php/deployer
-    deployer-php73                 @6.4.3_0        php/deployer
+    deployer                       @6.4.3_1        php/deployer
+    deployer-php70                 @6.4.3_1        php/deployer
+    deployer-php71                 @6.4.3_1        php/deployer
+    deployer-php72                 @6.4.3_1        php/deployer
+    deployer-php73                 @6.4.3_1        php/deployer
     composer_select                @1.0_6          sysutils/composer_select
     deployer_select                @1.0            sysutils/deployer_select
     composer-bash-completion       @0.1.9_9        sysutils/composer-bash-completion
