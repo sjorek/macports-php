@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer
 version                 1.8.6
-revision                0
+revision                2
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -160,7 +160,8 @@ proc composer.add_port_code {php libpath php_bin} {
         xinstall -d -m 0755 ${destroot_libpath}
         xinstall -m 0644 ${worksrcpath}/composer-setup.php ${destroot_libpath}/composer-setup.php
         xinstall -m 0644 ${worksrcpath}/composer.phar ${destroot_libpath}/composer.phar
-        xinstall -m 0755 ${filespath}/${name}.sh ${destroot_wrapper}
+        xinstall -m 0755 ${filespath}/${name}.php ${destroot_wrapper}
+        reinplace "s,@NAME@,${name},g" ${destroot_wrapper}
         reinplace "s,@PHP@,${destroot.php_bin},g" ${destroot_wrapper}
         reinplace "s,@LIBPATH@,${prefix}${destroot.libpath},g" ${destroot_wrapper}
         if {"${destroot.php}" eq "php"} {
