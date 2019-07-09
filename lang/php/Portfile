@@ -280,6 +280,12 @@ if {[is_sapi_subport]} {
         configure.args-append ac_cv_decimal_fp_supported=no
     }
     
+    if {[vercmp ${branch} 7.2] >= 0} {
+        configure.args-append \
+                        --with-password-argon2=${prefix}
+        depends_lib-append  port:argon2
+    }
+    
     configure.universal_args-delete --disable-dependency-tracking
     
     test.run            yes
