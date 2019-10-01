@@ -3,8 +3,8 @@
 PortSystem              1.0
 
 name                    deployer
-version                 6.4.3
-revision                1
+version                 6.4.6
+revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
