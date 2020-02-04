@@ -3,7 +3,7 @@
 PortSystem              1.0
 
 name                    composer
-version                 1.9.0
+version                 1.9.3
 revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd
@@ -14,9 +14,9 @@ master_sites            ${homepage}
 distname                installer
 extract.suffix
 
-checksums           rmd160  26be2299deec96d6800aab5e17e6535bf885181a \
-                    sha256  cda07c5b4a786bbd9dbb7612de1341b7e20006ebf8eace7a6a91b90cbe61c2fc \
-                    size    275959
+checksums           rmd160  e2cdff594403748babc41b57e02d96ac7ff1b68b \
+                    sha256  1427d5fc3963d37c538581109240f7e4e1bd0a16fe1523bb69ba93aafaa21de8 \
+                    size    274043
 
 description             Package Management for PHP
 long_description        Composer is a dependency manager tracking local \
@@ -31,7 +31,7 @@ proc composer.create_subports {} {
 
     global filespath name prefix worksrcpath
 
-    foreach php {php php53 php54 php55 php56 php70 php71 php72 php73} {
+    foreach php {php php53 php54 php55 php56 php70 php71 php72 php73 php74} {
 
         set libpath                             "/lib/${php}"
 

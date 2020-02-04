@@ -26,21 +26,21 @@ EOF"
 
 ## List of (currently) provided macports
 
-    composer                       @1.9.0_0        php/composer
-    composer-php                   @1.9.0_0        php/composer
-    composer-php53                 @1.9.0_0        php/composer
-    composer-php54                 @1.9.0_0        php/composer
-    composer-php55                 @1.9.0_0        php/composer
-    composer-php56                 @1.9.0_0        php/composer
-    composer-php70                 @1.9.0_0        php/composer
-    composer-php71                 @1.9.0_0        php/composer
-    composer-php72                 @1.9.0_0        php/composer
-    composer-php73                 @1.9.0_0        php/composer
-    deployer                       @6.4.6_0        php/deployer
-    deployer-php70                 @6.4.6_0        php/deployer
-    deployer-php71                 @6.4.6_0        php/deployer
-    deployer-php72                 @6.4.6_0        php/deployer
-    deployer-php73                 @6.4.6_0        php/deployer
+    composer                       @1.9.3_0        php/composer
+    composer-php                   @1.9.3_0        php/composer
+    composer-php53                 @1.9.3_0        php/composer
+    composer-php54                 @1.9.3_0        php/composer
+    composer-php55                 @1.9.3_0        php/composer
+    composer-php56                 @1.9.3_0        php/composer
+    composer-php70                 @1.9.3_0        php/composer
+    composer-php71                 @1.9.3_0        php/composer
+    composer-php72                 @1.9.3_0        php/composer
+    composer-php73                 @1.9.3_0        php/composer
+    composer-php74                 @1.9.3_0        php/composer
+    deployer                       @6.7.3_0        php/deployer
+    deployer-php72                 @6.7.3_0        php/deployer
+    deployer-php73                 @6.7.3_0        php/deployer
+    deployer-php74                 @6.7.3_0        php/deployer
     composer_select                @1.0_6          sysutils/composer_select
     deployer_select                @1.0            sysutils/deployer_select
     composer-bash-completion       @0.1.9_9        sysutils/composer-bash-completion
