@@ -26,17 +26,17 @@ EOF"
 
 ## List of (currently) provided macports
 
-    composer                       @1.10.10_0       php/composer
-    composer-php                   @1.10.10_0       php/composer
-    composer-php53                 @1.10.10_0       php/composer
-    composer-php54                 @1.10.10_0       php/composer
-    composer-php55                 @1.10.10_0       php/composer
-    composer-php56                 @1.10.10_0       php/composer
-    composer-php70                 @1.10.10_0       php/composer
-    composer-php71                 @1.10.10_0       php/composer
-    composer-php72                 @1.10.10_0       php/composer
-    composer-php73                 @1.10.10_0       php/composer
-    composer-php74                 @1.10.10_0       php/composer
+    composer                       @1.10.13_0       php/composer
+    composer-php                   @1.10.13_0       php/composer
+    composer-php53                 @1.10.13_0       php/composer
+    composer-php54                 @1.10.13_0       php/composer
+    composer-php55                 @1.10.13_0       php/composer
+    composer-php56                 @1.10.13_0       php/composer
+    composer-php70                 @1.10.13_0       php/composer
+    composer-php71                 @1.10.13_0       php/composer
+    composer-php72                 @1.10.13_0       php/composer
+    composer-php73                 @1.10.13_0       php/composer
+    composer-php74                 @1.10.13_0       php/composer
     deployer                       @6.7.3_0        php/deployer
     deployer-php72                 @6.7.3_0        php/deployer
     deployer-php73                 @6.7.3_0        php/deployer
