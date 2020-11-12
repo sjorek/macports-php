@@ -1,6 +1,6 @@
---- lang/php/Portfile.orig	2020-10-22 17:19:57.000000000 +0200
-+++ lang/php/Portfile	2020-10-22 17:19:57.000000000 +0200
-@@ -300,6 +300,11 @@
+--- lang/php/Portfile.orig	2020-11-12 18:28:51.000000000 +0100
++++ lang/php/Portfile	2020-11-12 18:28:51.000000000 +0100
+@@ -304,6 +304,11 @@
          configure.args-append ac_cv_decimal_fp_supported=no
      }
      
