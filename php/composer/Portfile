@@ -31,7 +31,7 @@ proc composer.create_subports {} {
 
     global filespath name prefix worksrcpath
 
-    foreach php {php php53 php54 php55 php56 php70 php71 php72 php73 php74} {
+    foreach php {php php53 php54 php55 php56 php70 php71 php72 php73 php74 php80} {
 
         set libpath                             "/lib/${php}"
 

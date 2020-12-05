@@ -37,6 +37,7 @@ EOF"
     composer-php72                 @1.10.19        php/composer
     composer-php73                 @1.10.19        php/composer
     composer-php74                 @1.10.19        php/composer
+    composer-php80                 @1.10.19        php/composer
 
     composer2                      @2.0.8          php/composer2
     composer2-php                  @2.0.8          php/composer2
@@ -48,12 +49,13 @@ EOF"
     composer2-php71                @2.0.8          php/composer2
     composer2-php72                @2.0.8          php/composer2
     composer2-php73                @2.0.8          php/composer2
-    composer2-php74                @2.0.8          php/composer2
+    composer2-php80                @2.0.8          php/composer2
 
-    deployer                       @6.7.3          php/deployer
-    deployer-php72                 @6.7.3          php/deployer
-    deployer-php73                 @6.7.3          php/deployer
-    deployer-php74                 @6.7.3          php/deployer
+    deployer                       @6.8.0          php/deployer
+    deployer-php72                 @6.8.0          php/deployer
+    deployer-php73                 @6.8.0          php/deployer
+    deployer-php74                 @6.8.0          php/deployer
+    deployer-php80                 @6.8.0          php/deployer
 
     composer-bash-completion       @0.2.0          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select

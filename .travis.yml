@@ -225,6 +225,10 @@ env:
     PORT_NAME="deployer-php74"
     PORT_VARIANTS="+bash_completion"
     TEST_SCRIPT="${PORT_NAME} --version"
+  - >
+    PORT_NAME="deployer-php80"
+    PORT_VARIANTS="+bash_completion"
+    TEST_SCRIPT="${PORT_NAME} --version"
 
 install:
 - if [ -n "$BREW_TAP" ]; then
