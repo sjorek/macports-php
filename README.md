@@ -37,6 +37,7 @@ EOF"
     composer-php72                 @1.10.19        php/composer
     composer-php73                 @1.10.19        php/composer
     composer-php74                 @1.10.19        php/composer
+
     composer2                      @2.0.8          php/composer2
     composer2-php                  @2.0.8          php/composer2
     composer2-php53                @2.0.8          php/composer2
@@ -48,88 +49,130 @@ EOF"
     composer2-php72                @2.0.8          php/composer2
     composer2-php73                @2.0.8          php/composer2
     composer2-php74                @2.0.8          php/composer2
-    composer_select                @1.0_6          sysutils/composer_select
-    composer-bash-completion       @0.1.9_9        sysutils/composer-bash-completion
-    deployer                       @6.7.3_0        php/deployer
-    deployer-php72                 @6.7.3_0        php/deployer
-    deployer-php73                 @6.7.3_0        php/deployer
-    deployer-php74                 @6.7.3_0        php/deployer
+
+    deployer                       @6.7.3          php/deployer
+    deployer-php72                 @6.7.3          php/deployer
+    deployer-php73                 @6.7.3          php/deployer
+    deployer-php74                 @6.7.3          php/deployer
+
+    composer-bash-completion       @0.1.9          sysutils/composer-bash-completion
+    composer_select                @1.0            sysutils/composer_select
     deployer_select                @1.0            sysutils/deployer_select
-    phpunit-bash-completion        @0.0.12_7       sysutils/phpunit-bash-completion
-    php                            @7.4            lang/php
-    php74                          @7.4.12         lang/php
-    php74-apache2handler           @7.4.12         lang/php
-    php74-cgi                      @7.4.12         lang/php
-    php74-fpm                      @7.4.12         lang/php
-    php74-calendar                 @7.4.12         lang/php
-    php74-curl                     @7.4.12         lang/php
-    php74-dba                      @7.4.12         lang/php
-    php74-enchant                  @7.4.12         lang/php
-    php74-exif                     @7.4.12         lang/php
-    php74-ftp                      @7.4.12         lang/php
-    php74-gd                       @7.4.12         lang/php
-    php74-gettext                  @7.4.12         lang/php
-    php74-gmp                      @7.4.12         lang/php
-    php74-iconv                    @7.4.12         lang/php
-    php74-imap                     @7.4.12         lang/php
-    php74-intl                     @7.4.12         lang/php
-    php74-ipc                      @7.4.12         lang/php
-    php74-ldap                     @7.4.12         lang/php
-    php74-mbstring                 @7.4.12         lang/php
-    php74-mysql                    @7.4.12         lang/php
-    php74-odbc                     @7.4.12         lang/php
-    php74-opcache                  @7.4.12         lang/php
-    php74-openssl                  @7.4.12         lang/php
-    php74-oracle                   @7.4.12         lang/php
-    php74-pcntl                    @7.4.12         lang/php
-    php74-posix                    @7.4.12         lang/php
-    php74-postgresql               @7.4.12         lang/php
-    php74-pspell                   @7.4.12         lang/php
-    php74-snmp                     @7.4.12         lang/php
-    php74-soap                     @7.4.12         lang/php
-    php74-sockets                  @7.4.12         lang/php
-    php74-sodium                   @7.4.12         lang/php
-    php74-sqlite                   @7.4.12         lang/php
-    php74-tidy                     @7.4.12         lang/php
-    php74-xmlrpc                   @7.4.12         lang/php
-    php74-xsl                      @7.4.12         lang/php
-    php73                          @7.3.24         lang/php
-    php73-apache2handler           @7.3.24         lang/php
-    php73-cgi                      @7.3.24         lang/php
-    php73-fpm                      @7.3.24         lang/php
-    php73-calendar                 @7.3.24         lang/php
-    php73-curl                     @7.3.24         lang/php
-    php73-dba                      @7.3.24         lang/php
-    php73-enchant                  @7.3.24         lang/php
-    php73-exif                     @7.3.24         lang/php
-    php73-ftp                      @7.3.24         lang/php
-    php73-gd                       @7.3.24         lang/php
-    php73-gettext                  @7.3.24         lang/php
-    php73-gmp                      @7.3.24         lang/php
-    php73-iconv                    @7.3.24         lang/php
-    php73-imap                     @7.3.24         lang/php
-    php73-intl                     @7.3.24         lang/php
-    php73-ipc                      @7.3.24         lang/php
-    php73-ldap                     @7.3.24         lang/php
-    php73-mbstring                 @7.3.24         lang/php
-    php73-mysql                    @7.3.24         lang/php
-    php73-odbc                     @7.3.24         lang/php
-    php73-opcache                  @7.3.24         lang/php
-    php73-openssl                  @7.3.24         lang/php
-    php73-oracle                   @7.3.24         lang/php
-    php73-pcntl                    @7.3.24         lang/php
-    php73-posix                    @7.3.24         lang/php
-    php73-postgresql               @7.3.24         lang/php
-    php73-pspell                   @7.3.24         lang/php
-    php73-snmp                     @7.3.24         lang/php
-    php73-soap                     @7.3.24         lang/php
-    php73-sockets                  @7.3.24         lang/php
-    php73-sodium                   @7.3.24         lang/php
-    php73-sqlite                   @7.3.24         lang/php
-    php73-tidy                     @7.3.24         lang/php
-    php73-wddx                     @7.3.24         lang/php
-    php73-xmlrpc                   @7.3.24         lang/php
-    php73-xsl                      @7.3.24         lang/php
+    phpunit-bash-completion        @0.0.12         sysutils/phpunit-bash-completion
+
+    php                            @8.0            lang/php
+
+    php80                          @8.0.0          lang/php
+    php80-apache2handler           @8.0.0          lang/php
+    php80-cgi                      @8.0.0          lang/php
+    php80-fpm                      @8.0.0          lang/php
+    php80-calendar                 @8.0.0          lang/php
+    php80-curl                     @8.0.0          lang/php
+    php80-dba                      @8.0.0          lang/php
+    php80-enchant                  @8.0.0          lang/php
+    php80-exif                     @8.0.0          lang/php
+    php80-ftp                      @8.0.0          lang/php
+    php80-gd                       @8.0.0          lang/php
+    php80-gettext                  @8.0.0          lang/php
+    php80-gmp                      @8.0.0          lang/php
+    php80-iconv                    @8.0.0          lang/php
+    php80-imap                     @8.0.0          lang/php
+    php80-intl                     @8.0.0          lang/php
+    php80-ipc                      @8.0.0          lang/php
+    php80-ldap                     @8.0.0          lang/php
+    php80-mbstring                 @8.0.0          lang/php
+    php80-mysql                    @8.0.0          lang/php
+    php80-odbc                     @8.0.0          lang/php
+    php80-opcache                  @8.0.0          lang/php
+    php80-openssl                  @8.0.0          lang/php
+    php80-oracle                   @8.0.0          lang/php
+    php80-pcntl                    @8.0.0          lang/php
+    php80-posix                    @8.0.0          lang/php
+    php80-postgresql               @8.0.0          lang/php
+    php80-pspell                   @8.0.0          lang/php
+    php80-snmp                     @8.0.0          lang/php
+    php80-soap                     @8.0.0          lang/php
+    php80-sockets                  @8.0.0          lang/php
+    php80-sodium                   @8.0.0          lang/php
+    php80-sqlite                   @8.0.0          lang/php
+    php80-tidy                     @8.0.0          lang/php
+    php80-xsl                      @8.0.0          lang/php
+
+    php74                          @7.4.13         lang/php
+    php74-apache2handler           @7.4.13         lang/php
+    php74-cgi                      @7.4.13         lang/php
+    php74-fpm                      @7.4.13         lang/php
+    php74-calendar                 @7.4.13         lang/php
+    php74-curl                     @7.4.13         lang/php
+    php74-dba                      @7.4.13         lang/php
+    php74-enchant                  @7.4.13         lang/php
+    php74-exif                     @7.4.13         lang/php
+    php74-ftp                      @7.4.13         lang/php
+    php74-gd                       @7.4.13         lang/php
+    php74-gettext                  @7.4.13         lang/php
+    php74-gmp                      @7.4.13         lang/php
+    php74-iconv                    @7.4.13         lang/php
+    php74-imap                     @7.4.13         lang/php
+    php74-intl                     @7.4.13         lang/php
+    php74-ipc                      @7.4.13         lang/php
+    php74-ldap                     @7.4.13         lang/php
+    php74-mbstring                 @7.4.13         lang/php
+    php74-mysql                    @7.4.13         lang/php
+    php74-odbc                     @7.4.13         lang/php
+    php74-opcache                  @7.4.13         lang/php
+    php74-openssl                  @7.4.13         lang/php
+    php74-oracle                   @7.4.13         lang/php
+    php74-pcntl                    @7.4.13         lang/php
+    php74-posix                    @7.4.13         lang/php
+    php74-postgresql               @7.4.13         lang/php
+    php74-pspell                   @7.4.13         lang/php
+    php74-snmp                     @7.4.13         lang/php
+    php74-soap                     @7.4.13         lang/php
+    php74-sockets                  @7.4.13         lang/php
+    php74-sodium                   @7.4.13         lang/php
+    php74-sqlite                   @7.4.13         lang/php
+    php74-tidy                     @7.4.13         lang/php
+    php74-xmlrpc                   @7.4.13         lang/php
+    php74-xsl                      @7.4.13         lang/php
+
+    php73                          @7.3.25         lang/php
+    php73-apache2handler           @7.3.25         lang/php
+    php73-cgi                      @7.3.25         lang/php
+    php73-fpm                      @7.3.25         lang/php
+    php73-calendar                 @7.3.25         lang/php
+    php73-curl                     @7.3.25         lang/php
+    php73-dba                      @7.3.25         lang/php
+    php73-enchant                  @7.3.25         lang/php
+    php73-exif                     @7.3.25         lang/php
+    php73-ftp                      @7.3.25         lang/php
+    php73-gd                       @7.3.25         lang/php
+    php73-gettext                  @7.3.25         lang/php
+    php73-gmp                      @7.3.25         lang/php
+    php73-iconv                    @7.3.25         lang/php
+    php73-imap                     @7.3.25         lang/php
+    php73-intl                     @7.3.25         lang/php
+    php73-ipc                      @7.3.25         lang/php
+    php73-ldap                     @7.3.25         lang/php
+    php73-mbstring                 @7.3.25         lang/php
+    php73-mysql                    @7.3.25         lang/php
+    php73-odbc                     @7.3.25         lang/php
+    php73-opcache                  @7.3.25         lang/php
+    php73-openssl                  @7.3.25         lang/php
+    php73-oracle                   @7.3.25         lang/php
+    php73-pcntl                    @7.3.25         lang/php
+    php73-posix                    @7.3.25         lang/php
+    php73-postgresql               @7.3.25         lang/php
+    php73-pspell                   @7.3.25         lang/php
+    php73-snmp                     @7.3.25         lang/php
+    php73-soap                     @7.3.25         lang/php
+    php73-sockets                  @7.3.25         lang/php
+    php73-sodium                   @7.3.25         lang/php
+    php73-sqlite                   @7.3.25         lang/php
+    php73-tidy                     @7.3.25         lang/php
+    php73-wddx                     @7.3.25         lang/php
+    php73-xmlrpc                   @7.3.25         lang/php
+    php73-xsl                      @7.3.25         lang/php
+
     php72                          @7.2.34         lang/php
     php72-apache2handler           @7.2.34         lang/php
     php72-cgi                      @7.2.34         lang/php
@@ -167,6 +210,7 @@ EOF"
     php72-wddx                     @7.2.34         lang/php
     php72-xmlrpc                   @7.2.34         lang/php
     php72-xsl                      @7.2.34         lang/php
+
     php71                          @7.1.33         lang/php
     php71-apache2handler           @7.1.33         lang/php
     php71-cgi                      @7.1.33         lang/php
@@ -204,6 +248,7 @@ EOF"
     php71-wddx                     @7.1.33         lang/php
     php71-xmlrpc                   @7.1.33         lang/php
     php71-xsl                      @7.1.33         lang/php
+
     php70                          @7.0.33         lang/php
     php70-apache2handler           @7.0.33         lang/php
     php70-cgi                      @7.0.33         lang/php
@@ -241,6 +286,7 @@ EOF"
     php70-wddx                     @7.0.33         lang/php
     php70-xmlrpc                   @7.0.33         lang/php
     php70-xsl                      @7.0.33         lang/php
+
     php56                          @5.6.40         lang/php
     php56-apache2handler           @5.6.40         lang/php
     php56-cgi                      @5.6.40         lang/php
@@ -279,6 +325,7 @@ EOF"
     php56-wddx                     @5.6.40         lang/php
     php56-xmlrpc                   @5.6.40         lang/php
     php56-xsl                      @5.6.40         lang/php
+
     php55                          @5.5.38         lang/php
     php55-apache2handler           @5.5.38         lang/php
     php55-cgi                      @5.5.38         lang/php
@@ -317,6 +364,7 @@ EOF"
     php55-wddx                     @5.5.38         lang/php
     php55-xmlrpc                   @5.5.38         lang/php
     php55-xsl                      @5.5.38         lang/php
+
     php54                          @5.4.45         lang/php
     php54-apache2handler           @5.4.45         lang/php
     php54-cgi                      @5.4.45         lang/php
@@ -354,6 +402,7 @@ EOF"
     php54-wddx                     @5.4.45         lang/php
     php54-xmlrpc                   @5.4.45         lang/php
     php54-xsl                      @5.4.45         lang/php
+
     php53                          @5.3.29         lang/php
     php53-apache2handler           @5.3.29         lang/php
     php53-cgi                      @5.3.29         lang/php
@@ -391,6 +440,7 @@ EOF"
     php53-wddx                     @5.3.29         lang/php
     php53-xmlrpc                   @5.3.29         lang/php
     php53-xsl                      @5.3.29         lang/php
+
     php52                          @5.2.17         lang/php
     php52-apache2handler           @5.2.17         lang/php
     php52-cgi                      @5.2.17         lang/php
