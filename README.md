@@ -26,24 +26,35 @@ EOF"
 
 ## List of (currently) provided macports
 
-    composer                       @1.10.17_0      php/composer
-    composer-php                   @1.10.17_0      php/composer
-    composer-php53                 @1.10.17_0      php/composer
-    composer-php54                 @1.10.17_0      php/composer
-    composer-php55                 @1.10.17_0      php/composer
-    composer-php56                 @1.10.17_0      php/composer
-    composer-php70                 @1.10.17_0      php/composer
-    composer-php71                 @1.10.17_0      php/composer
-    composer-php72                 @1.10.17_0      php/composer
-    composer-php73                 @1.10.17_0      php/composer
-    composer-php74                 @1.10.17_0      php/composer
+    composer                       @1.10.19        php/composer
+    composer-php                   @1.10.19        php/composer
+    composer-php53                 @1.10.19        php/composer
+    composer-php54                 @1.10.19        php/composer
+    composer-php55                 @1.10.19        php/composer
+    composer-php56                 @1.10.19        php/composer
+    composer-php70                 @1.10.19        php/composer
+    composer-php71                 @1.10.19        php/composer
+    composer-php72                 @1.10.19        php/composer
+    composer-php73                 @1.10.19        php/composer
+    composer-php74                 @1.10.19        php/composer
+    composer2                      @2.0.8          php/composer2
+    composer2-php                  @2.0.8          php/composer2
+    composer2-php53                @2.0.8          php/composer2
+    composer2-php54                @2.0.8          php/composer2
+    composer2-php55                @2.0.8          php/composer2
+    composer2-php56                @2.0.8          php/composer2
+    composer2-php70                @2.0.8          php/composer2
+    composer2-php71                @2.0.8          php/composer2
+    composer2-php72                @2.0.8          php/composer2
+    composer2-php73                @2.0.8          php/composer2
+    composer2-php74                @2.0.8          php/composer2
+    composer_select                @1.0_6          sysutils/composer_select
+    composer-bash-completion       @0.1.9_9        sysutils/composer-bash-completion
     deployer                       @6.7.3_0        php/deployer
     deployer-php72                 @6.7.3_0        php/deployer
     deployer-php73                 @6.7.3_0        php/deployer
     deployer-php74                 @6.7.3_0        php/deployer
-    composer_select                @1.0_6          sysutils/composer_select
     deployer_select                @1.0            sysutils/deployer_select
-    composer-bash-completion       @0.1.9_9        sysutils/composer-bash-completion
     phpunit-bash-completion        @0.0.12_7       sysutils/phpunit-bash-completion
     php                            @7.4            lang/php
     php74                          @7.4.12         lang/php
