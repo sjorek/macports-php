@@ -55,7 +55,7 @@ EOF"
     deployer-php73                 @6.7.3          php/deployer
     deployer-php74                 @6.7.3          php/deployer
 
-    composer-bash-completion       @0.1.9          sysutils/composer-bash-completion
+    composer-bash-completion       @0.2.0          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
     deployer_select                @1.0            sysutils/deployer_select
     phpunit-bash-completion        @0.0.12         sysutils/phpunit-bash-completion
