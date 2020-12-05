@@ -3,7 +3,7 @@
 PortSystem              1.0
 
 name                    deployer
-version                 6.7.3
+version                 6.8.0
 revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd
@@ -27,7 +27,7 @@ proc deployer.create_subports {} {
 
     global filespath name prefix worksrcpath
 
-    foreach php {php72 php73 php74} {
+    foreach php {php72 php73 php74 php80} {
 
         set libpath                             "/lib/${php}"
         set php_bin                             "${prefix}/bin/${php}"
@@ -144,5 +144,5 @@ Install one of the subports 'deployer-php*'.
 }
 
 default livecheck.type  {regex}
-livecheck.url           https://deployer.org/download
-livecheck.regex         {href=\"https://deployer.org/releases/v(\d+\.\d+\.\d+)/deployer.phar\"}
+livecheck.url           https://deployer.org/manifest.json
+livecheck.regex         {\"version\": \"(\d+\.\d+\.\d+)\"}
