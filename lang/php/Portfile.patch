@@ -1,0 +1,14 @@
+--- lang/php/Portfile.orig	2020-12-05 15:55:55.000000000 +0100
++++ lang/php/Portfile	2020-12-05 15:55:55.000000000 +0100
+@@ -333,6 +333,11 @@
+                         --without-valgrind
+     }
+ 
++    if {[vercmp ${branch} 7.2] >= 0} {
++        configure.args-append --with-password-argon2=${prefix}
++        depends_lib-append  port:argon2
++    }
++
+     configure.universal_args-delete --disable-dependency-tracking
+     
+     test.run            yes

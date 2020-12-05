@@ -3,7 +3,7 @@
 PortSystem              1.0
 
 name                    deployer
-version                 6.4.6
+version                 6.7.3
 revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd
@@ -13,9 +13,9 @@ homepage                https://deployer.org/
 master_sites            ${homepage}releases/v${version}/
 distname                deployer.phar
 extract.suffix
-checksums           rmd160  561f59984a1beed8736bd0255c3447cd8b17f52d \
-                    sha256  7ed6cfb6ade4e326b712e534ba8d578a4df4bc40006086dc596d48494d9c6260 \
-                    size    346416
+checksums           rmd160  5c2e36b441236d176073c11fcbc4182b9bff1054 \
+                    sha256  cd0dc83247d8cc5e65cde437b20f075c12283e80237d7bfd14f8d8d557fbf515 \
+                    size    1060436
 
 description             Project Deployment for PHP
 long_description        A deployment tool written in PHP with support for \
@@ -27,7 +27,7 @@ proc deployer.create_subports {} {
 
     global filespath name prefix worksrcpath
 
-    foreach php {php70 php71 php72 php73} {
+    foreach php {php72 php73 php74} {
 
         set libpath                             "/lib/${php}"
         set php_bin                             "${prefix}/bin/${php}"
