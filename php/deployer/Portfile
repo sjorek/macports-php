@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    deployer
 version                 6.8.0
-revision                0
+revision                1
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -13,9 +13,9 @@ homepage                https://deployer.org/
 master_sites            ${homepage}releases/v${version}/
 distname                deployer.phar
 extract.suffix
-checksums           rmd160  5c2e36b441236d176073c11fcbc4182b9bff1054 \
-                    sha256  cd0dc83247d8cc5e65cde437b20f075c12283e80237d7bfd14f8d8d557fbf515 \
-                    size    1060436
+checksums               rmd160  f7088e17a0736a6200cd341463618fa4db0d85e2 \
+                        sha256  25f639561cb7ebe5c2231b05cb10a0cf62f83469faf6b9248dfa6b7f94e3bd26 \
+                        size    1062898
 
 description             Project Deployment for PHP
 long_description        A deployment tool written in PHP with support for \
