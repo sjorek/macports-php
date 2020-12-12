@@ -505,6 +505,7 @@ Look at [the contribution guidelines.](CONTRIBUTING.md)
 ## Want more?
 
 There is a [virtual-environment composer-plugin](https://sjorek.github.io/composer-virtual-environment-plugin/)
-complementing these composer ports.
+complementing these composer ports. Are you preferring [homebrew](https://brew.sh)? The look at the alternative
+[homebrew-php](https://sjorek.github.io/homebrew-php/) project.
 
 Cheers!
