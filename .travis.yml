@@ -205,14 +205,14 @@ env:
     PORT_NAME="deployer"
     PORT_VARIANTS=""
     PORT_LIVECHECK=true
-  - >
-    PORT_NAME="deployer-php70"
-    PORT_VARIANTS="+bash_completion"
-    TEST_SCRIPT="${PORT_NAME} --version"
-  - >
-    PORT_NAME="deployer-php71"
-    PORT_VARIANTS="+bash_completion"
-    TEST_SCRIPT="${PORT_NAME} --version"
+  #- >
+  #  PORT_NAME="deployer-php70"
+  #  PORT_VARIANTS="+bash_completion"
+  #  TEST_SCRIPT="${PORT_NAME} --version"
+  #- >
+  #  PORT_NAME="deployer-php71"
+  #  PORT_VARIANTS="+bash_completion"
+  #  TEST_SCRIPT="${PORT_NAME} --version"
   - >
     PORT_NAME="deployer-php72"
     PORT_VARIANTS="+bash_completion"
