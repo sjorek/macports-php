@@ -251,6 +251,7 @@ install:
 - ./macports-ci localports "$TRAVIS_BUILD_DIR"
 
 before_script:
+- source ./.travis-ci/bootstrap.sh
 - $PORT version
 - echo "installing $PORT_NAME $PORT_VARIANTS …"
 - travis_retry travis_wait 30 sudo $PORT install $PORT_NAME $PORT_VARIANTS
