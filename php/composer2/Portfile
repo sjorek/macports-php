@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer2
 version                 2.0.8
-revision                5
+revision                7
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -148,6 +148,10 @@ proc composer.add_port_code {php libpath php_bin} {
         set destroot_libpath        ${destroot}${prefix}${destroot.libpath}
         set destroot_wrapper        ${destroot_binpath}/${name}-${destroot.php}
         set composer_install        "${destroot.php_bin} ${worksrcpath}/${name}-setup.php --install-dir=${worksrcpath} --version=${version} ${destroot.args}"
+        set composer_build_stub     "${destroot.php_bin} -r '\$p = new Phar(\"${worksrcpath}/composer.phar\", 0, \"composer.phar\"); echo \$p->getStub();'"
+        set composer_set_home       "if (false === getenv('COMPOSER_HOME')) { putenv('COMPOSER_HOME=' . \$_SERVER\['HOME'\] . '/.composer/${name}-${destroot.php}'); }"
+        set composer_set_cache      "if (false === getenv('COMPOSER_CACHE_DIR')) { putenv('COMPOSER_CACHE_DIR=' . \$_SERVER\['HOME'\] . '/.composer/cache'); }"
+
 
         ui_info "Downloading composer: ${composer_install}"
         system "${composer_install}"
@@ -156,15 +160,19 @@ proc composer.add_port_code {php libpath php_bin} {
         xinstall -d -m 0755 ${destroot_libpath}
         xinstall -m 0644 ${worksrcpath}/${name}-setup.php ${destroot_libpath}/${name}-setup.php
         xinstall -m 0644 ${worksrcpath}/composer.phar ${destroot_libpath}/${name}.phar
-        xinstall -m 0755 ${filespath}/${name}.php ${destroot_wrapper}
-        reinplace "s,@NAME@,${name},g" ${destroot_wrapper}
-        reinplace "s,@LIBPATH@,${prefix}${destroot.libpath},g" ${destroot_wrapper}
-        reinplace "s,@VARIANT@,/${name}-${destroot.php},g" ${destroot_wrapper}
-        if {"${destroot.php}" eq "php"} {
-            reinplace "s,@PHP@,/usr/bin/env -S ${destroot.php_bin},g" ${destroot_wrapper}
-        } else {
-            reinplace "s,@PHP@,${destroot.php_bin},g" ${destroot_wrapper}
+
+        ui_info "Building composer-stub: ${composer_build_stub}"
+        system "${composer_build_stub} >${worksrcpath}/composer-stub.php"
+
+        reinplace "s,Phar::mapPhar('composer.phar');,${composer_set_home};${composer_set_cache};,g" ${worksrcpath}/composer-stub.php
+        reinplace "s,phar://composer\.phar,phar://${prefix}${destroot.libpath}/${name}.phar,g" ${worksrcpath}/composer-stub.php
+        reinplace "s,^__HALT_COMPILER.*,,g" ${worksrcpath}/composer-stub.php
+
+        if {"${destroot.php}" ne "php"} {
+            reinplace "s,^#!/usr/bin/env php,#!${destroot.php_bin}," ${worksrcpath}/composer-stub.php
         }
+
+        xinstall -m 0755 ${worksrcpath}/composer-stub.php ${destroot_wrapper}
     }
 
     variant bash_completion description {Enable bash autocompletion} {
