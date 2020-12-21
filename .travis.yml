@@ -342,12 +342,12 @@ jobs:
 #        PORT_NAME="deployer-php71"
 #        PORT_VARIANTS="+bash_completion"
 #        TEST_SCRIPT="${PORT_NAME} --version"
-    - <<: *OSX_LATEST
-      env:
-      - >
-        PORT_NAME="deployer-php72"
-        PORT_VARIANTS="+bash_completion"
-        TEST_SCRIPT="${PORT_NAME} --version"
+#    - <<: *OSX_LATEST
+#      env:
+#      - >
+#        PORT_NAME="deployer-php72"
+#        PORT_VARIANTS="+bash_completion"
+#        TEST_SCRIPT="${PORT_NAME} --version"
     - <<: *OSX_LATEST
       env:
       - >
