@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer2
 version                 2.0.8
-revision                13
+revision                14
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -152,6 +152,7 @@ proc composer.add_port_code {php libpath php_bin} {
         set phar_path               ${prefix}${destroot.libpath}/${name}.phar
         set phar_stub               ${prefix}/bin/${destroot_name}
         set composer_phar           ${worksrcpath}/composer.phar
+        set composer_phar_stub      ${worksrcpath}/composer-stub.php
         set composer_install        "${destroot.php_bin} ${worksrcpath}/${name}-setup.php --install-dir=${worksrcpath} --version=${version} ${destroot.args}"
         set composer_set_bin        "if (isset(\$_SERVER\['argv'\]\[0\]) \\&\\& '${phar_stub}' === \$_SERVER\['argv'\]\[0\]) { \$_SERVER\['argv'\]\[0\] = '${phar_path}'; }"
         set composer_set_cache      "if (false === getenv('COMPOSER_CACHE_DIR')) { putenv('COMPOSER_CACHE_DIR=' . \$_SERVER\['HOME'\] . '/.composer/cache'); }"
@@ -164,7 +165,7 @@ proc composer.add_port_code {php libpath php_bin} {
         } else {
             set composer_shebang ${prefix}/bin/${destroot.php}
         }
-        set composer_build_stub     "${destroot.php_bin} ${filespath}/pharstub.php ${phar_path} '${composer_shebang}' @@@OPEN@@@ @@@CLOSE@@@"
+        set composer_build_stub "${destroot.php_bin} ${filespath}/pharstub.php ${composer_phar} '${composer_shebang}' @@@OPEN@@@ @@@CLOSE@@@"
 
         ui_info "Downloading composer: ${composer_install}"
         system "${composer_install}"
@@ -175,12 +176,12 @@ proc composer.add_port_code {php libpath php_bin} {
         xinstall -m 0644 ${composer_phar} ${destroot_libpath}/${name}.phar
 
         ui_info "Building composer-stub: ${composer_build_stub}"
-        system "${composer_build_stub} >${worksrcpath}/composer-stub.php"
+        system "${composer_build_stub} >${composer_phar_stub}"
 
-        reinplace "s,@@@OPEN@@@,${composer_open},g" ${worksrcpath}/composer-stub.php
-        reinplace "s,@@@CLOSE@@@,${composer_close},g" ${worksrcpath}/composer-stub.php
+        reinplace "s,@@@OPEN@@@,${composer_open},g" ${composer_phar_stub}
+        reinplace "s,@@@CLOSE@@@,${composer_close},g" ${composer_phar_stub}
 
-        xinstall -m 0755 ${worksrcpath}/composer-stub.php ${destroot_wrapper}
+        xinstall -m 0755 ${composer_phar_stub} ${destroot_wrapper}
     }
 
     variant bash_completion description {Enable bash autocompletion} {
