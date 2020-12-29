@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer
 version                 1.10.19
-revision                12
+revision                14
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -165,7 +165,7 @@ proc composer.add_port_code {php libpath php_bin} {
         } else {
             set composer_shebang ${prefix}/bin/${destroot.php}
         }
-        set composer_build_stub "${destroot.php_bin} ${filespath}/pharstub.php ${composer_phar} '${composer_shebang}' @@@OPEN@@@ @@@CLOSE@@@"
+        set composer_build_stub "${destroot.php_bin} ${filespath}/pharstub.php ${composer_phar} ${phar_path} '${composer_shebang}' @@@OPEN@@@ @@@CLOSE@@@"
 
         ui_info "Downloading composer: ${composer_install}"
         system "${composer_install}"

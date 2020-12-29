@@ -48,9 +48,8 @@ class Stub
     /**
      * @return self
      */
-    public static function asProxy($file, $shebang = '', $open = '', $close = '?>')
+    public static function asProxy($file, $dist = null, $shebang = '', $open = '', $close = '?>')
     {
-
         $proxy = self::fromFile($file);
 
         $code = $proxy->getCode();
@@ -68,7 +67,7 @@ class Stub
                 self::HALT_COMPILER_PATTERN,
             ],
             [
-                'phar://' . $file,
+                'phar://' . $dist ?: $file,
                 '', // '/* $0 */',
                 '', // '/* $0 */',
             ],
