@@ -41,14 +41,14 @@ exit();
 class Stub
 {
     const MAPPED_ALIAS_PATTERN = '@Phar::mapPhar\(([^)]+)\);?@';
-    const SCRIPT_OPEN_PATTERN = '/^[^<]*<\?php(?:\r\n|\r|\n)?/';
+    const SCRIPT_OPEN_PATTERN = '/^.*<\?php(?:\r\n|\r|\n)?/';
     const HALT_COMPILER_PATTERN = '/__HALT_COMPILER\(\); */';
     const SCRIPT_CLOSE_PATTERN = '/\?>(?:\r\n|\r|\n)?$/';
 
     /**
      * @return self
      */
-    public static function asProxy($file, $dist = null, $shebang = '', $open = '', $close = '?>')
+    public static function asProxy($file, $dist = null, $shebang = '', $open = '', $close = '')
     {
         $proxy = self::fromFile($file);
 
@@ -56,7 +56,7 @@ class Stub
 
         if ('' !== $open) {
             // single occurrence
-            $code = preg_replace(self::SCRIPT_OPEN_PATTERN, "$0" . $open, $code, 1);
+            $code = preg_replace(self::SCRIPT_OPEN_PATTERN, "$0\n" . $open . "\n", $code, 1);
         }
 
         // multiple occurrences
