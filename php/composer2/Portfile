@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer2
 version                 2.0.8
-revision                16
+revision                17
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -160,7 +160,7 @@ proc composer.add_port_code {php libpath php_bin} {
         set composer_open           "${composer_set_bin};${composer_set_cache};${composer_set_home};"
         set composer_close          ""
 
-        if {"${destroot.php}" ne "php"} {
+        if {"${destroot.php}" eq "php"} {
             set composer_shebang ""
         } else {
             set composer_shebang ${prefix}/bin/${destroot.php}
