@@ -3,8 +3,8 @@
 PortSystem              1.0
 
 name                    composer2
-version                 2.0.8
-revision                18
+version                 2.0.9
+revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
