@@ -3,7 +3,7 @@
 PortSystem              1.0
 
 name                    composer
-version                 1.10.20
+version                 1.10.22
 revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd

@@ -3,7 +3,7 @@
 PortSystem              1.0
 
 name                    composer2
-version                 2.0.11
+version                 2.0.14
 revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd
