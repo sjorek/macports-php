@@ -145,6 +145,7 @@ proc composer.add_port_code {php libpath php_bin} {
 
     destroot {
         set destroot_name           ${name}-${destroot.php}
+        set destroot_oldname        "composer-${destroot.php}"
         set destroot_binpath        ${destroot}${prefix}/bin
         set destroot_libpath        ${destroot}${prefix}${destroot.libpath}
         set destroot_wrapper        ${destroot_binpath}/${destroot_name}
@@ -155,7 +156,7 @@ proc composer.add_port_code {php libpath php_bin} {
         set composer_phar_stub      ${worksrcpath}/composer-stub.php
         set composer_install        "${destroot.php_bin} ${worksrcpath}/${name}-setup.php --install-dir=${worksrcpath} --version=${version} ${destroot.args}"
         set composer_set_bin        "if (isset(\$_SERVER\['argv'\]\[0\]) \\&\\& '${phar_stub}' === \$_SERVER\['argv'\]\[0\]) { \$_SERVER\['argv'\]\[0\] = '${phar_path}'; }"
-        set composer_set_cache      "if (false === getenv('COMPOSER_CACHE_DIR')) { putenv('COMPOSER_CACHE_DIR=' . \$_SERVER\['HOME'\] . '/.composer/cache'); }"
+        set composer_set_cache      "if (false === getenv('COMPOSER_CACHE_DIR')) { putenv('COMPOSER_CACHE_DIR=' . \$_SERVER\['HOME'\] . '/Library/Caches/composer'); }"
         set composer_set_home       "if (false === getenv('COMPOSER_HOME')) { putenv('COMPOSER_HOME=' . \$_SERVER\['HOME'\] . '/.composer/${destroot_name}'); }"
         set composer_open           "${composer_set_bin};${composer_set_cache};${composer_set_home};"
         set composer_close          ""
@@ -182,6 +183,22 @@ proc composer.add_port_code {php libpath php_bin} {
         reinplace "s,@@@CLOSE@@@,${composer_close},g" ${composer_phar_stub}
 
         xinstall -m 0755 ${composer_phar_stub} ${destroot_wrapper}
+
+        notes "
+ATTENTION: The COMPOSER_CACHE_DIR path-value has been renamed
+from “~/.composer/cache” to “~/Library/Caches/composer”.
+
+If you want to remove the old cache directory, run:
+  rm -rf ~/.composer/cache
+
+ATTENTION: The COMPOSER_HOME path-value has been renamed
+from “~/.composer/${destroot_oldname}” to “~/.composer/${destroot_name}”!
+
+Please update your composer-home path and run a diagnose afterwards:
+  mv -v ~/.composer/${destroot_oldname} ~/.composer/${destroot_name}
+  ${destroot_name} diagnose
+
+"
     }
 
     variant bash_completion description {Enable bash autocompletion} {
