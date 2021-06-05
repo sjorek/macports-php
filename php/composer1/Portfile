@@ -2,8 +2,8 @@
 
 PortSystem              1.0
 
-name                    composer2
-version                 2.1.1
+name                    composer1
+version                 1.10.22
 revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd
@@ -145,6 +145,7 @@ proc composer.add_port_code {php libpath php_bin} {
 
     destroot {
         set destroot_name           ${name}-${destroot.php}
+        set destroot_oldname        "composer-${destroot.php}"
         set destroot_binpath        ${destroot}${prefix}/bin
         set destroot_libpath        ${destroot}${prefix}${destroot.libpath}
         set destroot_wrapper        ${destroot_binpath}/${destroot_name}
@@ -189,6 +190,13 @@ from “~/.composer/cache” to “~/Library/Caches/composer”.
 
 If you want to remove the old cache directory, run:
   rm -rf ~/.composer/cache
+
+ATTENTION: The COMPOSER_HOME path-value has been renamed
+from “~/.composer/${destroot_oldname}” to “~/.composer/${destroot_name}”!
+
+Please update your composer-home path and run a diagnose afterwards:
+  mv -v ~/.composer/${destroot_oldname} ~/.composer/${destroot_name}
+  ${destroot_name} diagnose
 
 "
     }
@@ -236,4 +244,4 @@ Install one of the subports '${name}-php*'.
 
 default livecheck.type  {regex}
 livecheck.url           https://getcomposer.org/versions
-livecheck.regex         {\"stable\"[^\]]*\"version\": \"(\d+(\.\d+)*)\"}
+livecheck.regex         {\"1\"[^\]]*\"version\": \"(1(\.\d+)*)\"}
