@@ -2,7 +2,7 @@
 
 PortSystem              1.0
 
-name                    composer
+name                    composer1
 version                 1.10.22
 revision                0
 categories              php www net devel
