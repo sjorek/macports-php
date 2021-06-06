@@ -71,7 +71,7 @@ Look at [the contribution guidelines.](CONTRIBUTING.md)
 
 ### Status
 
-[![Build Status](https://img.shields.io/travis/sjorek/macports-php.svg)](https://travis-ci.org/sjorek/macports-php)
+[![Build Status](https://img.shields.io/travis/com/sjorek/macports-php.svg)](https://travis-ci.com/sjorek/macports-php)
 
 
 ### GitHub
