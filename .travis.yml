@@ -60,127 +60,127 @@ jobs:
     - <<: *OSX_LATEST
       env:
       - >
-        PORT_NAME="composer-php"
+        PORT_NAME="composer1-php"
         PORT_VARIANTS="+bash_completion"
         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php53"
+#         PORT_NAME="composer1-php53"
 #         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php53"
+#         PORT_NAME="composer1-php53"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php54"
+#         PORT_NAME="composer1-php54"
 #         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php54"
+#         PORT_NAME="composer1-php54"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php55"
+#         PORT_NAME="composer1-php55"
 #         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php55"
+#         PORT_NAME="composer1-php55"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #      - >
-#        PORT_NAME="composer-php56"
+#        PORT_NAME="composer1-php56"
 #        PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
 #        TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php56"
+#         PORT_NAME="composer1-php56"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #      - >
-#        PORT_NAME="composer-php70"
+#        PORT_NAME="composer1-php70"
 #        PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
 #        TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php70"
+#         PORT_NAME="composer1-php70"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #      - >
-#        PORT_NAME="composer-php71"
+#        PORT_NAME="composer1-php71"
 #        PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
 #        TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php71"
+#         PORT_NAME="composer1-php71"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #      - >
-#        PORT_NAME="composer-php72"
+#        PORT_NAME="composer1-php72"
 #        PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
 #        TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php72"
+#         PORT_NAME="composer1-php72"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
     - <<: *OSX_LATEST
       env:
       - >
-        PORT_NAME="composer-php73"
+        PORT_NAME="composer1-php73"
         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php73"
+#         PORT_NAME="composer1-php73"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
     - <<: *OSX_LATEST
       env:
       - >
-        PORT_NAME="composer-php74"
+        PORT_NAME="composer1-php74"
         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php74"
+#         PORT_NAME="composer1-php74"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
     - <<: *OSX_LATEST
       env:
       - >
-        PORT_NAME="composer-php80"
+        PORT_NAME="composer1-php80"
         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_LATEST
 #      env:
 #       - >
-#         PORT_NAME="composer-php80"
+#         PORT_NAME="composer1-php80"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
     - <<: *OSX_LATEST
@@ -375,127 +375,127 @@ jobs:
     - <<: *OSX_PREVIOUS
       env:
       - >
-        PORT_NAME="composer-php"
+        PORT_NAME="composer1-php"
         PORT_VARIANTS="+bash_completion"
         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php53"
+#         PORT_NAME="composer1-php53"
 #         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php53"
+#         PORT_NAME="composer1-php53"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php54"
+#         PORT_NAME="composer1-php54"
 #         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php54"
+#         PORT_NAME="composer1-php54"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php55"
+#         PORT_NAME="composer1-php55"
 #         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php55"
+#         PORT_NAME="composer1-php55"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
     - <<: *OSX_PREVIOUS
       env:
       - >
-        PORT_NAME="composer-php56"
+        PORT_NAME="composer1-php56"
         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php56"
+#         PORT_NAME="composer1-php56"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
     - <<: *OSX_PREVIOUS
       env:
       - >
-        PORT_NAME="composer-php70"
+        PORT_NAME="composer1-php70"
         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php70"
+#         PORT_NAME="composer1-php70"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
     - <<: *OSX_PREVIOUS
       env:
       - >
-        PORT_NAME="composer-php71"
+        PORT_NAME="composer1-php71"
         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php71"
+#         PORT_NAME="composer1-php71"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
     - <<: *OSX_PREVIOUS
       env:
       - >
-        PORT_NAME="composer-php72"
+        PORT_NAME="composer1-php72"
         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php72"
+#         PORT_NAME="composer1-php72"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
     - <<: *OSX_PREVIOUS
       env:
       - >
-        PORT_NAME="composer-php73"
+        PORT_NAME="composer1-php73"
         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php73"
+#         PORT_NAME="composer1-php73"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
     - <<: *OSX_PREVIOUS
       env:
       - >
-        PORT_NAME="composer-php74"
+        PORT_NAME="composer1-php74"
         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php74"
+#         PORT_NAME="composer1-php74"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
     - <<: *OSX_PREVIOUS
       env:
       - >
-        PORT_NAME="composer-php80"
+        PORT_NAME="composer1-php80"
         PORT_VARIANTS="+bash_completion +iconv +mbstring +openssl"
         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
 #    - <<: *OSX_PREVIOUS
 #      env:
 #       - >
-#         PORT_NAME="composer-php80"
+#         PORT_NAME="composer1-php80"
 #         PORT_VARIANTS="+bash_completion -iconv -mbstring -openssl"
 #         TEST_SCRIPT="${PORT_NAME} --version && (${PORT_NAME} diagnose || true)"
     - <<: *OSX_PREVIOUS
