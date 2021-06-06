@@ -8,7 +8,7 @@ jobs:
 
       env:
       - >
-        PORT_NAME="composer"
+        PORT_NAME="composer1"
         PORT_LIVECHECK=true
 
       cache:
