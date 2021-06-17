@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer1
 version                 1.10.22
-revision                0
+revision                1
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -156,9 +156,10 @@ proc composer.add_port_code {php libpath php_bin} {
         set composer_phar_stub      ${worksrcpath}/composer-stub.php
         set composer_install        "${destroot.php_bin} ${worksrcpath}/${name}-setup.php --install-dir=${worksrcpath} --version=${version} ${destroot.args}"
         set composer_set_bin        "if (isset(\$_SERVER\['argv'\]\[0\]) \\&\\& '${phar_stub}' === \$_SERVER\['argv'\]\[0\]) { \$_SERVER\['argv'\]\[0\] = '${phar_path}'; }"
+        set composer_set_script     "if (false === getenv('COMPOSER_SCRIPT')) { putenv('COMPOSER_SCRIPT=${phar_stub}'); }"
         set composer_set_cache      "if (false === getenv('COMPOSER_CACHE_DIR')) { putenv('COMPOSER_CACHE_DIR=' . \$_SERVER\['HOME'\] . '/Library/Caches/composer'); }"
         set composer_set_home       "if (false === getenv('COMPOSER_HOME')) { putenv('COMPOSER_HOME=' . \$_SERVER\['HOME'\] . '/.composer/${destroot_name}'); }"
-        set composer_open           "${composer_set_bin};${composer_set_cache};${composer_set_home};"
+        set composer_open           "${composer_set_bin};${composer_set_script};${composer_set_cache};${composer_set_home};"
         set composer_close          ""
 
         if {"${destroot.php}" eq "php"} {
