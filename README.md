@@ -39,17 +39,17 @@ EOF"
     composer1-php74                @1.10.22        php/composer1
     composer1-php80                @1.10.22        php/composer1
 
-    composer2                      @2.1.3          php/composer2
-    composer2-php                  @2.1.3          php/composer2
-    composer2-php53                @2.1.3          php/composer2
-    composer2-php54                @2.1.3          php/composer2
-    composer2-php55                @2.1.3          php/composer2
-    composer2-php56                @2.1.3          php/composer2
-    composer2-php70                @2.1.3          php/composer2
-    composer2-php71                @2.1.3          php/composer2
-    composer2-php72                @2.1.3          php/composer2
-    composer2-php73                @2.1.3          php/composer2
-    composer2-php80                @2.1.3          php/composer2
+    composer2                      @2.1.5          php/composer2
+    composer2-php                  @2.1.5          php/composer2
+    composer2-php53                @2.1.5          php/composer2
+    composer2-php54                @2.1.5          php/composer2
+    composer2-php55                @2.1.5          php/composer2
+    composer2-php56                @2.1.5          php/composer2
+    composer2-php70                @2.1.5          php/composer2
+    composer2-php71                @2.1.5          php/composer2
+    composer2-php72                @2.1.5          php/composer2
+    composer2-php73                @2.1.5          php/composer2
+    composer2-php80                @2.1.5          php/composer2
 
     deployer                       @6.8.0          php/deployer
     deployer-php72                 @6.8.0          php/deployer
