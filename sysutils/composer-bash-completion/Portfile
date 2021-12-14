@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        sjorek composer-bash-completion 0.3.1 v
+github.setup        sjorek composer-bash-completion 0.3.2 v
 revision            0
 
 name                composer-bash-completion
@@ -21,9 +21,9 @@ long_description    The completion routines support completing all composer \
 
 supported_archs     noarch
 
-checksums           rmd160  e52a96d0dc7ef170538198bcbbab9e2cf4518564 \
-                    sha256  b648c2e57e7bda9f04630f037d986501cf4b5f93b696cf32d196ba68b9b42136 \
-                    size    10266
+checksums           rmd160  b4bcfeaadb61c0e4fdac78559cf8c38470053b9f \
+                    sha256  d232657b527e2be43d6e516a05b3ffae0c2e14b352754791840f822bf9aaa01a \
+                    size    10268
 
 depends_run-append  port:bash-completion
 
