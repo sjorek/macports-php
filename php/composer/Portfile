@@ -14,10 +14,10 @@ proc composer.create_subports {} {
 
     global name
 
-    foreach php {php php53 php54 php55 php56 php70 php71 php72 php73 php74 php80} {
+    foreach php {php php53 php54 php55 php56 php70 php71 php72 php73 php74 php80 php81} {
         eval [subst {
             subport ${name}-${php} {
-                replaced_by             ${name}1-${php}
+                replaced_by             ${name}2-${php}
             }
         }]
     }
@@ -26,5 +26,5 @@ proc composer.create_subports {} {
 composer.create_subports
 
 if {${name} eq ${subport}} {
-    replaced_by             ${name}1
+    replaced_by             ${name}2
 }
