@@ -3,7 +3,7 @@
 The repository is for missing PHP-related macports, like `composer` and
 provides bash-completion for the latter.
 
-## Usage
+## Installation
 
 1. Install [macports](https://www.macports.org) - obviously this works
    for Mac OS or Darwin only - maybe also on some other BSD - would be
@@ -11,18 +11,24 @@ provides bash-completion for the latter.
 2. Clone this repository to your desired location and add it to macports'
    `sources.conf`.
 
-## Example - install it in your user's home-directory under Public:
+### Quick-Installation Example
 
 ```console
-$ git clone https://github.com/sjorek/macports-php ${HOME}/Public/macports-php
-$ cd ${HOME}/Public/macports-php
-$ portindex
-$ sudo bash -c "cat <<EOF >>/opt/local/etc/macports/sources.conf
+# define your custom path to install the repository into
+MACPORTS_PHP=${HOME}/Public/macports-php
 
-file://${PWD} [nosync]
-
-EOF"
+# clone the repository
+git clone https://github.com/sjorek/macports-php ${MACPORTS_PHP}
+# add the working copy's path to /opt/local/etc/macports/sources.conf
+sudo bash -c "sed -i'.bak-$( date +%s )~' -E 's#^(rsync|file)#${MACPORTS_PHP}\\n\\1#' /opt/local/etc/macports/sources.conf"
+# update macports
+sudo port -v selfupdate
+# install composer version 1 and 2 with bash-completion for php versions 7.2 to 8.1
+echo composer{1,2}-php{72,73,74,80,81} | xargs -n1 -J% echo % +bash_completion | xargs sudo port -v install
 ```
+
+Look at [the contribution guidelines](CONTRIBUTING.md) if you want to
+contribute. The development-setup differs slightly.
 
 ## List of (currently) provided macports
 
