@@ -3,7 +3,7 @@
 PortSystem              1.0
 
 name                    composer2
-version                 2.2.9
+version                 2.3.4
 revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd
@@ -31,7 +31,7 @@ proc composer.create_subports {} {
 
     global filespath name prefix worksrcpath
 
-    foreach php {php php53 php54 php55 php56 php70 php71 php72 php73 php74 php80 php81} {
+    foreach php {php php72 php73 php74 php80 php81} {
 
         set libpath                             "/lib/${php}"
 
@@ -237,4 +237,4 @@ Install one of the subports '${name}-php*'.
 
 default livecheck.type  {regex}
 livecheck.url           https://getcomposer.org/versions
-livecheck.regex         {\"stable\"[^\]]*\"version\": \"(\d+(\.\d+)*)\"}
+livecheck.regex         {\"2\": \[\{[^\]\}]*\"version\": \"(\d+(\.\d+)*)\"}

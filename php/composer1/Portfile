@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer1
 version                 1.10.25
-revision                0
+revision                1
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -245,4 +245,4 @@ Install one of the subports '${name}-php*'.
 
 default livecheck.type  {regex}
 livecheck.url           https://getcomposer.org/versions
-livecheck.regex         {\"1\"[^\]]*\"version\": \"(1(\.\d+)*)\"}
+livecheck.regex         {\"1\": \[\{[^\]\}]*\"version\": \"(\d+(\.\d+)*)\"}
