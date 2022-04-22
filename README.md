@@ -32,26 +32,26 @@ contribute. The development-setup differs slightly.
 
 ## List of (currently) provided macports
 
-    composer1                      @1.10.25        php/composer1
-    composer1-php                  @1.10.25        php/composer1
-    composer1-php53                @1.10.25        php/composer1
-    composer1-php54                @1.10.25        php/composer1
-    composer1-php55                @1.10.25        php/composer1
-    composer1-php56                @1.10.25        php/composer1
-    composer1-php70                @1.10.25        php/composer1
-    composer1-php71                @1.10.25        php/composer1
-    composer1-php72                @1.10.25        php/composer1
-    composer1-php73                @1.10.25        php/composer1
-    composer1-php74                @1.10.25        php/composer1
-    composer1-php80                @1.10.25        php/composer1
-    composer1-php81                @1.10.25        php/composer1
+    composer1                      @1.10.26        php/composer1
+    composer1-php                  @1.10.26        php/composer1
+    composer1-php53                @1.10.26        php/composer1
+    composer1-php54                @1.10.26        php/composer1
+    composer1-php55                @1.10.26        php/composer1
+    composer1-php56                @1.10.26        php/composer1
+    composer1-php70                @1.10.26        php/composer1
+    composer1-php71                @1.10.26        php/composer1
+    composer1-php72                @1.10.26        php/composer1
+    composer1-php73                @1.10.26        php/composer1
+    composer1-php74                @1.10.26        php/composer1
+    composer1-php80                @1.10.26        php/composer1
+    composer1-php81                @1.10.26        php/composer1
 
-    composer2                      @2.3.4          php/composer2
-    composer2-php                  @2.3.4          php/composer2
-    composer2-php72                @2.3.4          php/composer2
-    composer2-php73                @2.3.4          php/composer2
-    composer2-php80                @2.3.4          php/composer2
-    composer2-php81                @2.3.4          php/composer2
+    composer2                      @2.3.5          php/composer2
+    composer2-php                  @2.3.5          php/composer2
+    composer2-php72                @2.3.5          php/composer2
+    composer2-php73                @2.3.5          php/composer2
+    composer2-php80                @2.3.5          php/composer2
+    composer2-php81                @2.3.5          php/composer2
 
     deployer                       @6.8.0          php/deployer
     deployer-php72                 @6.8.0          php/deployer
