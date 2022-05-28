@@ -59,7 +59,7 @@ contribute. The development-setup differs slightly.
     deployer-php74                 @6.8.0          php/deployer
     deployer-php80                 @6.8.0          php/deployer
 
-    composer-bash-completion       @0.3.2          sysutils/composer-bash-completion
+    composer-bash-completion       @1.0.1          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
     deployer_select                @1.0            sysutils/deployer_select
     phpunit-bash-completion        @0.0.12         sysutils/phpunit-bash-completion
