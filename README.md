@@ -15,7 +15,7 @@ provides bash-completion for the latter.
 
 ```console
 # define your custom path to install the repository into
-MACPORTS_PHP=${HOME}/Public/macports-php
+MACPORTS_PHP=${HOME}/…path…/…to…/macports-php
 
 # clone the repository
 git clone https://github.com/sjorek/macports-php ${MACPORTS_PHP}
@@ -23,8 +23,8 @@ git clone https://github.com/sjorek/macports-php ${MACPORTS_PHP}
 sudo bash -c "sed -i'.bak-$( date +%s )~' -E 's#^(rsync|file)#${MACPORTS_PHP}\\n\\1#' /opt/local/etc/macports/sources.conf"
 # update macports
 sudo port -v selfupdate
-# install composer version 1 and 2 with bash-completion for php versions 7.2 to 8.1
-echo composer{1,2}-php{72,73,74,80,81} | xargs -n1 -J% echo % +bash_completion | xargs sudo port -v install
+# install composer version 1.x, 2.2.x and 2.3.x with bash-completion for php versions 7.0 to 8.1
+echo composer{1,22}-php{70,71} composer{1,22,23}-php{,72,73,74,80,81} | xargs -n1 -J% echo % +bash_completion | xargs sudo port -v install
 ```
 
 Look at [the contribution guidelines](CONTRIBUTING.md) if you want to
@@ -90,8 +90,7 @@ Look at [the contribution guidelines.](CONTRIBUTING.md)
 
 ## Want more?
 
-There is a [virtual-environment composer-plugin](https://sjorek.github.io/composer-virtual-environment-plugin/)
-complementing these composer ports. Are you preferring [homebrew](https://brew.sh)? The look at the alternative
-[homebrew-php](https://sjorek.github.io/homebrew-php/) project.
+Are you preferring [homebrew](https://brew.sh)? Then, take a look at the 
+alternative [homebrew-php](https://sjorek.github.io/homebrew-php/) project.
 
 Cheers!
