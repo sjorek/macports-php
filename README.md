@@ -14,17 +14,26 @@ provides bash-completion for the latter.
 ### Quick-Installation Example
 
 ```console
-# define your custom path to install the repository into
+# Define your custom path to install the repository into
 MACPORTS_PHP=${HOME}/…path…/…to…/macports-php
 
-# clone the repository
+# Clone the repository
 git clone https://github.com/sjorek/macports-php ${MACPORTS_PHP}
-# add the working copy's path to /opt/local/etc/macports/sources.conf
+
+# Add the working copy's path to /opt/local/etc/macports/sources.conf
 sudo bash -c "sed -i'.bak-$( date +%s )~' -E 's#^(rsync|file)#${MACPORTS_PHP}\\n\\1#' /opt/local/etc/macports/sources.conf"
-# update macports
+
+# Update macports
 sudo port -v selfupdate
-# install composer version 1.x, 2.2.x and 2.3.x with bash-completion for php versions 7.0 to 8.1
-echo composer{1,22}-php{70,71} composer{1,22,23}-php{,72,73,74,80,81} | xargs -n1 -J% echo % +bash_completion | xargs sudo port -v install
+
+# Install composer version 1.x, 2.2.x and 2.3.x WITHOUT bash-completion for php versions 7.0 to 8.1, or …
+echo -n composer{1,22,23}-php{70,71,72,73,74,80,81} | \
+    xargs sudo port -v install
+
+# … install composer version 1.x, 2.2.x and 2.3.x WITH bash-completion for php versions 7.0 to 8.1
+echo -n composer{1,22,23}-php{70,71,72,73,74,80,81} | \
+    xargs -n1 -d' ' -I'{}' echo {} +bash_completion | \
+    xargs sudo port -v install
 ```
 
 Look at [the contribution guidelines](CONTRIBUTING.md) if you want to
