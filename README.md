@@ -43,15 +43,15 @@ contribute. The development-setup differs slightly.
     composer1-php80                @1.10.26        php/composer1
     composer1-php81                @1.10.26        php/composer1
 
-    composer22                     @2.2.14         php/composer2
-    composer22-php                 @2.2.14         php/composer2
-    composer22-php56               @2.2.14         php/composer2
-    composer22-php70               @2.2.14         php/composer2
-    composer22-php71               @2.2.14         php/composer2
-    composer22-php72               @2.2.14         php/composer2
-    composer22-php73               @2.2.14         php/composer2
-    composer22-php80               @2.2.14         php/composer2
-    composer22-php81               @2.2.14         php/composer2
+    composer22                     @2.2.14         php/composer22
+    composer22-php                 @2.2.14         php/composer22
+    composer22-php56               @2.2.14         php/composer22
+    composer22-php70               @2.2.14         php/composer22
+    composer22-php71               @2.2.14         php/composer22
+    composer22-php72               @2.2.14         php/composer22
+    composer22-php73               @2.2.14         php/composer22
+    composer22-php80               @2.2.14         php/composer22
+    composer22-php81               @2.2.14         php/composer22
 
     composer23                     @2.3.7          php/composer23
     composer23-php                 @2.3.7          php/composer23
