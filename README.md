@@ -46,12 +46,12 @@ contribute. The development-setup differs slightly.
     composer1-php80                @1.10.26        php/composer1
     composer1-php81                @1.10.26        php/composer1
 
-    composer2                      @2.3.6          php/composer2
-    composer2-php                  @2.3.6          php/composer2
-    composer2-php72                @2.3.6          php/composer2
-    composer2-php73                @2.3.6          php/composer2
-    composer2-php80                @2.3.6          php/composer2
-    composer2-php81                @2.3.6          php/composer2
+    composer2                      @2.3.7          php/composer2
+    composer2-php                  @2.3.7          php/composer2
+    composer2-php72                @2.3.7          php/composer2
+    composer2-php73                @2.3.7          php/composer2
+    composer2-php80                @2.3.7          php/composer2
+    composer2-php81                @2.3.7          php/composer2
 
     deployer                       @6.8.0          php/deployer
     deployer-php72                 @6.8.0          php/deployer
