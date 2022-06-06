@@ -1,0 +1,47 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+
+github.setup        sjorek phpunit-bash-completion 0.0.12 v
+revision            7
+
+name                phpunit-bash-completion
+categories          sysutils lang php
+platforms           darwin freebsd openbsd
+maintainers         gmail.com:stephan.jorek openmaintainer
+license             BSD
+
+homepage            https://sjorek.github.io/phpunit-bash-completion/
+
+description         Bash completion support for PHPUnit.
+
+long_description    The completion routines support completing all \
+                    options and arguments provided by PHPUnit.
+
+supported_archs     noarch
+
+checksums           rmd160  cc3fcbe795cf159aad29813b0bc6b25b40a3c825 \
+                    sha256  76985e8e823c07616bff2939a3881ade49923b8a3d029bb9fad0070e98483013
+
+#depends_run-append  bin:phpunit:phpunit
+depends_run-append  port:bash-completion
+
+use_configure       no
+
+build {}
+
+destroot {
+    set libpath                 ${prefix}/lib/${name}
+    set destroot_lib            ${destroot}${libpath}
+    set destroot_completions    ${destroot}${prefix}/share/bash-completion/completions
+
+    reinplace "s|#PHPUNIT_COMPLETION_PHP=|PHPUNIT_COMPLETION_PHP=\${PHPUNIT_COMPLETION_PHP:-php}|g" ${worksrcpath}/phpunit-completion.bash
+
+    xinstall -m 0755 -d ${destroot_completions}
+    xinstall -m 0755 -d ${destroot_lib}
+    xinstall -m 0644 -c ${worksrcpath}/phpunit-completion.bash ${destroot_lib}/phpunit-completion.bash
+    xinstall -m 0644 -c ${filespath}/completion.sh ${destroot_completions}/phpunit
+    reinplace "s,@LIBPATH@,${libpath},g" ${destroot_completions}/phpunit
+    ln -s phpunit ${destroot_completions}/phpunit.phar
+}
