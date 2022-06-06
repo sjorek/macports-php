@@ -34,9 +34,6 @@ contribute. The development-setup differs slightly.
 
     composer1                      @1.10.26        php/composer1
     composer1-php                  @1.10.26        php/composer1
-    composer1-php53                @1.10.26        php/composer1
-    composer1-php54                @1.10.26        php/composer1
-    composer1-php55                @1.10.26        php/composer1
     composer1-php56                @1.10.26        php/composer1
     composer1-php70                @1.10.26        php/composer1
     composer1-php71                @1.10.26        php/composer1
@@ -46,12 +43,22 @@ contribute. The development-setup differs slightly.
     composer1-php80                @1.10.26        php/composer1
     composer1-php81                @1.10.26        php/composer1
 
-    composer2                      @2.3.7          php/composer2
-    composer2-php                  @2.3.7          php/composer2
-    composer2-php72                @2.3.7          php/composer2
-    composer2-php73                @2.3.7          php/composer2
-    composer2-php80                @2.3.7          php/composer2
-    composer2-php81                @2.3.7          php/composer2
+    composer22                     @2.2.14         php/composer2
+    composer22-php                 @2.2.14         php/composer2
+    composer22-php56               @2.2.14         php/composer2
+    composer22-php70               @2.2.14         php/composer2
+    composer22-php71               @2.2.14         php/composer2
+    composer22-php72               @2.2.14         php/composer2
+    composer22-php73               @2.2.14         php/composer2
+    composer22-php80               @2.2.14         php/composer2
+    composer22-php81               @2.2.14         php/composer2
+
+    composer23                     @2.3.7          php/composer23
+    composer23-php                 @2.3.7          php/composer23
+    composer23-php72               @2.3.7          php/composer23
+    composer23-php73               @2.3.7          php/composer23
+    composer23-php80               @2.3.7          php/composer23
+    composer23-php81               @2.3.7          php/composer23
 
     deployer                       @6.8.0          php/deployer
     deployer-php72                 @6.8.0          php/deployer
@@ -61,9 +68,6 @@ contribute. The development-setup differs slightly.
 
     composer-bash-completion       @1.0.1          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
-    deployer_select                @1.0            sysutils/deployer_select
-    phpunit-bash-completion        @0.0.12         sysutils/phpunit-bash-completion
-
 
 ## What if composer has been updated and this repository does not reflect this?
 

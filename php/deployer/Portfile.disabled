@@ -1,0 +1,148 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem              1.0
+
+name                    deployer
+version                 6.8.0
+revision                1
+categories              php www net devel
+platforms               darwin freebsd openbsd
+maintainers             gmail.com:stephan.jorek openmaintainer
+license                 MIT
+homepage                https://deployer.org/
+master_sites            ${homepage}releases/v${version}/
+distname                deployer.phar
+extract.suffix
+checksums               rmd160  f7088e17a0736a6200cd341463618fa4db0d85e2 \
+                        sha256  25f639561cb7ebe5c2231b05cb10a0cf62f83469faf6b9248dfa6b7f94e3bd26 \
+                        size    1062898
+
+description             Project Deployment for PHP
+long_description        A deployment tool written in PHP with support for \
+                        popular frameworks out of the box.
+
+# deployer.create_subports: creates subports for each deployer instance
+
+proc deployer.create_subports {} {
+
+    global filespath name prefix worksrcpath
+
+    foreach php {php72 php73 php74 php80} {
+
+        set libpath                             "/lib/${php}"
+        set php_bin                             "${prefix}/bin/${php}"
+
+        eval [subst {
+
+            subport deployer-${php} {
+
+                PortGroup                       select 1.0
+
+                depends_run                     port:deployer_select \
+                                                bin:curl:curl \
+                                                bin:rsync:rsync \
+                                                bin:ssh:openssh
+
+                select.group                    deployer
+
+                select.file                     "${filespath}/macports-${php}"
+
+                depends_build                   "port:${php}"
+                depends_run-append              "port:${php}"
+
+                deployer.add_port_code "${php}" "${libpath}" "${php_bin}"
+
+                default_variants                +bash_completion
+            }
+
+        }]
+    }
+}
+
+# deployer.add_port_code: adds the code to the port or subport to do the actual
+# building.
+
+proc deployer.add_port_code {php libpath php_bin} {
+
+    ui_debug "${php} ${libpath} ${php_bin}"
+
+    global build.args destroot destroot.args distpath distname filespath
+    global name prefix version
+    global worksrcdir worksrcpath
+
+    worksrcdir                      ${name}-${php}-${version}
+
+    extract.mkdir                   yes
+    extract {
+        xinstall -m 0644 ${distpath}/${distname} ${worksrcpath}/deployer.phar
+    }
+
+    use_configure                   no
+
+    build {
+    }
+
+    options destroot.php destroot.php_bin destroot.libpath
+    destroot.php                    ${php}
+    destroot.php_bin                ${php_bin}
+    destroot.libpath                ${libpath}
+
+    destroot {
+        set destroot_binpath        ${destroot}${prefix}/bin
+        set destroot_libpath        ${destroot}${prefix}${destroot.libpath}
+        set destroot_wrapper        ${destroot_binpath}/${name}-${destroot.php}
+
+        xinstall -d -m 0755 ${destroot_binpath}
+        xinstall -d -m 0755 ${destroot_libpath}
+        xinstall -m 0644 ${worksrcpath}/deployer.phar ${destroot_libpath}/deployer.phar
+        xinstall -m 0755 ${filespath}/${name}.php ${destroot_wrapper}
+        reinplace "s,@NAME@,${name}-${destroot.php},g" ${destroot_wrapper}
+        reinplace "s,@PHP@,${destroot.php_bin},g" ${destroot_wrapper}
+        reinplace "s,@LIBPATH@,${prefix}${destroot.libpath},g" ${destroot_wrapper}
+    }
+
+    variant bash_completion description {Enable bash autocompletion} {
+        depends_run-append          port:bash-completion
+
+        post-build {
+            set completion_generate     "${destroot.php_bin} ${worksrcpath}/deployer.phar autocomplete --install >${worksrcpath}/completion.sh"
+            ui_info "Build autocomplete script: ${completion_generate}"
+            system "${completion_generate}"
+        }
+
+        post-destroot {
+            set completion_destroot     ${destroot}${prefix}/share/bash-completion/completions
+            set completion_script       ${completion_destroot}/${name}-${destroot.php}
+
+            xinstall -d -m 0755 ${completion_destroot}
+            xinstall -m 0644 ${worksrcpath}/completion.sh ${completion_script}
+            reinplace "s,complete -o default -F _deployer dep,," ${completion_script}
+            reinplace "s,_deployer,_${name}-${destroot.php},g" ${completion_script}
+            reinplace "s,^\},\} \\\&\\\& complete -o default -F _${name}-${destroot.php} \$\(basename \$\{BASH_SOURCE\}\)," ${completion_script}
+        }
+    }
+}
+
+deployer.create_subports
+
+if {${name} eq ${subport}} {
+    supported_archs                 noarch
+    distfiles
+    use_configure                   no
+    build {}
+    destroot {
+        xinstall -d -m 755 ${destroot}${prefix}/share/doc/${name}
+        system "echo \"${name} is a stub port\" > ${destroot}${prefix}/share/doc/${name}/README"
+        notes "
+-------------
+This is just a stub port providing nothing.
+Install one of the subports 'deployer-php*'.
+-------------
+"
+    }
+
+}
+
+default livecheck.type  {regex}
+livecheck.url           https://deployer.org/manifest.json
+livecheck.regex         {\"version\": \"(\d+\.\d+\.\d+)\"}

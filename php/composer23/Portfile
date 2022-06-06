@@ -2,9 +2,9 @@
 
 PortSystem              1.0
 
-name                    composer1
-version                 1.10.26
-revision                2
+name                    composer23
+version                 2.3.7
+revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -31,7 +31,7 @@ proc composer.create_subports {} {
 
     global filespath name prefix worksrcpath
 
-    foreach php {php php56 php70 php71 php72 php73 php74 php80 php81} {
+    foreach php {php php72 php73 php74 php80 php81} {
 
         set libpath                             "/lib/${php}"
 
@@ -145,7 +145,7 @@ proc composer.add_port_code {php libpath php_bin} {
 
     destroot {
         set destroot_name           ${name}-${destroot.php}
-        set destroot_oldname        "composer-${destroot.php}"
+        set destroot_oldname        "composer2-${destroot.php}"
         set destroot_binpath        ${destroot}${prefix}/bin
         set destroot_libpath        ${destroot}${prefix}${destroot.libpath}
         set destroot_wrapper        ${destroot_binpath}/${destroot_name}
@@ -155,8 +155,8 @@ proc composer.add_port_code {php libpath php_bin} {
         set composer_phar           ${worksrcpath}/composer.phar
         set composer_phar_stub      ${worksrcpath}/composer-stub.php
         set composer_install        "${destroot.php_bin} ${worksrcpath}/${name}-setup.php --install-dir=${worksrcpath} --version=${version} ${destroot.args}"
-        set composer_set_bin        "if (isset(\$_SERVER\['argv'\]\[0\]) \\&\\& '${phar_stub}' === \$_SERVER\['argv'\]\[0\]) { \$_SERVER\['argv'\]\[0\] = '${phar_path}'; }"
         set composer_set_script     "if (false === getenv('COMPOSER_SCRIPT')) { putenv('COMPOSER_SCRIPT=${phar_stub}'); }"
+        set composer_set_bin        "if (isset(\$_SERVER\['argv'\]\[0\]) \\&\\& '${phar_stub}' === \$_SERVER\['argv'\]\[0\]) { \$_SERVER\['argv'\]\[0\] = '${phar_path}'; }"
         set composer_set_cache      "if (false === getenv('COMPOSER_CACHE_DIR')) { putenv('COMPOSER_CACHE_DIR=' . \$_SERVER\['HOME'\] . '/Library/Caches/composer'); }"
         set composer_set_home       "if (false === getenv('COMPOSER_HOME')) { putenv('COMPOSER_HOME=' . \$_SERVER\['HOME'\] . '/.composer/${destroot_name}'); }"
         set composer_open           "${composer_set_bin};${composer_set_script};${composer_set_cache};${composer_set_home};"
@@ -245,4 +245,4 @@ Install one of the subports '${name}-php*'.
 
 default livecheck.type  {regex}
 livecheck.url           https://getcomposer.org/versions
-livecheck.regex         {\"1\": \[\{[^\]\}]*\"version\": \"(\d+(\.\d+)*)\"}
+livecheck.regex         {\"2\": \[\{[^\]\}]*\"version\": \"(\d+(\.\d+)*)\"}
