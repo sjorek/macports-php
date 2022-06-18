@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer23
 version                 2.3.7
-revision                2
+revision                3
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -155,10 +155,19 @@ proc composer.add_port_code {php libpath php_bin} {
         set composer_phar           ${worksrcpath}/composer.phar
         set composer_phar_stub      ${worksrcpath}/composer-stub.php
         set composer_install        "${destroot.php_bin} ${worksrcpath}/${name}-setup.php --install-dir=${worksrcpath} --version=${version} ${destroot.args}"
-        set composer_set_phar       "if (false === getenv('COMPOSER_PHAR')) { putenv('COMPOSER_PHAR=${phar_path}'); }"
-        set composer_set_cache      "if (false === getenv('COMPOSER_CACHE_DIR')) { putenv('COMPOSER_CACHE_DIR=' . \$_SERVER\['HOME'\] . '/Library/Caches/composer'); }"
-        set composer_set_home       "if (false === getenv('COMPOSER_HOME')) { putenv('COMPOSER_HOME=' . \$_SERVER\['HOME'\] . '/.composer/${destroot_name}'); }"
-        set composer_open           "${composer_set_phar};${composer_set_cache};${composer_set_home};"
+        set composer_open           [string map { "\n" "\\n" } "
+if (false === getenv('COMPOSER_PHAR')) {
+    putenv('COMPOSER_PHAR=${phar_path}');
+}
+
+if (false === getenv('COMPOSER_CACHE_DIR')) {
+    putenv('COMPOSER_CACHE_DIR=' . \$_SERVER\['HOME'\] . '/Library/Caches/composer');
+}
+
+if (false === getenv('COMPOSER_HOME')) {
+    putenv('COMPOSER_HOME=' . \$_SERVER\['HOME'\] . '/.composer/${destroot_name}');
+}
+"]
         set composer_close          ""
 
         if {"${destroot.php}" eq "php"} {
