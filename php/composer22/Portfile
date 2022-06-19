@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer22
 version                 2.2.14
-revision                2
+revision                4
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -154,17 +154,18 @@ proc composer.add_port_code {php libpath php_bin} {
         set composer_phar           ${worksrcpath}/composer.phar
         set composer_phar_stub      ${worksrcpath}/composer-stub.php
         set composer_install        "${destroot.php_bin} ${worksrcpath}/${name}-setup.php --install-dir=${worksrcpath} --version=${version} ${destroot.args}"
-        set composer_open           [string map { "\n" "\\n" } "
-if (false === getenv('COMPOSER_PHAR')) {
-    putenv('COMPOSER_PHAR=${phar_path}');
+        set composer_open           [string map { "\n" "\\n" "&" "\\&" "#" "\\#" } "
+if (false === getenv('COMPOSER_HOME') \&\& !isset(\$_SERVER\['COMPOSER_HOME'\], \$_ENV\['COMPOSER_HOME'\])) {
+    putenv('COMPOSER_HOME=' . (\$_SERVER\['COMPOSER_HOME'\] = \$_ENV\['COMPOSER_HOME'\] = \$_SERVER\['HOME'\] . '/.composer/${destroot_name}'));
 }
 
-if (false === getenv('COMPOSER_CACHE_DIR')) {
-    putenv('COMPOSER_CACHE_DIR=' . \$_SERVER\['HOME'\] . '/Library/Caches/composer');
+// @see https://github.com/composer/composer/pull/9898
+if (false === getenv('COMPOSER_CACHE_DIR') \&\& !isset(\$_SERVER\['COMPOSER_CACHE_DIR'\], \$_ENV\['COMPOSER_CACHE_DIR'\])) {
+    putenv('COMPOSER_CACHE_DIR=' . (\$_SERVER\['COMPOSER_CACHE_DIR'\] = \$_ENV\['COMPOSER_CACHE_DIR'\] = \$_SERVER\['HOME'\] . '/Library/Caches/composer'));
 }
 
-if (false === getenv('COMPOSER_HOME')) {
-    putenv('COMPOSER_HOME=' . \$_SERVER\['HOME'\] . '/.composer/${destroot_name}');
+if (false === getenv('COMPOSER_PHAR') \&\& !isset(\$_SERVER\['COMPOSER_PHAR'\], \$_ENV\['COMPOSER_PHAR'\])) {
+    putenv('COMPOSER_PHAR=' . (\$_SERVER\['COMPOSER_PHAR'\] = \$_ENV\['COMPOSER_PHAR'\] = '${phar_path}'));
 }
 "]
         set composer_close          ""
@@ -187,8 +188,8 @@ if (false === getenv('COMPOSER_HOME')) {
         ui_info "Building composer-stub: ${composer_build_stub}"
         system "${composer_build_stub} >${composer_phar_stub}"
 
-        reinplace "s,@@@OPEN@@@,${composer_open},g" ${composer_phar_stub}
-        reinplace "s,@@@CLOSE@@@,${composer_close},g" ${composer_phar_stub}
+        reinplace "s#@@@OPEN@@@#${composer_open}#g" ${composer_phar_stub}
+        reinplace "s#@@@CLOSE@@@#${composer_close}#g" ${composer_phar_stub}
 
         xinstall -m 0755 ${composer_phar_stub} ${destroot_wrapper}
 
