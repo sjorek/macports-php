@@ -69,7 +69,7 @@ contribute. The development-setup differs slightly.
     composer23-php80               @2.3.7          php/composer23
     composer23-php81               @2.3.7          php/composer23
 
-    composer-bash-completion       @1.0.2          sysutils/composer-bash-completion
+    composer-bash-completion       @1.0.3          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
 
 ## What if composer has been updated and this repository does not reflect this?
