@@ -3,8 +3,8 @@
 PortSystem              1.0
 
 name                    composer23
-version                 2.3.7
-revision                6
+version                 2.3.9
+revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
