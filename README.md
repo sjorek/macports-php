@@ -52,22 +52,22 @@ contribute. The development-setup differs slightly.
     composer1-php80                @1.10.26        php/composer1
     composer1-php81                @1.10.26        php/composer1
 
-    composer22                     @2.2.16         php/composer22
-    composer22-php                 @2.2.16         php/composer22
-    composer22-php56               @2.2.16         php/composer22
-    composer22-php70               @2.2.16         php/composer22
-    composer22-php71               @2.2.16         php/composer22
-    composer22-php72               @2.2.16         php/composer22
-    composer22-php73               @2.2.16         php/composer22
-    composer22-php80               @2.2.16         php/composer22
-    composer22-php81               @2.2.16         php/composer22
+    composer22                     @2.2.17         php/composer22
+    composer22-php                 @2.2.17         php/composer22
+    composer22-php56               @2.2.17         php/composer22
+    composer22-php70               @2.2.17         php/composer22
+    composer22-php71               @2.2.17         php/composer22
+    composer22-php72               @2.2.17         php/composer22
+    composer22-php73               @2.2.17         php/composer22
+    composer22-php80               @2.2.17         php/composer22
+    composer22-php81               @2.2.17         php/composer22
 
-    composer23                     @2.3.9          php/composer23
-    composer23-php                 @2.3.9          php/composer23
-    composer23-php72               @2.3.9          php/composer23
-    composer23-php73               @2.3.9          php/composer23
-    composer23-php80               @2.3.9          php/composer23
-    composer23-php81               @2.3.9          php/composer23
+    composer23                     @2.3.10         php/composer23
+    composer23-php                 @2.3.10         php/composer23
+    composer23-php72               @2.3.10         php/composer23
+    composer23-php73               @2.3.10         php/composer23
+    composer23-php80               @2.3.10         php/composer23
+    composer23-php81               @2.3.10         php/composer23
 
     composer-bash-completion       @1.0.4          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
