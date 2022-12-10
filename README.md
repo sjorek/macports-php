@@ -26,14 +26,8 @@ sudo bash -c "sed -i'.bak-$( date +%s )~' -E 's#^(rsync|file)#${MACPORTS_PHP}\\n
 # Update macports
 sudo port -v selfupdate
 
-# Install composer version 1.x, 2.2.x and 2.3.x WITHOUT bash-completion for php versions 7.0 to 8.1, or …
-echo -n composer{1,22,23}-php{70,71,72,73,74,80,81} | \
-    xargs sudo port -v install
-
-# … install composer version 1.x, 2.2.x and 2.3.x WITH bash-completion for php versions 7.0 to 8.1
-echo -n composer{1,22,23}-php{70,71,72,73,74,80,81} | \
-    xargs -n1 -d' ' -I'{}' echo {} +bash_completion | \
-    xargs sudo port -v install
+# Install composer version 1.x, 2.2.x, 2.3.x and 2.4.x for php versions 7.0 to 8.2
+sudo port -v install composer{1,22}-php{70,71,72,73,74,80,81,82} composer2{3,4}-php{72,73,74,80,81,82}
 ```
 
 Look at [the contribution guidelines](CONTRIBUTING.md) if you want to
@@ -51,16 +45,18 @@ contribute. The development-setup differs slightly.
     composer1-php74                @1.10.26        php/composer1
     composer1-php80                @1.10.26        php/composer1
     composer1-php81                @1.10.26        php/composer1
+    composer1-php82                @1.10.26        php/composer1
 
-    composer22                     @2.2.17         php/composer22
-    composer22-php                 @2.2.17         php/composer22
-    composer22-php56               @2.2.17         php/composer22
-    composer22-php70               @2.2.17         php/composer22
-    composer22-php71               @2.2.17         php/composer22
-    composer22-php72               @2.2.17         php/composer22
-    composer22-php73               @2.2.17         php/composer22
-    composer22-php80               @2.2.17         php/composer22
-    composer22-php81               @2.2.17         php/composer22
+    composer22                     @2.2.18         php/composer22
+    composer22-php                 @2.2.18         php/composer22
+    composer22-php56               @2.2.18         php/composer22
+    composer22-php70               @2.2.18         php/composer22
+    composer22-php71               @2.2.18         php/composer22
+    composer22-php72               @2.2.18         php/composer22
+    composer22-php73               @2.2.18         php/composer22
+    composer22-php80               @2.2.18         php/composer22
+    composer22-php81               @2.2.18         php/composer22
+    composer22-php82               @2.2.18         php/composer22
 
     composer23                     @2.3.10         php/composer23
     composer23-php                 @2.3.10         php/composer23
@@ -68,6 +64,15 @@ contribute. The development-setup differs slightly.
     composer23-php73               @2.3.10         php/composer23
     composer23-php80               @2.3.10         php/composer23
     composer23-php81               @2.3.10         php/composer23
+    composer23-php82               @2.3.10         php/composer23
+
+    composer24                     @2.4.4          php/composer24
+    composer24-php                 @2.4.4          php/composer24
+    composer24-php72               @2.4.4          php/composer24
+    composer24-php73               @2.4.4          php/composer24
+    composer24-php80               @2.4.4          php/composer24
+    composer24-php81               @2.4.4          php/composer24
+    composer24-php82               @2.4.4          php/composer24
 
     composer-bash-completion       @1.0.4          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
