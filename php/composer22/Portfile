@@ -3,8 +3,8 @@
 PortSystem              1.0
 
 name                    composer22
-version                 2.2.17
-revision                0
+version                 2.2.18
+revision                1
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -31,7 +31,7 @@ proc composer.create_subports {} {
 
     global filespath name prefix worksrcpath
 
-    foreach php {php php56 php70 php71 php72 php73 php74 php80 php81} {
+    foreach php {php php56 php70 php71 php72 php73 php74 php80 php81 php82} {
 
         set libpath                             "/lib/${php}"
 
@@ -70,7 +70,7 @@ proc composer.create_subports {} {
 
                 if {"${php}" eq "php"} {
 
-                    default_variants            +bash_completion
+                    default_variants            +bash_completion +path_alias
 
                 } else {
 
@@ -91,7 +91,7 @@ proc composer.create_subports {} {
                         destroot.args-delete    "--disable-tls"
                     }
 
-                    default_variants            +iconv +mbstring +openssl +bash_completion
+                    default_variants            +iconv +mbstring +openssl +bash_completion +path_alias
 
                     if {![variant_isset iconv] && ![variant_isset mbstring]} {
                         variant_set             iconv
@@ -141,7 +141,7 @@ proc composer.add_port_code {php libpath php_bin} {
     options destroot.php destroot.php_bin destroot.libpath
     destroot.php                    ${php}
     destroot.php_bin                ${php_bin}
-    destroot.libpath                ${libpath}
+    destroot.libpath                ${libpath}/${name}
 
     destroot {
         set destroot_name           ${name}-${destroot.php}
@@ -194,11 +194,9 @@ if (false === getenv('COMPOSER_PHAR') \&\& !isset(\$_SERVER\['COMPOSER_PHAR'\], 
         xinstall -m 0755 ${composer_phar_stub} ${destroot_wrapper}
 
         notes "
-ATTENTION: The COMPOSER_CACHE_DIR path-value has been renamed
-from “~/.composer/cache” to “~/Library/Caches/composer”.
-
-If you want to remove the old cache directory, run:
-  rm -rf ~/.composer/cache
+ATTENTION:
+  The default COMPOSER_HOME is ~/.composer/${destroot_name}
+  The default COMPOSER_CACHE_DIR is ~/Library/Caches/composer
 
 "
     }
@@ -222,6 +220,25 @@ If you want to remove the old cache directory, run:
             }
         }
     }
+
+    variant path_alias description {Install additional path-alias for use in PATH} {
+
+        post-destroot {
+            set destroot_binpath        ${destroot}${prefix}${destroot.libpath}/bin
+            set destroot_wrapper        ${destroot_binpath}/composer
+            set destroot_php            ${destroot_binpath}/php
+
+            set composer_phar_stub      ${worksrcpath}/composer-stub.php
+
+            xinstall -d -m 0755 ${destroot_binpath}
+            xinstall -m 0755 ${composer_phar_stub} ${destroot_wrapper}
+
+            if {"${destroot.php}" ne "php"} {
+                ln -s ${destroot.php_bin} ${destroot_php}
+            }
+        }
+    }
+
 }
 
 composer.create_subports

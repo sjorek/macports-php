@@ -4,8 +4,8 @@ PortSystem              1.0
 PortGroup               obsolete 1.0
 
 name                    composer2
-version                 2.3.7
-revision                1
+version                 2.4.4
+revision                0
 categories              php www net devel
 
 # composer.create_subports: creates subports for each composer instance
@@ -22,10 +22,10 @@ proc composer.create_subports {} {
         }]
     }
 
-    foreach php {php php72 php73 php74 php80 php81} {
+    foreach php {php php72 php73 php74 php80 php81 php82} {
         eval [subst {
             subport ${name}-${php} {
-                replaced_by             ${name}3-${php}
+                replaced_by             ${name}4-${php}
             }
         }]
     }
@@ -34,5 +34,5 @@ proc composer.create_subports {} {
 composer.create_subports
 
 if {${name} eq ${subport}} {
-    replaced_by             ${name}23
+    replaced_by             ${name}24
 }
