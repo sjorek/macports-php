@@ -27,9 +27,7 @@ sudo bash -c "sed -i'.bak-$( date +%s )~' -E 's#^(rsync|file)#${MACPORTS_PHP}\\n
 sudo port -v selfupdate
 
 # Install composer version 1.x, 2.2.x, 2.3.x and 2.4.x for php versions 7.0 to 8.2
-for PORT in composer{1,22}-php{70,71,72,73,74,80,81,82} composer2{3,4}-php{72,73,74,80,81,82} ; do
-    sudo port -v install $PORT
-done
+sudo port -v install composer{1,22}-php{70,71,72,73,74,80,81,82} composer2{3,4}-php{72,73,74,80,81,82}
 ```
 
 Look at [the contribution guidelines](CONTRIBUTING.md) if you want to
