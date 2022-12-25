@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer24
 version                 2.4.4
-revision                0
+revision                1
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -222,20 +222,15 @@ ATTENTION:
     }
 
     variant path_alias description {Install additional path-alias for use in PATH} {
+        depends_run-append              "port:${destroot.php}-path-alias"
 
         post-destroot {
             set destroot_binpath        ${destroot}${prefix}${destroot.libpath}/bin
             set destroot_wrapper        ${destroot_binpath}/composer
-            set destroot_php            ${destroot_binpath}/php
-
             set composer_phar_stub      ${worksrcpath}/composer-stub.php
 
             xinstall -d -m 0755 ${destroot_binpath}
             xinstall -m 0755 ${composer_phar_stub} ${destroot_wrapper}
-
-            if {"${destroot.php}" ne "php"} {
-                ln -s ${destroot.php_bin} ${destroot_php}
-            }
         }
     }
 
