@@ -1,0 +1,89 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem              1.0
+
+name                    php-path-alias
+version                 1.0.0
+revision                0
+categories              php www net devel
+platforms               darwin freebsd openbsd
+maintainers             gmail.com:stephan.jorek openmaintainer
+license                 MIT
+homepage                https://sjorek.github.io/macports-php/
+master_sites            ${homepage}
+
+description             Provide symlinked alias to php-binary to be used in environment's PATH
+
+supported_archs         noarch
+distfiles
+use_configure           no
+build                   {}
+distfiles
+
+proc php_path_alias.create_subports {} {
+
+    global name prefix destroot
+
+    foreach php_version {56 70 71 72 73 74 80 81 82} {
+
+        set bin_path                                "/lib/php${php_version}/bin"
+
+        set php_port                                "php${php_version}"
+        set php_bin                                 "${prefix}/bin/php${php_version}"
+
+        set php_fpm_port                            "php${php_version}-fpm"
+        set php_fpm_bin                             "${prefix}/bin/php-fpm${php_version}"
+
+        eval [subst {
+
+            subport php${php_version}-path-alias {
+
+                depends_run                         port:${php_port}
+
+                destroot {
+                    set destroot_binpath            ${destroot}${prefix}${bin_path}
+
+                    xinstall -d -m 0755 \${destroot_binpath}
+                    ln -s ${php_bin} \${destroot_binpath}/php
+
+                    notes "
+-------------
+To use php${php_version} add ${prefix}${bin_path} to your PATH.
+-------------
+"
+                }
+
+                variant fpm description {Include symlinked php-fpm alias} {
+                    depends_run-append              "port:${php_fpm_port}"
+
+                    post-destroot {
+                        set destroot_binpath        ${destroot}${prefix}${bin_path}
+
+                        ln -s ${php_fpm_bin} \${destroot_binpath}/php-fpm
+                    notes "
+-------------
+To use php${php_version}-fpm add ${prefix}${bin_path} to your PATH.
+-------------
+"
+                    }
+                }
+            }
+        }]
+    }
+}
+
+php_path_alias.create_subports
+
+if {${name} eq ${subport}} {
+    destroot {
+        xinstall -d -m 755 ${destroot}${prefix}/share/doc/${name}
+        system "echo \"${name} is a stub port\" > ${destroot}${prefix}/share/doc/${name}/README"
+        notes "
+-------------
+This is just a stub port providing nothing.
+Install one of the subports '${name}-*'.
+-------------
+"
+    }
+
+}
