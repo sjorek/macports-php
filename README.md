@@ -74,13 +74,13 @@ contribute. The development-setup differs slightly.
     composer24-php81               @2.4.4          php/composer24
     composer24-php82               @2.4.4          php/composer24
 
-    composer25                     @2.5.1          php/composer25
-    composer25-php                 @2.5.1          php/composer25
-    composer25-php72               @2.5.1          php/composer25
-    composer25-php73               @2.5.1          php/composer25
-    composer25-php80               @2.5.1          php/composer25
-    composer25-php81               @2.5.1          php/composer25
-    composer25-php82               @2.5.1          php/composer25
+    composer25                     @2.5.5          php/composer25
+    composer25-php                 @2.5.5          php/composer25
+    composer25-php72               @2.5.5          php/composer25
+    composer25-php73               @2.5.5          php/composer25
+    composer25-php80               @2.5.5          php/composer25
+    composer25-php81               @2.5.5          php/composer25
+    composer25-php82               @2.5.5          php/composer25
 
     composer-bash-completion       @1.0.4          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select

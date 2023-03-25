@@ -3,7 +3,7 @@
 PortSystem              1.0
 
 name                    composer25
-version                 2.5.1
+version                 2.5.5
 revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd
