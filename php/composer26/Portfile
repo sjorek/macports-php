@@ -3,7 +3,7 @@
 PortSystem              1.0
 
 name                    composer26
-version                 2.6.2
+version                 2.6.4
 revision                0
 categories              php www net devel
 platforms               darwin freebsd openbsd

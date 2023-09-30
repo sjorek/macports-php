@@ -35,28 +35,28 @@ contribute. The development-setup differs slightly.
 
 ## List of (currently) provided macports
 
-    composer1                      @1.10.26        php/composer1
-    composer1-php                  @1.10.26        php/composer1
-    composer1-php56                @1.10.26        php/composer1
-    composer1-php70                @1.10.26        php/composer1
-    composer1-php71                @1.10.26        php/composer1
-    composer1-php72                @1.10.26        php/composer1
-    composer1-php73                @1.10.26        php/composer1
-    composer1-php74                @1.10.26        php/composer1
-    composer1-php80                @1.10.26        php/composer1
-    composer1-php81                @1.10.26        php/composer1
-    composer1-php82                @1.10.26        php/composer1
+    composer1                      @1.10.27        php/composer1
+    composer1-php                  @1.10.27        php/composer1
+    composer1-php56                @1.10.27        php/composer1
+    composer1-php70                @1.10.27        php/composer1
+    composer1-php71                @1.10.27        php/composer1
+    composer1-php72                @1.10.27        php/composer1
+    composer1-php73                @1.10.27        php/composer1
+    composer1-php74                @1.10.27        php/composer1
+    composer1-php80                @1.10.27        php/composer1
+    composer1-php81                @1.10.27        php/composer1
+    composer1-php82                @1.10.27        php/composer1
 
-    composer22                     @2.2.21         php/composer22
-    composer22-php                 @2.2.21         php/composer22
-    composer22-php56               @2.2.21         php/composer22
-    composer22-php70               @2.2.21         php/composer22
-    composer22-php71               @2.2.21         php/composer22
-    composer22-php72               @2.2.21         php/composer22
-    composer22-php73               @2.2.21         php/composer22
-    composer22-php80               @2.2.21         php/composer22
-    composer22-php81               @2.2.21         php/composer22
-    composer22-php82               @2.2.21         php/composer22
+    composer22                     @2.2.22         php/composer22
+    composer22-php                 @2.2.22         php/composer22
+    composer22-php56               @2.2.22         php/composer22
+    composer22-php70               @2.2.22         php/composer22
+    composer22-php71               @2.2.22         php/composer22
+    composer22-php72               @2.2.22         php/composer22
+    composer22-php73               @2.2.22         php/composer22
+    composer22-php80               @2.2.22         php/composer22
+    composer22-php81               @2.2.22         php/composer22
+    composer22-php82               @2.2.22         php/composer22
 
     composer23                     @2.3.10         php/composer23
     composer23-php                 @2.3.10         php/composer23
@@ -82,13 +82,13 @@ contribute. The development-setup differs slightly.
     composer25-php81               @2.5.8          php/composer25
     composer25-php82               @2.5.8          php/composer25
 
-    composer26                     @2.6.2          php/composer26
-    composer26-php                 @2.6.2          php/composer26
-    composer26-php72               @2.6.2          php/composer26
-    composer26-php73               @2.6.2          php/composer26
-    composer26-php80               @2.6.2          php/composer26
-    composer26-php81               @2.6.2          php/composer26
-    composer26-php82               @2.6.2          php/composer26
+    composer26                     @2.6.4          php/composer26
+    composer26-php                 @2.6.4          php/composer26
+    composer26-php72               @2.6.4          php/composer26
+    composer26-php73               @2.6.4          php/composer26
+    composer26-php80               @2.6.4          php/composer26
+    composer26-php81               @2.6.4          php/composer26
+    composer26-php82               @2.6.4          php/composer26
 
     composer-bash-completion       @1.0.4          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
