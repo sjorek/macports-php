@@ -26,8 +26,11 @@ sudo bash -c "sed -i'.bak-$( date +%s )~' -E 's#^(rsync|file)#${MACPORTS_PHP}\\n
 # Update macports
 sudo port -v selfupdate
 
-# Install composer version 1.x, 2.2.x, 2.3.x and 2.4.x for php versions 7.0 to 8.2
-sudo port -v install composer{1,22}-php{70,71,72,73,74,80,81,82} composer2{3,4}-php{72,73,74,80,81,82}
+# Install composer version 1.x, 2.2.x, 2.3.x, 2.4.x, 2.5.x and 2.6.x for php versions 7.0 to 8.3
+sudo port -v install \
+    composer{1,22}-php{70,71,72,73,74,80,81,82,83} \
+    composer2{3,4,5}-php{72,73,74,80,81,82} \
+    composer26-php{72,73,74,80,81,82,83}
 ```
 
 Look at [the contribution guidelines](CONTRIBUTING.md) if you want to
@@ -46,6 +49,7 @@ contribute. The development-setup differs slightly.
     composer1-php80                @1.10.27        php/composer1
     composer1-php81                @1.10.27        php/composer1
     composer1-php82                @1.10.27        php/composer1
+    composer1-php83                @1.10.27        php/composer1
 
     composer22                     @2.2.22         php/composer22
     composer22-php                 @2.2.22         php/composer22
@@ -57,6 +61,7 @@ contribute. The development-setup differs slightly.
     composer22-php80               @2.2.22         php/composer22
     composer22-php81               @2.2.22         php/composer22
     composer22-php82               @2.2.22         php/composer22
+    composer22-php83               @2.2.22         php/composer22
 
     composer23                     @2.3.10         php/composer23
     composer23-php                 @2.3.10         php/composer23
@@ -89,6 +94,7 @@ contribute. The development-setup differs slightly.
     composer26-php80               @2.6.6          php/composer26
     composer26-php81               @2.6.6          php/composer26
     composer26-php82               @2.6.6          php/composer26
+    composer26-php83               @2.6.6          php/composer26
 
     composer-bash-completion       @1.0.4          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
