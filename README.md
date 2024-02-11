@@ -26,11 +26,10 @@ sudo bash -c "sed -i'.bak-$( date +%s )~' -E 's#^(rsync|file)#${MACPORTS_PHP}\\n
 # Update macports
 sudo port -v selfupdate
 
-# Install composer version 1.x, 2.2.x, 2.3.x, 2.4.x, 2.5.x and 2.6.x for php versions 7.0 to 8.3
+# Install composer version 1.x and 2.2.x up to 2.7.x for php versions 7.0 to 8.3
 sudo port -v install \
     composer{1,22}-php{70,71,72,73,74,80,81,82,83} \
-    composer2{3,4,5}-php{72,73,74,80,81,82} \
-    composer26-php{72,73,74,80,81,82,83}
+    composer2{3,4,5,6,7}-php{72,73,74,80,81,82,83}
 ```
 
 Look at [the contribution guidelines](CONTRIBUTING.md) if you want to
@@ -70,6 +69,7 @@ contribute. The development-setup differs slightly.
     composer23-php80               @2.3.10         php/composer23
     composer23-php81               @2.3.10         php/composer23
     composer23-php82               @2.3.10         php/composer23
+    composer23-php83               @2.3.10         php/composer23
 
     composer24                     @2.4.4          php/composer24
     composer24-php                 @2.4.4          php/composer24
@@ -78,6 +78,7 @@ contribute. The development-setup differs slightly.
     composer24-php80               @2.4.4          php/composer24
     composer24-php81               @2.4.4          php/composer24
     composer24-php82               @2.4.4          php/composer24
+    composer24-php83               @2.4.4          php/composer24
 
     composer25                     @2.5.8          php/composer25
     composer25-php                 @2.5.8          php/composer25
@@ -86,6 +87,7 @@ contribute. The development-setup differs slightly.
     composer25-php80               @2.5.8          php/composer25
     composer25-php81               @2.5.8          php/composer25
     composer25-php82               @2.5.8          php/composer25
+    composer25-php83               @2.5.8          php/composer25
 
     composer26                     @2.6.6          php/composer26
     composer26-php                 @2.6.6          php/composer26
@@ -95,6 +97,15 @@ contribute. The development-setup differs slightly.
     composer26-php81               @2.6.6          php/composer26
     composer26-php82               @2.6.6          php/composer26
     composer26-php83               @2.6.6          php/composer26
+
+    composer27                     @2.7.1          php/composer27
+    composer27-php                 @2.7.1          php/composer27
+    composer27-php72               @2.7.1          php/composer27
+    composer27-php73               @2.7.1          php/composer27
+    composer27-php80               @2.7.1          php/composer27
+    composer27-php81               @2.7.1          php/composer27
+    composer27-php82               @2.7.1          php/composer27
+    composer27-php83               @2.7.1          php/composer27
 
     composer-bash-completion       @1.0.4          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
