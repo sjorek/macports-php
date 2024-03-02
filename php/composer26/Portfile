@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer26
 version                 2.6.6
-revision                1
+revision                2
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -14,9 +14,9 @@ master_sites            ${homepage}
 distname                installer
 extract.suffix
 
-checksums           rmd160  c3dc6e45c947b313420e38976e39ccca6717997e \
-                    sha256  95676541502ab5084ca5ea179059a8013a2755167a9d375feae97f333c002ecc \
-                    size    58246
+checksums               rmd160  8fc870f3aa02d7ae70e22317ca75f7327ce79480 \
+                        sha256  8586e7c8ce2839946a253a9ca3284e525245c1f82d8bd1e221cef88a59d00a75 \
+                        size    58444
 
 description             Package Management for PHP
 long_description        Composer is a dependency manager tracking local \
