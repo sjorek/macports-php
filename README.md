@@ -98,14 +98,14 @@ contribute. The development-setup differs slightly.
     composer26-php82               @2.6.6          php/composer26
     composer26-php83               @2.6.6          php/composer26
 
-    composer27                     @2.7.2          php/composer27
-    composer27-php                 @2.7.2          php/composer27
-    composer27-php72               @2.7.2          php/composer27
-    composer27-php73               @2.7.2          php/composer27
-    composer27-php80               @2.7.2          php/composer27
-    composer27-php81               @2.7.2          php/composer27
-    composer27-php82               @2.7.2          php/composer27
-    composer27-php83               @2.7.2          php/composer27
+    composer27                     @2.7.6          php/composer27
+    composer27-php                 @2.7.6          php/composer27
+    composer27-php72               @2.7.6          php/composer27
+    composer27-php73               @2.7.6          php/composer27
+    composer27-php80               @2.7.6          php/composer27
+    composer27-php81               @2.7.6          php/composer27
+    composer27-php82               @2.7.6          php/composer27
+    composer27-php83               @2.7.6          php/composer27
 
     composer-bash-completion       @1.0.4          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
