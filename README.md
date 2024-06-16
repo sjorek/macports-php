@@ -50,17 +50,17 @@ contribute. The development-setup differs slightly.
     composer1-php82                @1.10.27        php/composer1
     composer1-php83                @1.10.27        php/composer1
 
-    composer22                     @2.2.23         php/composer22
-    composer22-php                 @2.2.23         php/composer22
-    composer22-php56               @2.2.23         php/composer22
-    composer22-php70               @2.2.23         php/composer22
-    composer22-php71               @2.2.23         php/composer22
-    composer22-php72               @2.2.23         php/composer22
-    composer22-php73               @2.2.23         php/composer22
-    composer22-php80               @2.2.23         php/composer22
-    composer22-php81               @2.2.23         php/composer22
-    composer22-php82               @2.2.23         php/composer22
-    composer22-php83               @2.2.23         php/composer22
+    composer22                     @2.2.24         php/composer22
+    composer22-php                 @2.2.24         php/composer22
+    composer22-php56               @2.2.24         php/composer22
+    composer22-php70               @2.2.24         php/composer22
+    composer22-php71               @2.2.24         php/composer22
+    composer22-php72               @2.2.24         php/composer22
+    composer22-php73               @2.2.24         php/composer22
+    composer22-php80               @2.2.24         php/composer22
+    composer22-php81               @2.2.24         php/composer22
+    composer22-php82               @2.2.24         php/composer22
+    composer22-php83               @2.2.24         php/composer22
 
     composer23                     @2.3.10         php/composer23
     composer23-php                 @2.3.10         php/composer23
@@ -98,14 +98,14 @@ contribute. The development-setup differs slightly.
     composer26-php82               @2.6.6          php/composer26
     composer26-php83               @2.6.6          php/composer26
 
-    composer27                     @2.7.6          php/composer27
-    composer27-php                 @2.7.6          php/composer27
-    composer27-php72               @2.7.6          php/composer27
-    composer27-php73               @2.7.6          php/composer27
-    composer27-php80               @2.7.6          php/composer27
-    composer27-php81               @2.7.6          php/composer27
-    composer27-php82               @2.7.6          php/composer27
-    composer27-php83               @2.7.6          php/composer27
+    composer27                     @2.7.7          php/composer27
+    composer27-php                 @2.7.7          php/composer27
+    composer27-php72               @2.7.7          php/composer27
+    composer27-php73               @2.7.7          php/composer27
+    composer27-php80               @2.7.7          php/composer27
+    composer27-php81               @2.7.7          php/composer27
+    composer27-php82               @2.7.7          php/composer27
+    composer27-php83               @2.7.7          php/composer27
 
     composer-bash-completion       @1.0.4          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
