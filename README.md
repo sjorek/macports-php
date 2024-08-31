@@ -26,10 +26,11 @@ sudo bash -c "sed -i'.bak-$( date +%s )~' -E 's#^(rsync|file)#${MACPORTS_PHP}\\n
 # Update macports
 sudo port -v selfupdate
 
-# Install composer version 1.x and 2.2.x up to 2.7.x for php versions 7.0 to 8.3
+# Install composer version 1.x and 2.2.x up to 2.7.x for php versions 7.0 to 8.4
 sudo port -v install \
     composer{1,22}-php{70,71,72,73,74,80,81,82,83} \
-    composer2{3,4,5,6,7}-php{72,73,74,80,81,82,83}
+    composer2{3,4,5,6}-php{72,73,74,80,81,82,83} \
+    composer27-php{72,73,74,80,81,82,83,84}
 ```
 
 Look at [the contribution guidelines](CONTRIBUTING.md) if you want to
@@ -106,6 +107,7 @@ contribute. The development-setup differs slightly.
     composer27-php81               @2.7.8          php/composer27
     composer27-php82               @2.7.8          php/composer27
     composer27-php83               @2.7.8          php/composer27
+    composer27-php84               @2.7.8          php/composer27
 
     composer-bash-completion       @1.0.4          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
