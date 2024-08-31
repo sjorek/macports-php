@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    php-path-alias
 version                 1.0.0
-revision                0
+revision                1
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -24,7 +24,7 @@ proc php_path_alias.create_subports {} {
 
     global name prefix destroot
 
-    foreach php_version {56 70 71 72 73 74 80 81 82 83} {
+    foreach php_version {56 70 71 72 73 74 80 81 82 83 84} {
 
         set bin_path                                "/lib/php${php_version}/bin"
 
