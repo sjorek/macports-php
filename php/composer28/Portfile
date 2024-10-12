@@ -1,0 +1,261 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem              1.0
+
+name                    composer28
+version                 2.8.1
+revision                0
+categories              php www net devel
+platforms               darwin freebsd openbsd
+maintainers             gmail.com:stephan.jorek openmaintainer
+license                 MIT
+homepage                http://getcomposer.org
+master_sites            ${homepage}
+distname                installer
+extract.suffix
+
+checksums               rmd160  8fc870f3aa02d7ae70e22317ca75f7327ce79480 \
+                        sha256  8586e7c8ce2839946a253a9ca3284e525245c1f82d8bd1e221cef88a59d00a75 \
+                        size    58444
+
+description             Package Management for PHP
+long_description        Composer is a dependency manager tracking local \
+                        dependencies of your projects and libraries.
+
+build.args              --no-ansi
+destroot.args           ${build.args} --quiet
+
+# composer.create_subports: creates subports for each composer instance
+
+proc composer.create_subports {} {
+
+    global filespath name prefix worksrcpath
+
+    foreach php {php php72 php73 php74 php80 php81 php82 php83 php84} {
+
+        set libpath                             "/lib/${php}"
+
+        if {"${php}" eq "php"} {
+            set php_bin                         "${php}"
+        } else {
+            set php_bin                         "${prefix}/bin/${php}"
+        }
+
+        eval [subst {
+
+            subport ${name}-${php} {
+
+                PortGroup                       select 1.0
+
+                depends_run                     port:composer_select
+                select.group                    composer
+
+                if {"${php}" eq "php"} {
+                    select.file                 "${filespath}/apple-${name}-${php}"
+
+                    depends_build               "bin:${php}:php"
+                    depends_run-append          "bin:${php}:php"
+
+                } else {
+                    select.file                 "${filespath}/macports-${name}-${php}"
+
+                    depends_build               "port:${php}"
+                    depends_run-append          "port:${php}"
+
+                    build.args-append           --disable-tls
+                    destroot.args-append        --disable-tls
+                }
+
+                composer.add_port_code "${php}" "${libpath}" "${php_bin}"
+
+                if {"${php}" eq "php"} {
+
+                    default_variants            +bash_completion +path_alias
+
+                } else {
+
+                    variant iconv description {Utilize iconv extension} {
+                        depends_build-append    "port:${php}-iconv"
+                        depends_run-append      "port:${php}-iconv"
+                    }
+
+                    variant mbstring description {Utilize mbstring extension} {
+                        depends_build-append    "port:${php}-mbstring"
+                        depends_run-append      "port:${php}-mbstring"
+                    }
+
+                    variant openssl description {Utilize openssl extension} {
+                        depends_build-append    "port:${php}-openssl"
+                        depends_run-append      "port:${php}-openssl"
+                        build.args-delete       "--disable-tls"
+                        destroot.args-delete    "--disable-tls"
+                    }
+
+                    default_variants            +iconv +mbstring +openssl +bash_completion +path_alias
+
+                    if {![variant_isset iconv] && ![variant_isset mbstring]} {
+                        variant_set             iconv
+                    }
+                }
+            }
+
+        }]
+    }
+}
+
+# composer.add_port_code: adds the code to the port or subport to do the actual
+# building.
+
+proc composer.add_port_code {php libpath php_bin} {
+
+    ui_debug "${php} ${libpath} ${php_bin}"
+
+    global build.args destroot destroot.args distpath distname filespath
+    global name prefix version
+    global worksrcdir worksrcpath
+
+    worksrcdir                      ${name}-${php}-${version}
+
+    extract.mkdir                   yes
+    extract {
+        xinstall -m 0644 ${distpath}/${distname} ${worksrcpath}/${name}-setup.php
+    }
+
+    use_configure                   no
+
+    options build.php_bin
+    build.php_bin                   ${php_bin}
+
+    build {
+        ui_info "Composer setup check: ${build.php_bin} ${worksrcpath}/${name}-setup.php --check ${build.args}"
+        set setup_check [exec ${build.php_bin}  ${worksrcpath}/${name}-setup.php --check ${build.args}]
+
+        if {"${setup_check}" eq "All settings correct for using Composer"} {
+            ui_info "${setup_check}."
+        } else {
+            ui_info "${setup_check}"
+            return -code error "Composer setup check failed."
+        }
+    }
+
+    options destroot.php destroot.php_bin destroot.libpath
+    destroot.php                    ${php}
+    destroot.php_bin                ${php_bin}
+    destroot.libpath                ${libpath}/${name}
+
+    destroot {
+        set destroot_name           ${name}-${destroot.php}
+        set destroot_binpath        ${destroot}${prefix}/bin
+        set destroot_libpath        ${destroot}${prefix}${destroot.libpath}
+        set destroot_wrapper        ${destroot_binpath}/${destroot_name}
+        set phar_name               "composer.phar"
+        set phar_path               ${prefix}${destroot.libpath}/${name}.phar
+        set phar_stub               ${prefix}/bin/${destroot_name}
+        set composer_phar           ${worksrcpath}/composer.phar
+        set composer_phar_stub      ${worksrcpath}/composer-stub.php
+        set composer_install        "${destroot.php_bin} ${worksrcpath}/${name}-setup.php --install-dir=${worksrcpath} --version=${version} ${destroot.args}"
+        set composer_open           [string map { "\n" "\\n" "&" "\\&" "#" "\\#" } "
+if (false === getenv('COMPOSER_HOME') \&\& !isset(\$_SERVER\['COMPOSER_HOME'\], \$_ENV\['COMPOSER_HOME'\])) {
+    putenv('COMPOSER_HOME=' . (\$_SERVER\['COMPOSER_HOME'\] = \$_ENV\['COMPOSER_HOME'\] = \$_SERVER\['HOME'\] . '/.composer/${destroot_name}'));
+}
+
+// @see https://github.com/composer/composer/pull/9898
+if (false === getenv('COMPOSER_CACHE_DIR') \&\& !isset(\$_SERVER\['COMPOSER_CACHE_DIR'\], \$_ENV\['COMPOSER_CACHE_DIR'\])) {
+    putenv('COMPOSER_CACHE_DIR=' . (\$_SERVER\['COMPOSER_CACHE_DIR'\] = \$_ENV\['COMPOSER_CACHE_DIR'\] = \$_SERVER\['HOME'\] . '/Library/Caches/composer'));
+}
+
+if (false === getenv('COMPOSER_PHAR') \&\& !isset(\$_SERVER\['COMPOSER_PHAR'\], \$_ENV\['COMPOSER_PHAR'\])) {
+    putenv('COMPOSER_PHAR=' . (\$_SERVER\['COMPOSER_PHAR'\] = \$_ENV\['COMPOSER_PHAR'\] = '${phar_path}'));
+}
+"]
+        set composer_close          ""
+
+        if {"${destroot.php}" eq "php"} {
+            set composer_shebang ""
+        } else {
+            set composer_shebang ${prefix}/bin/${destroot.php}
+        }
+        set composer_build_stub "${destroot.php_bin} ${filespath}/pharstub.php ${composer_phar} ${phar_path} '${composer_shebang}' @@@OPEN@@@ @@@CLOSE@@@"
+
+        ui_info "Downloading composer: ${composer_install}"
+        system "${composer_install}"
+
+        xinstall -d -m 0755 ${destroot_binpath}
+        xinstall -d -m 0755 ${destroot_libpath}
+        xinstall -m 0644 ${worksrcpath}/${name}-setup.php ${destroot_libpath}/${name}-setup.php
+        xinstall -m 0644 ${composer_phar} ${destroot_libpath}/${name}.phar
+
+        ui_info "Building composer-stub: ${composer_build_stub}"
+        system "${composer_build_stub} >${composer_phar_stub}"
+
+        reinplace "s#@@@OPEN@@@#${composer_open}#g" ${composer_phar_stub}
+        reinplace "s#@@@CLOSE@@@#${composer_close}#g" ${composer_phar_stub}
+
+        xinstall -m 0755 ${composer_phar_stub} ${destroot_wrapper}
+
+        notes "
+ATTENTION:
+  The default COMPOSER_HOME is ~/.composer/${destroot_name}
+  The default COMPOSER_CACHE_DIR is ~/Library/Caches/composer
+
+"
+    }
+
+    variant bash_completion description {Enable bash autocompletion} {
+        depends_run-append          port:composer-bash-completion
+
+        post-destroot {
+            set completion_destroot     ${destroot}${prefix}/share/bash-completion/completions
+            set completion_scriptname   ${name}-${destroot.php}
+            set completion_libpath      ${prefix}/lib/composer-bash-completion
+
+            xinstall -d -m 0755 ${completion_destroot}
+            xinstall -m 0644 ${filespath}/completion.sh ${completion_destroot}/${completion_scriptname}
+            reinplace "s,@NAME@,${completion_scriptname},g" ${completion_destroot}/${completion_scriptname}
+            reinplace "s,@LIBPATH@,${completion_libpath},g" ${completion_destroot}/${completion_scriptname}
+            if {"${destroot.php}" eq "php"} {
+                reinplace "s,@PHP@,/usr/bin/env -S ${destroot.php_bin},g" ${completion_destroot}/${completion_scriptname}
+            } else {
+                reinplace "s,@PHP@,${destroot.php_bin},g" ${completion_destroot}/${completion_scriptname}
+            }
+        }
+    }
+
+    variant path_alias description {Install additional path-alias for use in PATH} {
+        depends_run-append              "port:${destroot.php}-path-alias"
+
+        post-destroot {
+            set destroot_binpath        ${destroot}${prefix}${destroot.libpath}/bin
+            set destroot_wrapper        ${destroot_binpath}/composer
+            set composer_phar_stub      ${worksrcpath}/composer-stub.php
+
+            xinstall -d -m 0755 ${destroot_binpath}
+            xinstall -m 0755 ${composer_phar_stub} ${destroot_wrapper}
+        }
+    }
+
+}
+
+composer.create_subports
+
+if {${name} eq ${subport}} {
+    supported_archs                 noarch
+    distfiles
+    use_configure                   no
+    build {}
+    destroot {
+        xinstall -d -m 755 ${destroot}${prefix}/share/doc/${name}
+        system "echo \"${name} is a stub port\" > ${destroot}${prefix}/share/doc/${name}/README"
+        notes "
+-------------
+This is just a stub port providing nothing.
+Install one of the subports '${name}-php*'.
+-------------
+"
+    }
+
+}
+
+default livecheck.type  {regex}
+livecheck.url           https://getcomposer.org/versions
+livecheck.regex         {\"2\": \[\{[^\]\}]*\"version\": \"(\d+(\.\d+)*)\"}

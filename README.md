@@ -30,7 +30,7 @@ sudo port -v selfupdate
 sudo port -v install \
     composer{1,22}-php{70,71,72,73,74,80,81,82,83} \
     composer2{3,4,5,6}-php{72,73,74,80,81,82,83} \
-    composer27-php{72,73,74,80,81,82,83,84}
+    composer{27,28}-php{72,73,74,80,81,82,83,84}
 ```
 
 Look at [the contribution guidelines](CONTRIBUTING.md) if you want to
@@ -108,6 +108,16 @@ contribute. The development-setup differs slightly.
     composer27-php82               @2.7.9          php/composer27
     composer27-php83               @2.7.9          php/composer27
     composer27-php84               @2.7.9          php/composer27
+
+    composer28                     @2.8.1          php/composer28
+    composer28-php                 @2.8.1          php/composer28
+    composer28-php72               @2.8.1          php/composer28
+    composer28-php73               @2.8.1          php/composer28
+    composer28-php80               @2.8.1          php/composer28
+    composer28-php81               @2.8.1          php/composer28
+    composer28-php82               @2.8.1          php/composer28
+    composer28-php83               @2.8.1          php/composer28
+    composer28-php84               @2.8.1          php/composer28
 
     composer-bash-completion       @1.0.4          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
