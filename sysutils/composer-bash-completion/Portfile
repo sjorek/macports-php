@@ -4,7 +4,8 @@ PortSystem          1.0
 PortGroup           github 1.0
 
 github.setup        sjorek composer-bash-completion 1.0.4 v
-revision            0
+github.tarball_from archive
+revision            1
 
 name                composer-bash-completion
 categories          sysutils lang php
@@ -21,9 +22,9 @@ long_description    The completion routines support completing all composer \
 
 supported_archs     noarch
 
-checksums           rmd160  e8ebbfed94e2cb833bfa929573d791a32262df65 \
-                    sha256  586b0df1798834c72058e64db57965d528becd240e3a967d92a84cfe47bc2d8c \
-                    size    10281
+checksums           rmd160  97c4f12955925b44cb6015ea4410242d1ae95702 \
+                    sha256  c41f4dcf21d055f5623bbd125434c63e5c10203353c88f946b667d9cb64b2370 \
+                    size    10275
 
 depends_run-append  port:bash-completion
 
