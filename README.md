@@ -109,15 +109,15 @@ contribute. The development-setup differs slightly.
     composer27-php83               @2.7.9          php/composer27
     composer27-php84               @2.7.9          php/composer27
 
-    composer28                     @2.8.5          php/composer28
-    composer28-php                 @2.8.5          php/composer28
-    composer28-php72               @2.8.5          php/composer28
-    composer28-php73               @2.8.5          php/composer28
-    composer28-php80               @2.8.5          php/composer28
-    composer28-php81               @2.8.5          php/composer28
-    composer28-php82               @2.8.5          php/composer28
-    composer28-php83               @2.8.5          php/composer28
-    composer28-php84               @2.8.5          php/composer28
+    composer28                     @2.8.6          php/composer28
+    composer28-php                 @2.8.6          php/composer28
+    composer28-php72               @2.8.6          php/composer28
+    composer28-php73               @2.8.6          php/composer28
+    composer28-php80               @2.8.6          php/composer28
+    composer28-php81               @2.8.6          php/composer28
+    composer28-php82               @2.8.6          php/composer28
+    composer28-php83               @2.8.6          php/composer28
+    composer28-php84               @2.8.6          php/composer28
 
     composer-bash-completion       @1.0.4          sysutils/composer-bash-completion
     composer_select                @1.0            sysutils/composer_select
