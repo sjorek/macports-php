@@ -4,7 +4,7 @@ PortSystem              1.0
 
 name                    composer28
 version                 2.8.12
-revision                1
+revision                2
 categories              php www net devel
 platforms               darwin freebsd openbsd
 maintainers             gmail.com:stephan.jorek openmaintainer
@@ -14,9 +14,9 @@ master_sites            ${homepage}
 distname                installer
 extract.suffix
 
-checksums           rmd160  c3c4a1262e0b6d31708994e772c63a0648dec7a7 \
-                    sha256  084c2335a5f067184811ff393e459218f21c8a9ae940b0fc0f935f022f78f136 \
-                    size    59259
+checksums           rmd160  5be9359f8ce15ee9203043b9dbf6cf62d32860a8 \
+                    sha256  aad0c40a36d9938664f5a34eb2ed39dbc1021792f9706dbcb9cd6d8001227c99 \
+                    size    59524
 
 description             Package Management for PHP
 long_description        Composer is a dependency manager tracking local \
